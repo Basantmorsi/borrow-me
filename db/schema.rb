@@ -10,9 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_04_152029) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_04_152615) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "tool_requests", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "tool_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.boolean "approved", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tool_id"], name: "index_tool_requests_on_tool_id"
+    t.index ["user_id"], name: "index_tool_requests_on_user_id"
+  end
 
   create_table "tools", force: :cascade do |t|
     t.string "name", null: false
@@ -43,5 +55,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_04_152029) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tool_requests", "tools"
+  add_foreign_key "tool_requests", "users"
   add_foreign_key "tools", "users"
 end
