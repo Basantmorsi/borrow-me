@@ -1,12 +1,28 @@
-.navbar-lewagon {
+.navbar {
+  margin: 0px;
+  background-color: #f8f9fa; // Light background color
+  padding: 10px 20px; // Adjust padding as needed
+  display: flex;
   justify-content: space-between;
-  background: white;
+  a {
+    text-decoration: none;
+    color: #495057; // Text color
+    margin: 0 10px; // Adjust margins as needed
+    &:hover {
+      color: #007bff; // Hover color
+    }
+  }
+  .btn {
+    background-color: #007bff; // Button background color
+    color: #fff; // Button text color
+    margin: 0 10px; // Adjust margins as needed
+    &:hover {
+      background-color: #0056b3; // Hover background color
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-container {
+  margin-left: -70px;
+  margin-right: -70px;
 }
