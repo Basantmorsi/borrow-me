@@ -6,7 +6,7 @@
   <div class="row">
     <% @tools.each do |tool| %>
       <div class="col-md-3">
-        <a href="<%= tool_path(tool) %>">
+        <a href="<%= tool_path(tool) %>" class="text-decoration-none">
           <div class="small_card mb-4">
             <div class="small_card-body">
               <h2 class="small_card-title"><%= tool.name %></h2>
