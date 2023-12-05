@@ -1,0 +1,27 @@
+<%= simple_form_for(tool) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="field">
+    <%= f.input :name %>
+  </div>
+
+  <div class="field">
+    <%= f.input :description %>
+  </div>
+
+  <div>
+    <%= f.input :availability, label: 'Tool available?' %>
+  </div>
+
+  <div class="field">
+    <%= f.input :manual %>
+  </div>
+
+  <div class="field">
+    <%= f.input :brand %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

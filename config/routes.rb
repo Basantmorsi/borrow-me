@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :tools
   resources :tool_requests
+  resources :dashboard
   # Defines the root path route ("/")
   # root "posts#index"
 end
