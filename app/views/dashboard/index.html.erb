@@ -1,0 +1,14 @@
+<div data-controller="toggle">
+  <div class="tabs-bar">
+    <div class="container">
+      <div class="tab-content locations">
+          <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= tools_path %>">All Tools</a>
+          <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= tools_path %>">Add new tool</a>
+          <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= tools_path %>">Edit a tool</a>
+      </div>
+    </div>
+  </div>
+  <div data-toggle-target='cards'>
+
+  </div>
+</div>
