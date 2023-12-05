@@ -13,8 +13,16 @@ export default class extends Controller {
     }
     event.target.classList.toggle('selected');
 
-    this.request = new Request(event.target.dataset.toggleUrl);
-    this.fetchContent(this.request);
+    const url = new Request(event.target.dataset.toggleUrl);
+
+     // url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+
+    fetch(url, {headers: {"Accept": "text/plain"}})
+      .then(response => response.text())
+      .then((data) => {
+        this.cardsTarget.innerHTML = data
+      })
+
   }
 
   fetchContent(request) {

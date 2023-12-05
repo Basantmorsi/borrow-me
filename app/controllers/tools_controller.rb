@@ -1,6 +1,10 @@
 class ToolsController < ApplicationController
   def index
     @tools = Tool.all
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "tools/list", locals: {tools: @tools}, formats: [:html] }
+    end
   end
 
   def show
@@ -10,6 +14,10 @@ class ToolsController < ApplicationController
 
   def new
     @tool = Tool.new
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "tools/form", locals: {tool: @tool}, formats: [:html] }
+    end
   end
 
   def create
