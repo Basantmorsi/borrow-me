@@ -1,12 +1,12 @@
 /* Style for the card container */
-.card-container {
+.small_card-container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px; /* Adjust the gap as needed */
 }
 
 /* Style for each card */
-.tool-card {
+.small_card {
   width: 300px; /* Set a fixed width for each card */
   padding: 20px;
   border: 1px solid #ddd; /* Add a border for separation */
@@ -15,33 +15,33 @@
 }
 
 /* Add some styling for the card content */
-.tool-card h2 {
+.small_card h2 {
   font-size: 1.2em;
   margin-bottom: 10px;
 }
 
-.tool-card p {
+.small_card p {
   margin-bottom: 8px;
 }
 
-.tool-card .availability {
+.small_card .availability {
   font-weight: bold;
 }
 
 /* Optionally, you can add more styling based on your design preferences */
 
-/* Bootstrap Overrides */
-.container-fluid {
+/* Container for small cards */
+.container-small_card {
   margin-right: auto;
   margin-left: auto;
 }
 
-/* Adjust Bootstrap card styles to match your design */
-.card {
+/* Adjust small card styles to match your design */
+.small_card {
   border-radius: 8px; /* Slightly rounded border */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a slight box shadow */
 }
 
-.card-body {
+.small_card-body {
   padding: 20px;
 }
