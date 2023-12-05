@@ -1,0 +1,47 @@
+/* Style for the card container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap as needed */
+}
+
+/* Style for each card */
+.tool-card {
+  width: 300px; /* Set a fixed width for each card */
+  padding: 20px;
+  border: 1px solid #ddd; /* Add a border for separation */
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+/* Add some styling for the card content */
+.tool-card h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.tool-card p {
+  margin-bottom: 8px;
+}
+
+.tool-card .availability {
+  font-weight: bold;
+}
+
+/* Optionally, you can add more styling based on your design preferences */
+
+/* Bootstrap Overrides */
+.container-fluid {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Adjust Bootstrap card styles to match your design */
+.card {
+  border-radius: 8px; /* Slightly rounded border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a slight box shadow */
+}
+
+.card-body {
+  padding: 20px;
+}

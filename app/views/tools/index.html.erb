@@ -1,2 +1,23 @@
-<h1>Tools#index</h1>
-<p>Find me in app/views/tools/index.html.erb</p>
+<!-- app/views/tools/index.html.erb -->
+
+<h1>Tools</h1>
+
+<div class="container-fluid">
+  <div class="row">
+    <% @tools.each do |tool| %>
+      <div class="col-md-3">
+        <a href="<%= tool_path(tool) %>">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h2 class="card-title"><%= tool.name %></h2>
+              <p class="card-text"><%= tool.brand %></p>
+              <p class="card-text"><%= tool.description %></p>
+              <p class="card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
+              <p class="card-text">Owned by <%= tool.user.username %></p>
+            </div>
+          </div>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
