@@ -3,6 +3,11 @@ class ToolsController < ApplicationController
     @tools = Tool.all
   end
 
+  def show
+    @tool = Tool.find(params[:id])
+    @user = @tool.user if @tool
+  end
+
   def new
     @tool = Tool.new
   end

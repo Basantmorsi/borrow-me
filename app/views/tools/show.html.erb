@@ -1,0 +1,41 @@
+<h1>Tool & Owner Details</h1>
+
+<div class="row">
+  <!-- Colonne pour les détails de l'outil -->
+  <div class="col-md-6">
+    <% if @tool %>
+      <div class="card m-4 border rounded">
+        <div class="card-body">
+          <h2 class="card-title"><%= @tool.name %></h2>
+          <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
+          <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
+          <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
+          <!-- Add other tool attributes you want to display -->
+
+          <!-- Bouton "Book now!" -->
+          <a href="#" class="btn btn-dark">Book now!</a>
+        </div>
+      </div>
+    <% else %>
+      <p>No tool found!</p>
+    <% end %>
+  </div>
+
+  <!-- Colonne pour les détails du propriétaire de l'outil -->
+  <div class="col-md-6">
+    <% if @user %>
+      <div class="card m-4 border rounded">
+        <div class="card-body">
+          <h2 class="card-title">Owner Information</h2>
+          <p><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
+          <!-- Add other user attributes you want to display -->
+          <p><strong>About me : </strong> <%= @user.about_me %></p>
+          <!-- Bouton "Send message!" -->
+          <a href="#" class="btn btn-dark">Send message!</a>
+        </div>
+      </div>
+    <% else %>
+      <p>No user found for this tool!</p>
+    <% end %>
+  </div>
+</div>
