@@ -4,5 +4,4 @@ class PagesController < ApplicationController
   def home
     @tools = Tool.limit(9)
   end
-
 end
