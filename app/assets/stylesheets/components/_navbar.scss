@@ -1,9 +1,5 @@
-body {
-  margin: 0;
-  padding: 0;
-}
-
 .navbar {
+  margin: 0px;
   background-color: #f8f9fa; // Light background color
   padding: 10px 20px; // Adjust padding as needed
   display: flex;
@@ -24,4 +20,9 @@ body {
       background-color: #0056b3; // Hover background color
     }
   }
+}
+
+.navbar-container {
+  margin-left: -70px;
+  margin-right: -70px;
 }
