@@ -1,0 +1,12 @@
+<!-- app/views/tool_requests/index.html.erb -->
+
+<h1>Tool Requests</h1>
+
+<ul>
+  <% @tool_requests.each do |tool_request| %>
+    <li><%= tool_request.tool.name %></li>
+    <li><%= tool_request.user.username %></li>
+    <li><%= tool_request.start_date %></li>
+    <li><%= tool_request.end_date %></li>
+  <% end %>
+</ul>
