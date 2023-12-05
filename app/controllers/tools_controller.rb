@@ -17,6 +17,16 @@ class ToolsController < ApplicationController
     end
   end
 
+  def edit
+    @tool = Tool.find(params[:id])
+  end
+
+  def update
+    @tool = Tool.find(params[:id])
+    @tool.update(tool_params)
+    redirect_to tools_path
+  end
+
   private
 
   def tool_params
