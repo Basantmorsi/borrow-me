@@ -3,7 +3,6 @@ class ToolsController < ApplicationController
     @tools = Tool.all
     @tools = @tools.search_by_name(params[:search]) if params[:search].present?
 
-    # Filtrer les outils disponibles pour la carte
     @available_tools = @tools.where(availability: true).limit(9)
     @markers = @available_tools.map do |tool|
       {
@@ -14,7 +13,7 @@ class ToolsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # Suivre le flux régulier de Rails
+      format.html 
       format.text { render partial: "tools/list", locals: { tools: @tools }, formats: [:html] }
     end
   end
