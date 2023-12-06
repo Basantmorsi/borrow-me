@@ -1,15 +1,23 @@
-<div class="container mt-4 mb-4">
-    <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search your tool" aria-label="Search" aria-describedby="searchButton">
-        <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" id="searchButton">Search</button>
-        </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="searchbar text-center rounded mb-4">
+        <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-50 mx-auto") do %>
+          <div class="input-group w-100">
+            <%= text_field_tag :search, params[:search], class: "form-control rounded-0 custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+            <div class="input-group-append">
+              <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-0" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="jumbotron banner text-white d-flex flex-column justify-content-between mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://as2.ftcdn.net/v2/jpg/03/00/98/07/1000_F_300980743_5YrcmC0fWo7Ts2I2Sh2YjvybCcPAp0ak.jpg); background-size: cover; height: 600px; padding: 20px;">
     <div class="container py-5 text-center">
-        <h1 class="display-1 mb-4">You need a tool? Here you can find it!</h1>
+        <h1 class="display-1 mb-4">Don't buy what you can borrow!</h1>
     </div>
     <div class="container py-5 text-center">
         <h3 class="display-6 lead mb-4">Sharing is caring, find the tool you need and borrow it!</h3>
