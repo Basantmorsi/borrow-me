@@ -10,6 +10,9 @@ class ToolsController < ApplicationController
 
   def show
     @tool = Tool.find(params[:id])
+
+    @tool_request = ToolRequest.new
+
     @user = @tool.user
     @markers = User.geocoded.map do |user|
       {
@@ -18,6 +21,7 @@ class ToolsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {user: user})
       }
     end
+
   end
 
   def new
