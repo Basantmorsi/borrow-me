@@ -1,5 +1,6 @@
 class ToolsController < ApplicationController
   def index
+    @requests = Request.all
     @tools = Tool.all
     @tools = @tools.search_by_name(params[:search]) if params[:search].present?
 
@@ -13,7 +14,7 @@ class ToolsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html 
+      format.html
       format.text { render partial: "tools/list", locals: { tools: @tools }, formats: [:html] }
     end
   end
@@ -52,12 +53,16 @@ class ToolsController < ApplicationController
 
   def edit
     @tool = Tool.find(params[:id])
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "tools/form", locals: {tool: @tool}, formats: [:html] }
+    end
   end
 
   def update
     @tool = Tool.find(params[:id])
     @tool.update(tool_params)
-    redirect_to tools_path
+    redirect_to dashboard_path
   end
 
   def destroy
