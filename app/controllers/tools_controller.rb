@@ -13,7 +13,8 @@ class ToolsController < ApplicationController
     @markers = User.geocoded.map do |user|
       {
         lng: user.longitude,
-        lat: user.latitude
+        lat: user.latitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {user: user})
       }
     end
   end
