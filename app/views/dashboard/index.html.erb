@@ -1,5 +1,11 @@
 
-
+<link href="https://api.mapbox.com/mapbox-assembly/v1.3.0/assembly.min.css" rel="stylesheet">
+<script id="search-js" defer="" src="https://api.mapbox.com/search-js/v1.0.0-beta.18/web.js"></script>
+<style>
+  .hide {
+    display: none;
+  }
+</style>
 
 <div data-controller="toggle">
     <a class='tab selected' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= dashboard_index_path %>">My Profile</a>
@@ -10,3 +16,141 @@
     <%= render "profile", user: @user %>
   </div>
 </div>
+
+
+<form class="flex flex--column">
+    <div class="grid grid--gut24 mb60">
+        <div class="col col--auto-mm w-full">
+
+          <!-- Input form -->
+          <label class="txt-s txt-bold color-gray mb3">Address</label>
+          <input class="input mb12" placeholder="Start typing your address, e.g. 123 Main..." autocomplete="address-line1" id="mapbox-autofill">
+          <div id="manual-entry" class="w180 mt6 link txt-ms border-b color-gray color-black-on-hover">
+              Enter an address manually
+          </div>
+          <div class="secondary-inputs hide">
+              <label class="txt-s txt-bold color-gray mb3">Address Line 2</label>
+              <input class="input mb12" placeholder="Apartment, suite, unit, building, floor, etc." autocomplete="address-line2">
+              <label class="txt-s txt-bold color-gray mb3">City</label>
+              <input class="input mb12" placeholder="City" autocomplete="address-level2">
+              <label class="txt-s txt-bold color-gray mb3">State / Region</label>
+              <input class="input mb12" placeholder="State / Region" autocomplete="address-level1">
+              <label class="txt-s txt-bold color-gray mb3">ZIP / Postcode</label>
+              <input class="input" placeholder="ZIP / Postcode" autocomplete="postal-code">
+          </div>
+        </div>
+        <div class="col col--auto-mm">
+          <!-- Visual confirmation map -->
+            <div id="minimap-container" class="none h240 w360 relative mt18"></div>
+        </div>
+    </div>
+
+    <!-- Form buttons -->
+    <div class="mb30 submit-btns hide">
+        <button type="submit" class="btn round" id="btn-confirm">
+        Confirm
+        </button>
+        <button type="button" class="btn round btn--gray-light" id="btn-reset">
+        Reset
+        </button>
+    </div>
+</form>
+
+<div id="validation-msg" class="mt24 txt-m txt-bold none">Test</div>
+
+
+<script>
+    const ACCESS_TOKEN = 'pk.eyJ1IjoiYmFzYW50LW1vcnNpIiwiYSI6ImNsb3d0Z3N4NjB2aDMyanBiMGhwZjhlcHAifQ.EpWxQV6yOKkci_71jxXiRQ';
+
+    let autofillCollection;
+    let minimap;
+
+    // Form operation functions
+    function showMap() {
+      const el = document.getElementById("minimap-container");
+      el.classList.remove("none");
+    }
+    function hideMap() {
+      const el = document.getElementById("minimap-container");
+      el.classList.add("none");
+    }
+    function expandForm() {
+      document.getElementById("manual-entry").classList.add("hide");
+      document.querySelector(".secondary-inputs").classList.remove("hide");
+      document.querySelector(".submit-btns").classList.remove("hide");
+    }
+    function collapseForm() {
+      document.getElementById("manual-entry").classList.remove("hide");
+      document.querySelector(".secondary-inputs").classList.add("hide");
+      document.querySelector(".submit-btns").classList.add("hide");
+    }
+    function setValidationText(color, msg, clear = false) {
+      const validationTextElement = document.getElementById("validation-msg");
+      if (clear) validationTextElement.classList.add("none");
+      validationTextElement.classList.remove("color-green", "color-red");
+      validationTextElement.classList.add(`color-${color}`);
+      validationTextElement.innerText = msg;
+      validationTextElement.classList.remove("none");
+    }
+    function submitForm() {
+      setValidationText("green", "Order successfully submitted.");
+      setTimeout(() => {
+      resetForm();
+      }, 2500);
+    }
+    function resetForm() {
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach(input => input.value = "");
+      collapseForm();
+      setValidationText("green", "", true)
+      autofillCollection.update();
+      minimap.feature = null;
+    }
+
+    // Bind functions to HTML buttons
+    document
+      .getElementById("manual-entry")
+      .addEventListener("click", expandForm);
+    document.getElementById("btn-reset").addEventListener("click", resetForm);
+
+    // Autofill initialization
+    document.getElementById("search-js").onload = () => {
+    mapboxsearch.config.accessToken = ACCESS_TOKEN;
+
+    autofillCollection = mapboxsearch.autofill({});
+
+    minimap = new MapboxAddressMinimap();
+    minimap.canAdjustMarker = true;
+    minimap.satelliteToggle = true;
+    minimap.onSaveMarkerLocation = (lnglat) => {
+    console.log(`Marker moved to ${lnglat}`);
+    };
+    const minimapContainer = document.getElementById("minimap-container");
+    minimapContainer.appendChild(minimap);
+
+    autofillCollection.addEventListener(
+    "retrieve",
+    async (e) => {
+    expandForm();
+    if (minimap) {
+    minimap.feature = e.detail.features[0];
+    showMap();
+    }
+    }
+    );
+
+    // Add confirmation prompt to shipping address
+    const form = document.querySelector("form");
+    form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const result = await mapboxsearch.confirmAddress(form, {
+    minimap: true,
+    skipConfirmModal: (feature) =>
+    ['exact', 'high'].includes(
+    feature.properties.match_code.confidence
+    )
+    });
+    if (result.type === 'nochange') submitForm();
+    });
+    }
+</script>
