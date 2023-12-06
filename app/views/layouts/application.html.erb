@@ -6,9 +6,50 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <script src='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v3.0.0/mapbox-gl.css' rel='stylesheet' />
+    
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+
+ <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    footer {
+      background-color: #f8f9fa;
+      color: #343a40;
+      padding: 60px 0;
+      text-align: center;
+      box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .footer-social a {
+      color: #343a40;
+      text-decoration: none;
+      font-size: 24px;
+      margin: 0 40px;
+      transition: color 0.3s ease;
+    }
+
+    .footer-social a:hover {
+      color: #007bff;
+    }
+
+    .footer-info {
+      margin-top: 40px;
+      font-size: 14px;
+    }
+  </style>
+
+
   </head>
 
   <body>
@@ -19,5 +60,24 @@
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
+
+    <footer>
+    <!-- Social Media Section -->
+    <div class="footer-social">
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <!-- Information Section -->
+    <div class="footer-info">
+      <p>&copy; 2023 Your Company. All rights reserved. | Borrow Me | Email: <a href="mailto:info@borrow-me.com">info@borrow-me.com</a></p>
+    </div>
+  </footer>
+
+
+
   </body>
+
 </html>

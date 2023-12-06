@@ -5,12 +5,23 @@ class ToolsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: "tools/list", locals: {tools: @tools}, formats: [:html] }
     end
+    @tools = @tools.search_by_name(params[:search]) if params[:search].present?
   end
 
   def show
     @tool = Tool.find(params[:id])
-    @user = @tool.user if @tool
+
     @tool_request = ToolRequest.new
+
+    @user = @tool.user
+    @markers = User.geocoded.map do |user|
+      {
+        lng: user.longitude,
+        lat: user.latitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {user: user})
+      }
+    end
+
   end
 
   def new
