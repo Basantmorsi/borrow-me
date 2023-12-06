@@ -9,7 +9,13 @@ class ToolsController < ApplicationController
 
   def show
     @tool = Tool.find(params[:id])
-    @user = @tool.user if @tool
+    @user = @tool.user
+    @markers = User.geocoded.map do |user|
+      {
+        lng: user.longitude,
+        lat: user.latitude
+      }
+    end
   end
 
   def new
