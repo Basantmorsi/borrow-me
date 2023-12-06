@@ -1,46 +1,59 @@
-<h1>Tool & Owner Details</h1>
+<div class="container">
+  <h1 class="mt-4">Tool & Owner Details</h1>
 
-<div class="row">
-  <!-- Colonne pour les détails de l'outil -->
-  <div class="col-md-6">
-    <% if @tool %>
-      <div class="card big-card">
-        <div class="row">
-          <div class="col-md-6">
-            <img src="https://images.unsplash.com/photo-1591172126702-10e977784d60?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="tool-picture mx-auto p-4" alt="">
-          </div>
-          <div class="col-md-6">
-            <div class="card-body">
-              <h2 class="card-title"><%= @tool.name %></h2>
-              <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
-              <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
-              <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
-              <!-- Bouton "Book now!" -->
-              <a href="#" class="btn btn-dark">Book now!</a>
+  <div class="row">
+    <!-- Column for tool details -->
+    <div class="col-md-6">
+      <% if @tool %>
+        <div class="card big-card">
+          <div class="row">
+            <!-- Left column for tool image -->
+            <div class="col">
+              <img src="https://images.unsplash.com/photo-1591172126702-10e977784d60?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="tool-picture mx-auto p-4" alt="">
+            </div>
+            <!-- Right column for tool details -->
+            <div class="col">
+              <div class="card-body">
+                <h2 class="card-title"><%= @tool.name %></h2>
+                <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
+                <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
+                <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
+                <!-- "Book now!" button -->
+                <a href="#" class="btn btn-dark">Book now!</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    <% else %>
-      <p>No tool found!</p>
-    <% end %>
+      <% else %>
+        <p>No tool found!</p>
+      <% end %>
+    </div>
+
+    <!-- Column for owner details -->
+    <div class="col-md-6">
+      <% if @user %>
+        <div class="card big-card">
+          <!-- Owner profile image -->
+          <img src="https://avatars.githubusercontent.com/u/39129615?v=4" class="user-profile mx-auto p-4" alt="">
+          <div class="card-body">
+            <h2 class="card-title">Owner Information</h2>
+            <p><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
+            <p><strong>About me :</strong> <%= @user.about_me %></p>
+            <!-- "Send message!" button -->
+            <a href="#" class="btn btn-dark">Send message!</a>
+          </div>
+        </div>
+      <% else %>
+        <p>No user found for this tool!</p>
+      <% end %>
+    </div>
   </div>
 
-  <!-- Colonne pour les détails du propriétaire de l'outil -->
-  <div class="col-md-6">
-    <% if @user %>
-      <div class="card big-card">
-        <img src="https://avatars.githubusercontent.com/u/39129615?v=4" class="user-profile mx-auto p-4" alt="">
-        <div class="card-body">
-          <h2 class="card-title">Owner Information</h2>
-          <p><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
-          <p><strong>About me :</strong> <%= @user.about_me %></p>
-          <!-- Bouton "Send message!" -->
-          <a href="#" class="btn btn-dark">Send message!</a>
-        </div>
-      </div>
-    <% else %>
-      <p>No user found for this tool!</p>
-    <% end %>
+  <!-- Mapbox map -->
+  <h2>Location</h2>
+  <div id="map" style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
   </div>
 </div>

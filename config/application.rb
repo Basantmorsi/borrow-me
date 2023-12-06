@@ -22,6 +22,8 @@ module BorrowMe
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    require 'dotenv/load' if %w(development test).include? ENV['RAILS_ENV']
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
