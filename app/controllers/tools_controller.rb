@@ -5,6 +5,7 @@ class ToolsController < ApplicationController
       format.html # Follow regular flow of Rails
       format.text { render partial: "tools/list", locals: {tools: @tools}, formats: [:html] }
     end
+    @tools = @tools.search_by_name(params[:search]) if params[:search].present?
   end
 
   def show

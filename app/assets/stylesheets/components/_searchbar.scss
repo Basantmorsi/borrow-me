@@ -1,0 +1,32 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.searchbar {
+  width: 100%;
+  margin: auto;
+  margin-top: 20px;
+  background-color: #f8f9fa;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+}
+
+.searchbar-input {
+  flex: 1;
+  border: none;
+  padding: 10px;
+  border-radius: 20px 0 0 20px; /* Rounded on the left */
+}
+
+.searchbar-btn {
+  background-color: lightblue;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 0 20px 20px 0; /* Rounded on the right */
+}
