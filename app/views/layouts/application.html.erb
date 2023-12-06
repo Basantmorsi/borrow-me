@@ -20,7 +20,7 @@
     footer {
       background-color: #f8f9fa;
       color: #343a40;
-      padding: 30px 0;
+      padding: 60px 0;
       text-align: center;
       box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
     }
@@ -29,7 +29,7 @@
       color: #343a40;
       text-decoration: none;
       font-size: 24px;
-      margin: 0 15px;
+      margin: 0 40px;
       transition: color 0.3s ease;
     }
 
@@ -38,7 +38,7 @@
     }
 
     .footer-info {
-      margin-top: 20px;
+      margin-top: 40px;
       font-size: 14px;
     }
   </style>
@@ -47,7 +47,9 @@
 
   <body>
     <%= render "shared/navbar" %>
-    <%= yield %>
+    <div class="main-body">
+      <%= yield %>
+    </div>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
@@ -55,10 +57,10 @@
     <footer>
     <!-- Social Media Section -->
     <div class="footer-social">
-      <a href="#" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="#"><i class="fab fa-facebook"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
 
     <!-- Information Section -->
@@ -66,6 +68,8 @@
       <p>&copy; 2023 Your Company. All rights reserved. | Borrow Me | Email: <a href="mailto:info@borrow-me.com">info@borrow-me.com</a></p>
     </div>
   </footer>
+
+
 
   </body>
 

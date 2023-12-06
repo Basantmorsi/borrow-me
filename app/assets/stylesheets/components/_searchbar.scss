@@ -23,10 +23,13 @@ body {
 }
 
 .searchbar-btn {
-  background-color: lightblue;
+  background-color: rgb(62, 61, 61);
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 0 20px 20px 0; /* Rounded on the right */
+  &:hover {
+    background-color: rgb(168, 165, 165); /* Hover background color */
+  }
 }

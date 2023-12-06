@@ -1,6 +1,6 @@
 <div class="navbar-container">
   <nav class="navbar">
-    <a href="/">Home</a>
+   <a href="/" class="btn">Home</a>
 
     <% if user_signed_in? %>
       <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: 'btn' %>
