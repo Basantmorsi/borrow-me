@@ -10,6 +10,7 @@ class ToolsController < ApplicationController
   def show
     @tool = Tool.find(params[:id])
     @user = @tool.user if @tool
+    @tool_request = ToolRequest.new
   end
 
   def new

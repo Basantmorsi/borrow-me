@@ -16,7 +16,13 @@
               <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
               <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
               <!-- Bouton "Book now!" -->
-              <a href="#" class="btn btn-dark">Book now!</a>
+              <div data-controller="tool-requests" class="mt-5">
+                <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
+                <div data-tool-requests-target="togglableElement" class="d-none">
+                  <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
