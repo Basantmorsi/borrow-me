@@ -1,0 +1,8 @@
+<h1>Request Submitted</h1>
+<p>Thank you for submitting your request!</p>
+
+<% flash.each do |key, value| %>
+  <div class="alert alert-<%= key %>">
+    <%= value %>
+  </div>
+<% end %>

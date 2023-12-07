@@ -1,0 +1,9 @@
+
+   <div id="message-<%= message.id %>">
+        <small>
+           <%= gravatar_for message.user %>
+          <strong><%= message.user.username %></strong>
+          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+        </small>
+        <p style="padding-left:7%"><%= message.content %></p>
+  </div>
