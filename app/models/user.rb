@@ -13,4 +13,5 @@ class User < ApplicationRecord
   has_many :received_chatrooms, :class_name => 'Chatroom', :foreign_key => 'recipient_id'
 
   after_validation :geocode, if: :will_save_change_to_address?
+  has_many :tools
 end

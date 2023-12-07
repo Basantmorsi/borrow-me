@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @tools = Tool.limit(9)
+    @latest_requests = Request.all.last(5)
   end
 end
