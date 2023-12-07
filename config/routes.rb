@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   resources :tools do
     resources :tool_requests
   end
-  
+
   resources :dashboard
+  resources :chatrooms, only: [:show, :new, :create] do
+    resources :messages, only: :create
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end
