@@ -2,7 +2,7 @@
   <h1 class="mt-4">Tool & Owner Details</h1>
 
   <div class="row">
-    <!-- Column for tool details -->
+    <!-- Colonne pour les détails de l'outil -->
     <div class="col-md-6">
       <% if @tool %>
         <div class="card big-card">
@@ -18,8 +18,13 @@
                 <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
                 <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
                 <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
-                <!-- "Book now!" button -->
-                <a href="#" class="btn btn-dark">Book now!</a>
+                <!-- Bouton "Book now!" -->
+                <div data-controller="tool-requests" class="mt-5">
+                  <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
+                  <div data-tool-requests-target="togglableElement" class="d-none">
+                    <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
