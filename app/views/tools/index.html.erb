@@ -1,24 +1,41 @@
-<!-- app/views/tools/index.html.erb -->
+<div class="container">
+  <h1>Tools</h1>
 
-<h1>Tools</h1>
-
-<div class="container-small_card">
   <div class="row">
-    <% @tools.each do |tool| %>
-      <div class="col-md-3">
-        <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-          <div class="small_card mb-4">
-            <div class="small_card-body">
-              <h2 class="small_card-title"><%= tool.name %></h2>
-              <p class="small_card-text"><%= tool.brand %></p>
-              <p class="small_card-text"><%= tool.description %></p>
-              <p class="small_card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
-              <p class="small_card-text">Owned by <%= tool.user.username %></p>
-            </div>
+    <!-- Column for tools -->
+    <div class="col-md-6">
+      <div class="row">
+        <% @tools.each do |tool| %>
+          <div class="col-md-6 mb-4">
+            <a href="<%= tool_path(tool) %>" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title"><%= tool.name %></h2>
+                  <p class="card-text"><%= tool.brand %></p>
+                  <p class="card-text"><%= tool.description %></p>
+                  <p class="card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
+                  <p class="card-text">Owned by <%= tool.user.username %></p>
+                </div>
+              </div>
+            </a>
           </div>
-        </a>
+        <% end %>
       </div>
-    <% end %>
+    </div>
+
+    <!-- Column for map -->
+    <div class="col-md-6">
+      <div class="card">
+        <div class="card-body">
+          <h2>Location</h2>
+          <div id="map" style="height: 600px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
