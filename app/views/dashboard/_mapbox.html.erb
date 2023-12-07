@@ -1,0 +1,39 @@
+<form class="flex flex--column">
+    <div class="grid grid--gut24 mb60">
+        <div class="col col--auto-mm w-full">
+
+          <!-- Input form -->
+          <label class="txt-s txt-bold color-gray mb3">Address</label>
+          <input class="input mb12" placeholder="Start typing your address, e.g. 123 Main..." autocomplete="address-line1" id="mapbox-autofill">
+          <div id="manual-entry" class="w180 mt6 link txt-ms border-b color-gray color-black-on-hover">
+              Enter an address manually
+          </div>
+          <div class="secondary-inputs hide">
+              <label class="txt-s txt-bold color-gray mb3">Address Line 2</label>
+              <input class="input mb12" placeholder="Apartment, suite, unit, building, floor, etc." autocomplete="address-line2">
+              <label class="txt-s txt-bold color-gray mb3">City</label>
+              <input class="input mb12" placeholder="City" autocomplete="address-level2">
+              <label class="txt-s txt-bold color-gray mb3">State / Region</label>
+              <input class="input mb12" placeholder="State / Region" autocomplete="address-level1">
+              <label class="txt-s txt-bold color-gray mb3">ZIP / Postcode</label>
+              <input class="input" placeholder="ZIP / Postcode" autocomplete="postal-code">
+          </div>
+        </div>
+        <div class="col col--auto-mm">
+          <!-- Visual confirmation map -->
+            <div id="minimap-container" class="none h240 w360 relative mt18"></div>
+        </div>
+    </div>
+
+    <!-- Form buttons -->
+    <div class="mb30 submit-btns hide">
+        <button type="submit" class="btn round" id="btn-confirm">
+        Confirm
+        </button>
+        <button type="button" class="btn round btn--gray-light" id="btn-reset">
+        Reset
+        </button>
+    </div>
+</form>
+
+<div id="validation-msg" class="mt24 txt-m txt-bold none">Test</div>
