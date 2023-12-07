@@ -57,7 +57,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="request-box">
-        <h2>Post a request</h2>
+        <h1>Post a request</h1>
 
         <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
           <div class="form-group">
@@ -77,7 +77,7 @@
 
 <!-- Add this section to display the latest requests on the home page -->
 
-<div class="container mt-4">
+<div class="container2 mt-4">
   <div class="row">
     <div class="col-md-12">
       <div class="latest-requests-box">
@@ -88,6 +88,7 @@
             <p><strong>User:</strong> <%= request.user.username %></p>
             <p><strong>Request:</strong> <%= request.message %></p>
             <!-- Add more details as needed -->
+            <button class="delete-button" data-request-id="<%= request.id %>">Delete</button>
           </div>
         <% end %>
       </div>

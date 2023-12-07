@@ -3,3 +3,41 @@
   margin-left: 70px;
   margin-right: 70px;
 }
+
+/* Add some styling to the container */
+.container2 {
+  max-width: 800px; /* Adjust as needed */
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+/* Style the latest requests box */
+.latest-requests-box {
+  background-color: #f8f9fa; /* Light gray background color */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+}
+
+/* Style the request items */
+.request-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #dee2e6; /* Light border color */
+  border-radius: 4px;
+}
+
+/* Style the headings */
+.latest-requests-box h2 {
+  color: #007bff; /* Blue heading color */
+}
+
+/* Add some spacing between paragraphs */
+.request-item p {
+  margin-bottom: 8px;
+}
+
+/* Style the strong tags */
+.request-item strong {
+  color: #212529; /* Dark color for strong text */
+}
