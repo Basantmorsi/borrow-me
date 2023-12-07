@@ -2,9 +2,19 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["tab", "cards"]
+  static targets = ["tab", "cards", "edit", "editCard"]
   connect() {
-    console.log("toggle controller")
+  }
+  toggleEdit(event) {
+    const url = new Request(event.target.dataset.toggleUrl);
+
+     // url = `${this.formTarget.action}?query=${this.inputTarget.value}`
+
+    fetch(url, {headers: {"Accept": "text/plain"}})
+      .then(response => response.text())
+      .then((data) => {
+        this.editCardTarget.innerHTML = data
+      })
   }
   toggle(event) {
     const selected = document.querySelector('.selected');
