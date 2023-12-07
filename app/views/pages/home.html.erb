@@ -73,3 +73,24 @@
     </div>
   </div>
 </div>
+
+
+<!-- Add this section to display the latest requests on the home page -->
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="latest-requests-box">
+        <h2>Latest Requests</h2>
+
+        <% @latest_requests.each do |request| %>
+          <div class="request-item">
+            <p><strong>User:</strong> <%= request.user.username %></p>
+            <p><strong>Request:</strong> <%= request.message %></p>
+            <!-- Add more details as needed -->
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

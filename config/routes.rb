@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   post '/post_request', to: 'requests#post_request'
   get '/requests', to: 'requests#post_request', as: 'requests'
 
+
   resources :tools do
     resources :tool_requests
   end
