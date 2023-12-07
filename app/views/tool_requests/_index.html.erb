@@ -1,12 +1,23 @@
-<!-- app/views/tool_requests/index.html.erb -->
-
-<h1>Tool Requests</h1>
-
-<ul>
+<!-- app/views/tool_requests/_list.html.erb -->
+<div class="row cards">
   <% @tool_requests.each do |tool_request| %>
-    <li><%= tool_request.tool.name %></li>
-    <li><%= tool_request.user.username %></li>
-    <li><%= tool_request.start_date %></li>
-    <li><%= tool_request.end_date %></li>
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= tool_request.tool.name %></h5>
+          <p class="card-text"><strong>User:</strong> <%= tool_request.user.username %></p>
+          <p class="card-text"><strong>Start Date:</strong> <%= tool_request.start_date %></p>
+          <p class="card-text"><strong>End Date:</strong> <%= tool_request.end_date %></p>
+          <button
+            class="btn btn-primary approve-button"
+            data-controller="tool-requests"
+            data-action="click->tool-requests#approve"
+            data-tool-request-id="<%= tool_request.id %>"
+          >
+            Approve
+          </button>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>

@@ -15,8 +15,13 @@ Rails.application.routes.draw do
   resources :tools do
     resources :tool_requests
   end
-  resources :requests, only: [:index, :create,]
+
+  resources :tool_requests, only: [:index, :new, :create]
   resources :dashboard
+  resources :tool_requests do
+    patch 'approve', on: :member
+  end
+  get "dashboards/profile", to: "dashboard#profile", as: "/profile"
   resources :chatrooms, only: [:show, :new, :create] do
     resources :messages, only: :create
   end
