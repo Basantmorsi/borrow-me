@@ -1,11 +1,22 @@
 class ToolsController < ApplicationController
   def index
+    @requests = Request.all
     @tools = Tool.all
-    respond_to do |format|
-      format.html # Follow regular flow of Rails
-      format.text { render partial: "tools/list", locals: {tools: @tools}, formats: [:html] }
-    end
     @tools = @tools.search_by_name(params[:search]) if params[:search].present?
+
+    @available_tools = @tools.where(availability: true).limit(9)
+    @markers = @available_tools.map do |tool|
+      {
+        lng: tool.user.longitude,
+        lat: tool.user.latitude,
+        info_window_html: render_to_string(partial: "info_window", locals: { user: tool.user })
+      }
+    end
+
+    respond_to do |format|
+      format.html
+      format.text { render partial: "tools/list", locals: { tools: @tools }, formats: [:html] }
+    end
   end
 
   def show
@@ -14,14 +25,11 @@ class ToolsController < ApplicationController
     @tool_request = ToolRequest.new
 
     @user = @tool.user
-    @markers = User.geocoded.map do |user|
-      {
-        lng: user.longitude,
-        lat: user.latitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {user: user})
-      }
-    end
-
+    @markers = [{
+      lng: @user.longitude,
+      lat: @user.latitude,
+      info_window_html: render_to_string(partial: "info_window", locals: { user: @user })
+    }]
   end
 
   def new
@@ -45,12 +53,16 @@ class ToolsController < ApplicationController
 
   def edit
     @tool = Tool.find(params[:id])
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "tools/form", locals: {tool: @tool}, formats: [:html] }
+    end
   end
 
   def update
     @tool = Tool.find(params[:id])
     @tool.update(tool_params)
-    redirect_to tools_path
+    redirect_to dashboard_path
   end
 
   def destroy

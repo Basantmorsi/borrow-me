@@ -1,5 +1,9 @@
 {
   "dependencies": {
+<<<<<<< HEAD
     "stimulus": "^3.2.2"
+=======
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1"
+>>>>>>> 124be31da58d1bfe425c115067b8468b47045f6f
   }
 }

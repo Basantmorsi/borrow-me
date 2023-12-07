@@ -17,15 +17,19 @@ export default class extends Controller {
     this.#addMarkersToMap()
     this.#fitMapToMarkers()
   }
+
   #addMarkersToMap() {
-    this.markersValue.forEach((marker) => {
-      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html)
+    if (this.markersValue.length > 0) {
+      const marker = this.markersValue[0]; // Utilisez le premier marqueur (en supposant qu'il y en ait un seul)
+
+      const popup = new mapboxgl.Popup().setHTML(marker.info_window_html);
       new mapboxgl.Marker()
-        .setLngLat([ marker.lng, marker.lat ])
+        .setLngLat([marker.lng, marker.lat])
         .setPopup(popup)
-        .addTo(this.map)
-    })
+        .addTo(this.map);
+    }
   }
+
   #fitMapToMarkers() {
     const bounds = new mapboxgl.LngLatBounds()
     this.markersValue.forEach(marker => bounds.extend([ marker.lng, marker.lat ]))
