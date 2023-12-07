@@ -7,13 +7,14 @@
   }
 </style>
 
-<div data-controller="toggle">
-    <a class='tab selected' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= dashboard_index_path %>">My Profile</a>
+<div data-controller="toggle", data-controller="tool-requests">
+    <a class='tab selected' data-toggle-target='tab' data-tool-requests-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= dashboard_index_path %>">Pending tool requests</a>
+    <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= profile_path%>">My profile</a>
     <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= tools_path %>">All Tools</a>
     <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= new_tool_path %>">Add new tool</a>
     <a class='tab' data-toggle-target='tab' data-action='click->toggle#toggle' data-toggle-url="<%= tools_path %>">Edit a tool</a>
   <div data-toggle-target='cards'>
-    <%= render "profile", user: @user %>
+    <%= render "tool_requests/index"%>
   </div>
 </div>
 

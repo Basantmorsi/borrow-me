@@ -11,8 +11,13 @@ Rails.application.routes.draw do
   resources :tools do
     resources :tool_requests
   end
-  
+
+  resources :tool_requests, only: [:index, :new, :create]
   resources :dashboard
+  resources :tool_requests do
+    patch 'approve', on: :member
+  end
+  get "dashboards/profile", to: "dashboard#profile", as: "/profile"
   # Defines the root path route ("/")
   # root "posts#index"
 end
