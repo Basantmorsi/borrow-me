@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     resources :tool_requests
   end
 
-
   resources :tool_requests, only: [:index, :new, :create]
   resources :dashboard
   resources :tool_requests do
