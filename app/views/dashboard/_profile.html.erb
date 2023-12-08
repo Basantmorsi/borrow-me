@@ -1,1 +1,19 @@
-<p>Hallo,  <%= @user.username %></p>
+<!-- Container for small cards -->
+<div class="container-small_card">
+  <!-- Style for the card container -->
+  <div class="small_card-container">
+    <!-- Style for each card -->
+    <div class="small_card">
+      <!-- Add some styling for the card content -->
+      <h2>Welcome, <%= @user.username %></h2>
+      <p>Email: <%= @user.email %></p>
+      <p>Address: <%= @user.address %></p>
+      <p>About Me: <%= @user.about_me %></p>
+
+      <!-- Optionally, you can add more styling based on your design preferences -->
+      <%= link_to 'Edit Profile', edit_user_registration_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
+</div>
+<br>
+<br>

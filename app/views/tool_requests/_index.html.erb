@@ -2,12 +2,13 @@
 <div class="row cards">
   <% @tool_requests.each do |tool_request| %>
     <div class="col-md-4 mb-3">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"><%= tool_request.tool.name %></h5>
-          <p class="card-text"><strong>User:</strong> <%= tool_request.user.username %></p>
-          <p class="card-text"><strong>Start Date:</strong> <%= tool_request.start_date %></p>
-          <p class="card-text"><strong>End Date:</strong> <%= tool_request.end_date %></p>
+      <!-- Apply the small_card class for consistent styling -->
+      <div class="small_card">
+        <div class="small_card-body">
+          <h2><%= tool_request.tool.name %></h2>
+          <p><strong>User:</strong> <%= tool_request.user.username %></p>
+          <p><strong>Start Date:</strong> <%= tool_request.start_date %></p>
+          <p><strong>End Date:</strong> <%= tool_request.end_date %></p>
           <button
             class="btn btn-primary approve-button"
             data-controller="tool-requests"

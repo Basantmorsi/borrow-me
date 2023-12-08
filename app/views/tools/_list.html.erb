@@ -1,17 +1,21 @@
- <% tools.each do |tool| %>
-      <div class="col-md-3">
-        <a href="<%= tool_path(tool) %>">
-          <div class="small_card mb-4">
-            <div class="small_card-body">
-              <h2 class="small_card-title"><%= tool.name %></h2>
-              <p class="small_card-text"><%= tool.brand %></p>
-              <p class="small_card-text"><%= tool.description %></p>
-              <p class="small_card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
-              <p class="small_card-text">Owned by <%= tool.user.username %></p>
-            </div>
+<div class="row cards">
+  <% tools.each do |tool| %>
+    <div class="col-md-3">
+      <a href="<%= tool_path(tool) %>">
+        <div class="small_card mb-4">
+          <div class="small_card-body">
+            <h2 class="small_card-title"><%= tool.name %></h2>
+            <p class="small_card-text"><%= tool.brand %></p>
+            <p class="small_card-text"><%= tool.description %></p>
+            <p class="small_card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
+            <p class="small_card-text">Owned by <%= tool.user.username %></p>
+
+            <!-- "Modify" button inside the small_card-body div -->
+            <a class="btn btn-primary" data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>">Modify</a>
           </div>
-        </a>
-        <a data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>">Modify</a>
-        <div data-toggle-target='editCard'></div>
-      </div>
-    <% end %>
+        </div>
+      </a>
+      <div data-toggle-target='editCard'></div>
+    </div>
+  <% end %>
+</div>
