@@ -2,41 +2,43 @@
   <h1 class="mt-4">Tool & Owner Details</h1>
 
   <div class="row">
-    <!-- Colonne pour les détails de l'outil -->
-    <div class="col-md-6">
-      <% if @tool %>
-        <div class="card big-card">
-          <div class="row">
-            <!-- Left column for tool image -->
-            <div class="col">
-              <% if @tool.photo.present? %>
-                <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
-              <% else %>
-                <img src="https://images.unsplash.com/photo-1591172126702-10e977784d60?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="tool-picture mx-auto p-4" alt="">
-              <% end %>
-            </div>
-            <!-- Right column for tool details -->
-            <div class="col">
-              <div class="card-body">
-                <h2 class="card-title"><%= @tool.name %></h2>
-                <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
-                <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
-                <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
-                <!-- Bouton "Book now!" -->
-                <div data-controller="tool-requests" class="mt-5">
-                  <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
-                  <div data-tool-requests-target="togglableElement" class="d-none">
-                    <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
-                  </div>
+  <!-- Colonne pour les détails de l'outil -->
+  <div class="col-md-6">
+    <% if @tool %>
+      <div class="card big-card">
+        <div class="row">
+          <!-- Left column for tool image -->
+          <div class="col">
+            <% if @tool.photo.present? %>
+              <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid", crop: :fill %>
+            <% else %>
+              <img src="https://images.unsplash.com/photo-1591172126702-10e977784d60?q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top img-fluid" alt="">
+            <% end %>
+          </div>
+          <!-- Right column for tool details -->
+          <div class="col">
+            <div class="card-body">
+              <h2 class="card-title"><%= @tool.name %></h2>
+              <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
+              <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
+              <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
+              <!-- Bouton "Book now!" -->
+              <div data-controller="tool-requests" class="mt-5">
+                <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
+                <div data-tool-requests-target="togglableElement" class="d-none">
+                  <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      <% else %>
-        <p>No tool found!</p>
-      <% end %>
-    </div>
+      </div>
+    <% else %>
+      <p>No tool found!</p>
+    <% end %>
+  </div>
+</div>
+
 
     <!-- Column for owner details -->
     <div class="col-md-6">
