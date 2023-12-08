@@ -1,7 +1,10 @@
 class ToolsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @requests = Request.all
     @tools = Tool.all
+    @tools = current_user.tools
     @tools = @tools.search_by_name(params[:search]) if params[:search].present?
 
     @available_tools = @tools.where(availability: true).limit(9)
