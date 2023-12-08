@@ -57,7 +57,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="request-box">
-        <h1>Post a request</h1>
+        <h1>Didn't find what you were looking for?</h1>
 
         <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
           <div class="form-group">
@@ -88,7 +88,7 @@
             <p><strong>User:</strong> <%= request.user.username %></p>
             <p><strong>Request:</strong> <%= request.message %></p>
             <!-- Add more details as needed -->
-            <button class="delete-button" data-request-id="<%= request.id %>">Delete</button>
+            <%= link_to "Delete",request_path(request.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"delete-button"%>
           </div>
         <% end %>
       </div>
