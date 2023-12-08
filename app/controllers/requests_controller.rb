@@ -17,10 +17,11 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
     @request.destroy
 
-    respond_to do |format|
-      format.html { redirect_to requests_url, notice: 'Request was successfully deleted.' }
-      format.json { head :no_content }
-    end
+    #respond_to do |format|
+      #format.html { redirect_to requests_url, notice: 'Request was successfully deleted.' }
+      #format.json { head :no_content }
+    #end
+    redirect_to root_path, status: :see_other
   end
 
   private
