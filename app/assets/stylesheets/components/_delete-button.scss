@@ -1,0 +1,14 @@
+/* Style the delete button */
+.delete-button {
+  background-color: #dc3545; /* Bootstrap's danger color */
+  color: #fff; /* Text color */
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  background-color: #c82333; /* Darker color on hover */
+}

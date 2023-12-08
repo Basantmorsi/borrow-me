@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/requests', to: 'requests#post_request', as: 'requests'
 
 
+  resources :requests, only: [:destroy]
   resources :tools do
     resources :tool_requests
   end

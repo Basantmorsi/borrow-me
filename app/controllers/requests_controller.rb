@@ -13,6 +13,16 @@ class RequestsController < ApplicationController
     end
   end
 
+  def destroy
+    @request = Request.find(params[:id])
+    @request.destroy
+
+    respond_to do |format|
+      format.html { redirect_to requests_url, notice: 'Request was successfully deleted.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   def request_params
