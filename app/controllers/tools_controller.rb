@@ -25,11 +25,20 @@ class ToolsController < ApplicationController
     @tool_request = ToolRequest.new
 
     @user = @tool.user
+
+    # select chatroom if exists for sender and reciever
+    # @chatroom = Chatroom.where(sender_id: current_user.id, recipient_id: @user.id )
+    # if !@chatroom
+    #   @chatroom = Chatroom.new
+    # end
+
+
     @markers = [{
       lng: @user.longitude,
       lat: @user.latitude,
       info_window_html: render_to_string(partial: "info_window", locals: { user: @user })
     }]
+
   end
 
   def new
