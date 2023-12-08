@@ -45,7 +45,13 @@
             <p><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
             <p><strong>About me :</strong> <%= @user.about_me %></p>
             <!-- "Send message!" button -->
-            <a href="#" class="btn btn-dark">Send message!</a>
+            <div data-controller="overly">
+              <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
+              <%# data-action='click->overly#off' %>
+              <div id="overlay" >
+                <div id="text"></div>
+              </div>
+            </div>
           </div>
         </div>
       <% else %>
