@@ -19,39 +19,79 @@
 
 
  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+  footer {
+    background-color: #1a1a1a; /* Dark gray color */
+    color: #fff;
+    padding: 40px 0;
+    text-align: center;
+    position: relative;
+  }
 
-    footer {
-      background-color: #f8f9fa;
-      color: #343a40;
-      padding: 60px 0;
-      text-align: center;
-      box-shadow: 0px -5px 10px rgba(0, 0, 0, 0.1);
-    }
+  .footer-social a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    margin: 0 20px;
+    transition: color 0.3s ease;
+  }
 
-    .footer-social a {
-      color: #343a40;
-      text-decoration: none;
-      font-size: 24px;
-      margin: 0 40px;
-      transition: color 0.3s ease;
-    }
+  .footer-social a:hover {
+    color: #007bff;
+  }
 
-    .footer-social a:hover {
-      color: #007bff;
-    }
+  .footer-content {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 
-    .footer-info {
-      margin-top: 40px;
-      font-size: 14px;
-    }
-  </style>
+  .footer-column {
+    flex: 1;
+    text-align: center;
+    padding: 0 20px;
+  }
 
+  .footer-column h4 {
+    color: #fff;
+    margin-bottom: 15px;
+  }
+
+  .footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .footer-column li {
+    margin-bottom: 10px;
+  }
+
+  .footer-column a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-column a:hover {
+    color: #007bff;
+  }
+
+  .footer-info {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    padding: 20px 10px 10px;
+    box-sizing: border-box;
+  }
+
+  .footer-info p {
+    margin: 0;
+    font-size: 14px;
+  }
+</style>
 
   </head>
 
@@ -64,7 +104,7 @@
     <p class="alert"><%= alert %></p>
     <%= render "shared/flashes" %>
 
-    <footer>
+  <footer>
     <!-- Social Media Section -->
     <div class="footer-social">
       <a href="#"><i class="fab fa-facebook"></i></a>
@@ -73,13 +113,39 @@
       <a href="#"><i class="fab fa-linkedin"></i></a>
     </div>
 
+    <!-- Footer Content -->
+    <div class="footer-content">
+      <!-- Navigation Section -->
+      <div class="footer-column">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#services">FAQ</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Products Section -->
+      <div class="footer-column">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#product1">Product Categories</a></li>
+          <li><a href="#product2">Featured Products</a></li>
+          <li><a href="#product3">Product Listings</a></li>
+          <li><a href="#product1">Product Catalog</a></li>
+          <li><a href="#product1">Product Reviews</a></li>
+        </ul>
+      </div>
+    </div>
+
     <!-- Information Section -->
     <div class="footer-info">
-      <p>&copy; 2023 Your Company. All rights reserved. | Borrow Me | Email: <a href="mailto:info@borrow-me.com">info@borrow-me.com</a></p>
+      <p>&copy; <%= Time.now.year %> Your Company. All rights reserved. | Borrow Me | Email: <a
+          href="mailto:info@borrow-me.com">info@borrow-me.com</a></p>
     </div>
   </footer>
-
-
 
   </body>
 
