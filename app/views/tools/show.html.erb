@@ -10,7 +10,7 @@
             <!-- Left column for tool image -->
             <div class="col">
               <% if @tool.photo.present? %>
-                <%= cl_image_tag @article.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
               <% else %>
                 <img src="https://images.unsplash.com/photo-1591172126702-10e977784d60?q=80&w=3024&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="tool-picture mx-auto p-4" alt="">
               <% end %>
@@ -43,7 +43,7 @@
       <% if @user %>
         <div class="card big-card">
           <!-- Owner profile image -->
-          <img src="https://avatars.githubusercontent.com/u/39129615?v=4" class="user-profile mx-auto p-4" alt="">
+          <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto p-4" alt="">
           <div class="card-body">
             <h2 class="card-title">Owner Information</h2>
             <p><strong><%= @user.username %></strong></p>
