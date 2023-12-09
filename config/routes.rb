@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get '/requests', to: 'requests#post_request', as: 'requests'
 
 
+  resources :requests, only: [:destroy]
   resources :tools do
     resources :tool_requests
   end
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
     patch 'approve', on: :member
   end
   get "dashboards/profile", to: "dashboard#profile", as: "/profile"
+  get "dashboard/mytools", to: "dashboard#mytools", as: "/mytools"
   resources :chatrooms, only: [:show, :new, :create] do
     resources :messages, only: :create
   end

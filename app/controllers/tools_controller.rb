@@ -1,4 +1,6 @@
 class ToolsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @requests = Request.all
     @tools = Tool.all
@@ -9,7 +11,7 @@ class ToolsController < ApplicationController
       {
         lng: tool.user.longitude,
         lat: tool.user.latitude,
-        info_window_html: render_to_string(partial: "info_window", locals: { user: tool.user })
+        # info_window_html: render_to_string(partial: "info_window", locals: { user: tool.user })
       }
     end
 
@@ -28,17 +30,21 @@ class ToolsController < ApplicationController
 
     @message = Message.new
 
+
     # select chatroom if exists for sender and reciever
     # @chatroom = Chatroom.where(sender_id: current_user.id, recipient_id: @user.id )
     # if !@chatroom
     #   @chatroom = Chatroom.new
     # end
 
+
+
     @markers = [{
       lng: @user.longitude,
       lat: @user.latitude,
       info_window_html: render_to_string(partial: "info_window", locals: { user: @user })
     }]
+
 
   end
 
@@ -85,7 +91,7 @@ class ToolsController < ApplicationController
   private
 
   def tool_params
-    params.require(:tool).permit(:name, :description, :availability, :manual, :brand)
+    params.require(:tool).permit(:name, :description, :availability, :manual, :photo, :brand)
   end
 
 end

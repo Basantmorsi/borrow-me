@@ -1,8 +1,8 @@
 class DashboardController < ApplicationController
   def index
-    user_tools = current_user.tools
     @user = User.find(current_user.id)
-    @tool_requests = ToolRequest.where(tool_id: user_tools, approved: false)
+    @user_tools = current_user.tools
+    @tool_requests = ToolRequest.where(tool_id: @user_tools, approved: false)
     # You may want to include additional conditions or sorting based on your requirements
     # For example, you can order the requests by creation time:
     @tool_requests = @tool_requests.order(created_at: :desc)
@@ -17,6 +17,15 @@ class DashboardController < ApplicationController
     respond_to do |format|
       format.html # Follow regular flow of Rails
       format.text { render partial: "dashboard/profile", locals: {user: @user}, formats: [:html] }
+    end
+  end
+
+  def show
+    @user = current_user
+    @user_tools = current_user.tools
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "dashboard/mytools", locals: {user: @user}, formats: [:html] }
     end
   end
 

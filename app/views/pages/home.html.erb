@@ -37,7 +37,11 @@
       <div class="col-md-4">
         <a href="<%= tool_path(tool) %>" class="text-decoration-none">
           <div class="product_card mb-4">
+            <% if tool.photo.key.present? %>
+              <%= cl_image_tag tool.photo.key, crop: :fill %>
+            <% else %>
             <img src="<%= 'https://i.ebayimg.com/images/g/sDMAAOSwFLVkgGBh/s-l1600.jpg' %>" alt="<%= tool.name %>" class="product_card-img">
+            <% end %>
             <div class="product_card-body">
               <h2 class="product_card-title"><%= tool.name %></h2>
               <p class="product_card-text"><%= tool.brand %></p>
@@ -57,7 +61,7 @@
   <div class="row">
     <div class="col-md-12">
       <div class="request-box">
-        <h2>Post a request</h2>
+        <h1>Didn't find what you were looking for?</h1>
 
         <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
           <div class="form-group">
@@ -77,7 +81,7 @@
 
 <!-- Add this section to display the latest requests on the home page -->
 
-<div class="container mt-4">
+<div class="container2 mt-4">
   <div class="row">
     <div class="col-md-12">
       <div class="latest-requests-box">
@@ -88,6 +92,7 @@
             <p><strong>User:</strong> <%= request.user.username %></p>
             <p><strong>Request:</strong> <%= request.message %></p>
             <!-- Add more details as needed -->
+            <%= link_to "Delete",request_path(request.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"delete-button"%>
           </div>
         <% end %>
       </div>
