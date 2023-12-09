@@ -45,11 +45,20 @@
             <p><strong><%= @user.first_name %> <%= @user.last_name %></strong></p>
             <p><strong>About me :</strong> <%= @user.about_me %></p>
             <!-- "Send message!" button -->
-            <div data-controller="overly">
+            <div data-controller="overly" data-overly-tool-value="<%= @tool.id %>">
               <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
               <%# data-action='click->overly#off' %>
               <div id="overlay" >
-                <div id="text"></div>
+                <div id="text">
+                  <%= form_with url: "#{messages_sendMessage_path}?query=#{@tool.id }" ,
+                  :html => { :class => "messageform" } do |form| %>
+                    <%# <%= form.text_field :content,
+                     :class => 'messageinput' %>
+                     <%= form.text_area(:content, cols: 60, rows: 10) %>
+
+                    <%= form.submit %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

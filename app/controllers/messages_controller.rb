@@ -15,6 +15,12 @@ class MessagesController < ApplicationController
     end
   end
 
+  def  sendMessage
+    @tool = Tool.find(params[:query])
+
+
+  end
+
   private
 
   def message_params
