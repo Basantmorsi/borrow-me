@@ -54,8 +54,11 @@
               <%# data-action='click->overly#off' %>
               <div id="overlay" >
                 <div id="text">
-                  <%= form_with url: "#{messages_sendMessage_path}?query=#{@tool.id }" ,
-                  :html => { :class => "messageform" } do |form| %>
+                  <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{@tool.id }" ,
+                  :html => { :class => "messageform" },
+                     data: {
+                              action: "submit->overly#off"
+                            } do |form| %>
                     <%# <%= form.text_field :content,
                      :class => 'messageinput' %>
                      <%= form.text_area(:content, cols: 60, rows: 10) %>

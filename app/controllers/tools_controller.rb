@@ -28,7 +28,6 @@ class ToolsController < ApplicationController
 
     @user = @tool.user
 
-    @message = Message.new
 
 
     # select chatroom if exists for sender and reciever
