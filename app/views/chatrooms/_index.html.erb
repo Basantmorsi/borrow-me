@@ -1,0 +1,13 @@
+<div class="row cards">
+  <% chatrooms.each do |chatroom| %>
+    <div class="col-md-12">
+      <a href = <%= chatroom_path(chatroom)%>%>
+        <div class="chatroom_card mb-4">
+          <div class="small_card-body">
+            <h2 class="small_card-title"><%= chatroom.name %></h2>
+          </div>
+        </div>
+      </a>
+    </div>
+  <% end %>
+</div>
