@@ -23,9 +23,11 @@ Rails.application.routes.draw do
   end
   get "dashboards/profile", to: "dashboard#profile", as: "/profile"
   get "dashboard/mytools", to: "dashboard#mytools", as: "/mytools"
-  resources :chatrooms, only: [:show, :new, :create] do
+  resources :chatrooms, only: [:show, :new, :create, :index] do
     resources :messages, only: :create
   end
+
+  post "messages/sendMessage", to: "messages#sendMessage"
   # Defines the root path route ("/")
   # root "posts#index"
 end
