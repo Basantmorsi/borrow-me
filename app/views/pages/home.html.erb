@@ -1,31 +1,26 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="searchbar text-center rounded mb-4">
-        <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-50 mx-auto") do %>
-          <div class="input-group w-100">
-            <%= text_field_tag :search, params[:search], class: "form-control rounded-0 custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
-            <div class="input-group-append">
-              <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-0" %>
-            </div>
-          </div>
-        <% end %>
-      </div>
+<div class="jumbotron banner text-white d-flex flex-column justify-content-center mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://as2.ftcdn.net/v2/jpg/03/00/98/07/1000_F_300980743_5YrcmC0fWo7Ts2I2Sh2YjvybCcPAp0ak.jpg); background-size: cover; height: 600px; padding: 20px; position: relative; margin-top: 20px;">
+    <div class="container py-5 text-center">
+        <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
+        <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
     </div>
-  </div>
+    <div class="container py-3 text-center" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 50%;">
+        <div class="searchbar rounded-pill">
+            <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100") do %>
+                <div class="input-group w-100">
+                    <%= text_field_tag :search, params[:search], class: "form-control rounded-pill custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+                    <div class="input-group-append">
+                        <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-pill" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
 </div>
 
-<div class="jumbotron banner text-white d-flex flex-column justify-content-between mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://as2.ftcdn.net/v2/jpg/03/00/98/07/1000_F_300980743_5YrcmC0fWo7Ts2I2Sh2YjvybCcPAp0ak.jpg); background-size: cover; height: 600px; padding: 20px;">
-    <div class="container py-5 text-center">
-        <h1 class="display-1 mb-4">Don't buy what you can borrow!</h1>
-    </div>
-    <div class="container py-5 text-center">
-        <h3 class="display-6 lead mb-4">Sharing is caring, find the tool you need and borrow it!</h3>
-    </div>
-    <div class="container py-5 text-center">
-        <a class="btn btn-outline-light btn-lg rounded-pill px-4" href="/tools">Browse tools</a>
-    </div>
+<div class="text-center mt-2">
+    <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", style: "background-color: #718355; border-color: #718355;", id: "browse-tools-btn" %>
 </div>
+
 
 <div class="container mt-4">
     <h1 class="text-center font-weight-bold">Recently added</h1>
@@ -40,14 +35,18 @@
             <% if tool.photo.key.present? %>
               <%= cl_image_tag tool.photo.key, crop: :fill %>
             <% else %>
-            <img src="<%= 'https://i.ebayimg.com/images/g/sDMAAOSwFLVkgGBh/s-l1600.jpg' %>" alt="<%= tool.name %>" class="product_card-img">
+              <img src="<%= 'https://i.ebayimg.com/images/g/sDMAAOSwFLVkgGBh/s-l1600.jpg' %>" alt="<%= tool.name %>" class="product_card-img">
             <% end %>
             <div class="product_card-body">
               <h2 class="product_card-title"><%= tool.name %></h2>
               <p class="product_card-text"><%= tool.brand %></p>
               <p class="product_card-text"><%= tool.description %></p>
-              <p class="product_card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
-              <p class="product_card-text">Owned by <%= tool.user.username %></p>
+              <p class="product_card-text">
+                <span class="availability rounded-pill bg<%= tool.availability ? '-success' : '-danger' %> text-black"
+                      style="font-size: 12px; padding: 8px;">
+                  <%= tool.availability ? 'Available' : 'Unavailable at the moment' %>
+                </span>
+              </p>
             </div>
           </div>
         </a>
@@ -57,10 +56,11 @@
 </div>
 
 
+
 <div class="container mt-4">
   <div class="row">
     <div class="col-md-12">
-      <div class="request-box">
+      <div class="request-box" style="background-color: #CFE1B9;">
         <h1>Didn't find what you were looking for?</h1>
 
         <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
@@ -79,19 +79,20 @@
 </div>
 
 
+
 <!-- Add this section to display the latest requests on the home page -->
 
 <div class="container2 mt-4">
   <div class="row">
     <div class="col-md-12">
       <div class="latest-requests-box">
-        <h2>Latest Requests</h2>
-
+        <h2 style="color: black;">Latest Requests</h2>
         <% @latest_requests.each do |request| %>
           <div class="request-item">
             <p><strong>User:</strong> <%= request.user.username %></p>
             <p><strong>Request:</strong> <%= request.message %></p>
             <!-- Add more details as needed -->
+
             <!-- "Send message!" button -->
             <div data-controller="overly">
               <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
