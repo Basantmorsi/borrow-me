@@ -13,12 +13,13 @@
     }
   }
   .btn {
-    background-color: rgb(62, 61, 61); /* Button background color */
+    background-color: #B5C99A; /* Button background color */
     color: #fff; /* Button text color */
     margin: 0 10px; /* Adjust margins as needed */
     border-radius: 20px;
     &:hover {
-      background-color: rgb(168, 165, 165); /* Hover background color */
+      background-color: #718355; /* Hover background color */
+      border-color: #B5C99A;
     }
   }
 }
