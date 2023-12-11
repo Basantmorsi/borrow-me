@@ -9,7 +9,7 @@
             <!-- Left column for tool image -->
             <div class="col">
               <% if @tool.photo.present? %>
-                <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid my-", crop: :fill %>
+                <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid", crop: :fill %>
               <% else %>
                 <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="card-img-top img-fluid" alt="">
               <% end %>
