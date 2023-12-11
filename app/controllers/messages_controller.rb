@@ -16,12 +16,22 @@ class MessagesController < ApplicationController
   end
 
   def  sendMessage
+    @tool_id = nil
+    @request = nil
+    @request_id = nil
     # find the tool, we send message about
     @tool = Tool.find(params[:query])
     # find the user id, who sends the message
     @sender = current_user
     # find the recipient id, who owns the tool
-    @recipient = User.find(@tool.user_id)
+    if @tool.present?
+      @recipient = User.find(@tool.user_id)
+      @tool_id = @tool.id
+    else
+      @request = Request.find(params[:query])
+      @recipient = User.find(@request.user_id)
+      @request_id = @request.id
+    end
     # find if chatroom between sender and recipient already exits
     @chatroom = Chatroom.where(sender_id: [@sender.id , @recipient.id]).and(Chatroom.where(recipient_id: [@sender.id , @recipient.id])).first
 
@@ -38,6 +48,8 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.chatroom = @chatroom
     @message.user = current_user
+    @message.tool_id = @tool_id
+    @message.request_id = @request_id
 
     if @message.save
       flash.now[:notice]  ='Message sent!'

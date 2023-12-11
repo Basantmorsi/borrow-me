@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_08_110508) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_09_204355) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,7 +60,11 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_110508) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "tool_id"
+    t.bigint "request_id"
     t.index ["chatroom_id"], name: "index_messages_on_chatroom_id"
+    t.index ["request_id"], name: "index_messages_on_request_id"
+    t.index ["tool_id"], name: "index_messages_on_tool_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
@@ -117,6 +121,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_08_110508) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "chatrooms", "tools"
   add_foreign_key "messages", "chatrooms"
+  add_foreign_key "messages", "requests"
+  add_foreign_key "messages", "tools"
   add_foreign_key "messages", "users"
   add_foreign_key "requests", "users"
   add_foreign_key "tool_requests", "tools"
