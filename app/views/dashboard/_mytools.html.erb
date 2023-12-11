@@ -1,6 +1,6 @@
-<div class="row cards">
+<div class="row cards" data-controller="checkbox">
   <% @user_tools.each do |tool| %>
-    <div class="col-md-4" data-controller="checkbox">
+    <div class="col-md-3" >
       <div class="small_card mb-4">
         <div class="small_card-body">
           <!-- Tool details section -->
@@ -24,15 +24,17 @@
                   <%= check_box_tag "tool[availability]", 1, tool.availability, class: "form-check-input", id: "tool_availability_#{tool.id}", data: { action: "change->checkbox#preventRedirect", tool_id: tool.id } %>
                   <%= label_tag "tool_availability_#{tool.id}", "Available", class: "form-check-label" %>
                 </p>
+                <p class="small_card-text">Owned by <%= tool.user.username %></p>
                 <!-- "Tool details" button -->
                 <a class="btn btn-info" href="<%= tool_path(tool) %>">Tool details</a>
                 <!-- "Modify" button inside the small_card-body div -->
-                <a class="btn btn-primary" data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>" data-tool-id="<%= tool.id %>">Modify</a>
-
-                <!-- Rendered form -->
-                <div data-toggle-target='editCard' class="d-none"></div>
+                <a class="btn btn-primary" data-toggle-target='edit' data-toggle-finder="tool-<%=tool.id%>" data-action='click->toggle#toggleModify' data-toggle-url="<%= edit_tool_path(tool) %>">Modify</a>
               </div>
             </div>
+          </div>
+          <div data-toggle-target="editCard"></div>
+          <div class="d-none" id="tool-<%=tool.id%>">
+            <%= render "tools/form", tool: tool%>
           </div>
         </div>
       </div>
