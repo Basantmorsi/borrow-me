@@ -7,6 +7,8 @@
      <%= f.input :username,
                 required: true,
                 input_html: { autocomplete: "username" } %>
+                
+    <%= f.input :photo, as: :file %>
 
     <%= f.input :current_password,
                 hint: "we need your current password to confirm your changes",
