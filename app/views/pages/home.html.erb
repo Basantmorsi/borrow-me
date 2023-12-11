@@ -1,4 +1,4 @@
-<div class="jumbotron banner text-white d-flex flex-column justify-content-center mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://as2.ftcdn.net/v2/jpg/03/00/98/07/1000_F_300980743_5YrcmC0fWo7Ts2I2Sh2YjvybCcPAp0ak.jpg); background-size: cover; height: 600px; padding: 20px; position: relative; margin-top: 20px;">
+<div class="jumbotron banner text-white d-flex flex-column justify-content-center mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1497218770144-3fea6dbc33fe?q=80&w=2016&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-size: cover; height: 600px; padding: 20px; position: relative; margin-top: 20px;">
     <div class="container py-5 text-center">
         <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
         <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
@@ -18,9 +18,8 @@
 </div>
 
 <div class="text-center mt-2">
-    <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", style: "background-color: #718355; border-color: #718355;", id: "browse-tools-btn" %>
+    <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn" %>
 </div>
-
 
 <div class="container mt-4">
     <h1 class="text-center font-weight-bold">Recently added</h1>
@@ -42,10 +41,10 @@
               <p class="product_card-text"><%= tool.brand %></p>
               <p class="product_card-text"><%= tool.description %></p>
               <p class="product_card-text">
-                <span class="availability rounded-pill bg<%= tool.availability ? '-success' : '-danger' %> text-black"
-                      style="font-size: 12px; padding: 8px;">
-                  <%= tool.availability ? 'Available' : 'Unavailable at the moment' %>
-                </span>
+                <span class="availability rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black"
+      style="font-size: 12px; padding: 8px;">
+  <%= tool.availability ? 'Available' : 'Unavailable at the moment' %>
+</span>
               </p>
             </div>
           </div>
