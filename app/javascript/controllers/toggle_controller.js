@@ -7,7 +7,7 @@ export default class extends Controller {
 
   toggleEdit(event) {
     const url = new Request(event.target.dataset.toggleUrl);
-
+    console.log(event.target.dataset.toggleFinder)
     fetch(url, { headers: { "Accept": "text/plain" } })
       .then(response => response.text())
       .then((data) => {
@@ -49,5 +49,11 @@ export default class extends Controller {
           console.log("Couldn't load data");
         }
       })
+  }
+
+  toggleModify(event) {
+    console.log(event.target.dataset.toggleFinder)
+    const target = document.getElementById(event.target.dataset.toggleFinder)
+    target.classList.toggle("d-none")
   }
 }
