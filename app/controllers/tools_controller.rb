@@ -10,9 +10,9 @@ class ToolsController < ApplicationController
     @markers = @available_tools.map do |tool|
       {
         lng: tool.user.longitude,
-        lat: tool.user.latitude,
-        # info_window_html: render_to_string(partial: "info_window", locals: { user: tool.user })
-      }
+        lat: tool.user.latitude
+        # info_window_html: render_to_string(partial: "info_window", locals: { user: @user })
+        }
     end
 
     respond_to do |format|

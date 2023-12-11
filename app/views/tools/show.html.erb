@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mt-4">Tool & Owner Details</h1>
+  <h1 class="mt-4"><strong>Tool & Owner Details</strong></h1>
 
   <div class="row">
     <!-- Colonne pour les détails de l'outil -->
@@ -18,7 +18,7 @@
             <!-- Right column for tool details -->
             <div class="col">
               <div class="card-body">
-                <h2 class="card-title"><%= @tool.name %></h2>
+                <h2 class="card-title "><%= @tool.name %></h2>
                 <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
                 <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
                 <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
@@ -41,16 +41,27 @@
     <!-- Column for owner details -->
     <div class="col-md-6">
       <% if @user %>
-        <div class="card big-card">
+        <div class="card big-card>
           <!-- Owner profile image -->
+          <% if @user.photo.present? %>
+            <%= cl_image_tag @user.photo.key, crop: :fill, class: "user-profile mx-auto p-4" %>
+          <% else %>
           <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto p-4" alt="">
+          <% end %>
           <div class="card-body">
-            <h2 class="card-title">Owner Information</h2>
-            <p><strong><%= @user.username %></strong></p>
-            <p><strong>About me :</strong> <%= @user.about_me %></p>
+            <h2 class="card-title text-center"><strong><%= @user.username %></strong></h2>
+            <p class="mt-4"><strong>About me :</strong> <%= @user.about_me %></p>
+            <h2 class="mt-4"><strong>Where to find me ?</strong></h2>
+            <div id="map" class="" style="width: 100%; height: 300px;"
+              data-controller="map"
+              data-map-type-value="show"
+              data-map-markers-value="<%= @markers.to_json %>"
+              data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+              data-map-type="index">
+            </div>
             <!-- "Send message!" button -->
             <div data-controller="overly" data-overly-tool-value="<%= @tool.id %>">
-              <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
+              <a data-action='click->overly#on'  class="btn btn-dark mt-4">Send message!</a>
               <%# data-action='click->overly#off' %>
               <div id="overlay" >
                 <div id="text">
@@ -73,16 +84,8 @@
       <% else %>
         <p>No user found for this tool!</p>
       <% end %>
-    </div>
-  </div>
+       <!-- Mapbox map -->
 
-  <!-- Mapbox map -->
-  <h2>Location</h2>
-  <div id="map" style="width: 100%; height: 600px;"
-    data-controller="map"
-    data-map-type-value="show"
-    data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-    data-map-type="index">
+    </div>
   </div>
 </div>
