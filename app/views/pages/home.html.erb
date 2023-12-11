@@ -92,6 +92,28 @@
             <p><strong>User:</strong> <%= request.user.username %></p>
             <p><strong>Request:</strong> <%= request.message %></p>
             <!-- Add more details as needed -->
+            <!-- "Send message!" button -->
+            <div data-controller="overly">
+              <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
+              <%# data-action='click->overly#off' %>
+              <div id="overlay"  data-action='click->overly#off' >
+                <div id="text">
+                  <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{ request.id }&type=request" ,
+                  :html => { :class => "messageform" },
+                     data: {
+
+                              action: "submit->overly#off",
+                              overly_target: "form"
+                     } do |form| %>
+                    <%# <%= form.error_notification %>
+                    <%# <%= form.text_field :content,
+                     :class => 'messageinput' %>
+                     <%= form.text_area(:content, cols: 60, rows: 10) %>
+
+                    <%= form.submit %>
+                  <% end %>
+                </div>
+            </div>
             <%= link_to "Delete",request_path(request.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"delete-button"%>
           </div>
         <% end %>

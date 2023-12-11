@@ -52,13 +52,15 @@
             <div data-controller="overly" data-overly-tool-value="<%= @tool.id %>">
               <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
               <%# data-action='click->overly#off' %>
-              <div id="overlay" >
+              <div id="overlay" data-action='click->overly#off' >
                 <div id="text">
-                  <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{@tool.id }" ,
+                  <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{@tool.id }&type=tool" ,
                   :html => { :class => "messageform" },
                      data: {
-                              action: "submit->overly#off"
+                              action: "submit->overly#off",
+                               overly_target: "form"
                             } do |form| %>
+                      <%# <%= form.error_notification %>
                     <%# <%= form.text_field :content,
                      :class => 'messageinput' %>
                      <%= form.text_area(:content, cols: 60, rows: 10) %>

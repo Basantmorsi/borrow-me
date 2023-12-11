@@ -19,16 +19,21 @@ class MessagesController < ApplicationController
     @tool_id = nil
     @request = nil
     @request_id = nil
-    # find the tool, we send message about
-    @tool = Tool.find(params[:query])
+    if params[:type] === "tool"
+     # find the tool, we send message about
+     @tool = Tool.find(params[:query])
+    elsif params[:type] === "request"
+    @request = Request.find(params[:query])
+    end
+
     # find the user id, who sends the message
     @sender = current_user
+
     # find the recipient id, who owns the tool
     if @tool.present?
       @recipient = User.find(@tool.user_id)
       @tool_id = @tool.id
     else
-      @request = Request.find(params[:query])
       @recipient = User.find(@request.user_id)
       @request_id = @request.id
     end
@@ -61,7 +66,7 @@ class MessagesController < ApplicationController
 
     else
       flash.now[:alert] = 'Failed to send the message'
-      render :new
+      # render :new
       # render "chatrooms/show", status: :unprocessable_entity
     end
 
