@@ -27,7 +27,7 @@
                 <!-- "Tool details" button -->
                 <a class="btn btn-info" href="<%= tool_path(tool) %>">Tool details</a>
                 <!-- "Modify" button inside the small_card-body div -->
-                <a class="btn btn-primary" data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>">Modify</a>
+                <a class="btn btn-primary" data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>" data-tool-id="<%= tool.id %>">Modify</a>
 
                 <!-- Rendered form -->
                 <div data-toggle-target='editCard' class="d-none"></div>
