@@ -1,21 +1,25 @@
 import { Controller } from "@hotwired/stimulus"
 
-// Connects to data-controller="toggle"
 export default class extends Controller {
   static targets = ["tab", "cards", "edit", "editCard"]
-  connect() {
-  }
+
+  connect() {}
+
   toggleEdit(event) {
     const url = new Request(event.target.dataset.toggleUrl);
 
-     // url = `${this.formTarget.action}?query=${this.inputTarget.value}`
-
-    fetch(url, {headers: {"Accept": "text/plain"}})
+    fetch(url, { headers: { "Accept": "text/plain" } })
       .then(response => response.text())
       .then((data) => {
-        this.editCardTarget.innerHTML = data
+        this.editCardTarget.innerHTML = data;
+        this.toggleVisibility(); // Toggle visibility after updating content
       })
   }
+
+  toggleVisibility() {
+    this.editCardTarget.classList.toggle('d-none');
+  }
+
   toggle(event) {
     const selected = document.querySelector('.selected');
     if (selected !== null) {
@@ -25,21 +29,22 @@ export default class extends Controller {
 
     const url = new Request(event.target.dataset.toggleUrl);
 
-     // url = `${this.formTarget.action}?query=${this.inputTarget.value}`
-
-    fetch(url, {headers: {"Accept": "text/plain"}})
+    fetch(url, { headers: { "Accept": "text/plain" } })
       .then(response => response.text())
       .then((data) => {
-        this.cardsTarget.innerHTML = data
+        this.cardsTarget.innerHTML = data;
+        this.toggleVisibility(); // Toggle visibility after updating content
       })
-
   }
 
   fetchContent(request) {
     fetch(request)
       .then((response) => {
         if (response.status == 200) {
-          response.text().then((text) => this.cardsTarget.innerHTML = text);
+          response.text().then((text) => {
+            this.cardsTarget.innerHTML = text;
+            this.toggleVisibility(); // Toggle visibility after updating content
+          });
         } else {
           console.log("Couldn't load data");
         }

@@ -1,21 +1,41 @@
 <div class="row cards">
   <% @user_tools.each do |tool| %>
-    <div class="col-md-3">
-      <a href="<%= tool_path(tool) %>">
-        <div class="small_card mb-4">
-          <div class="small_card-body">
-            <h2 class="small_card-title"><%= tool.name %></h2>
-            <p class="small_card-text"><%= tool.brand %></p>
-            <p class="small_card-text"><%= tool.description %></p>
-            <p class="small_card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
-            <p class="small_card-text">Owned by <%= tool.user.username %></p>
+    <div class="col-md-4" data-controller="checkbox">
+      <div class="small_card mb-4">
+        <div class="small_card-body">
+          <!-- Tool details section -->
+          <div class="row">
+            <!-- Left column for tool image -->
+            <div class="col">
+              <% if tool.photo.present? %>
+                <%= cl_image_tag tool.photo.key, class: "card-img-top img-fluid", crop: :fill %>
+              <% else %>
+                <img src="https://images.unsplash.com/photo-1591172126702-10e977784d60?q=80&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="card-img-top img-fluid" alt="">
+              <% end %>
+            </div>
+            <!-- Right column for tool details -->
+            <div class="col">
+              <div class="card-body">
+                <h2 class="card-title"><%= tool.name %></h2>
+                <p class="card-text"><strong>Description:</strong> <%= tool.description %></p>
+                <p class="card-text"><strong>Brand:</strong> <%= tool.brand %></p>
+                <!-- Tool availability checkbox -->
+                <p class="small_card-text">
+                  <%= check_box_tag "tool[availability]", 1, tool.availability, class: "form-check-input", id: "tool_availability_#{tool.id}", data: { action: "change->checkbox#preventRedirect", tool_id: tool.id } %>
+                  <%= label_tag "tool_availability_#{tool.id}", "Available", class: "form-check-label" %>
+                </p>
+                <!-- "Tool details" button -->
+                <a class="btn btn-info" href="<%= tool_path(tool) %>">Tool details</a>
+                <!-- "Modify" button inside the small_card-body div -->
+                <a class="btn btn-primary" data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>">Modify</a>
 
-            <!-- "Modify" button inside the small_card-body div -->
-            <a class="btn btn-primary" data-toggle-target='edit' data-action='click->toggle#toggleEdit' data-toggle-url="<%= edit_tool_path(tool) %>">Modify</a>
+                <!-- Rendered form -->
+                <div data-toggle-target='editCard' class="d-none"></div>
+              </div>
+            </div>
           </div>
         </div>
-      </a>
-      <div data-toggle-target='editCard'></div>
+      </div>
     </div>
   <% end %>
 </div>

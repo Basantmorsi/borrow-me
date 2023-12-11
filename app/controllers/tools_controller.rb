@@ -72,8 +72,12 @@ class ToolsController < ApplicationController
 
   def update
     @tool = Tool.find(params[:id])
-    @tool.update(tool_params)
-    redirect_to dashboard_path
+
+    if @tool.update(tool_params)
+      render json: { success: true, message: 'Tool updated successfully' }
+    else
+      render json: { success: false, errors: @tool.errors.full_messages }, status: :unprocessable_entity
+    end
   end
 
   def destroy
