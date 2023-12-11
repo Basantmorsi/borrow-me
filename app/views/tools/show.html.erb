@@ -2,7 +2,7 @@
   <h1 class="mt-4"><strong>Tool & Owner Details</strong></h1>
 
   <div class="row">
-    <!-- Colonne pour les détails de l'outil -->
+    <!-- Column for tool details -->
     <div class="col-md-6">
       <% if @tool %>
         <div class="card big-card">
@@ -10,19 +10,19 @@
             <!-- Left column for tool image -->
             <div class="col">
               <% if @tool.photo.present? %>
-                <%= cl_image_tag @tool.photo.key, height: 300, width: 400, crop: :fill %>
+                <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid", crop: :fill %>
               <% else %>
-                <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-picture mx-auto p-4" alt="">
+                <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="card-img-top img-fluid" alt="">
               <% end %>
             </div>
             <!-- Right column for tool details -->
             <div class="col">
               <div class="card-body">
-                <h2 class="card-title "><%= @tool.name %></h2>
+                <h2 class="card-title"><%= @tool.name %></h2>
                 <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
                 <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
                 <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
-                <!-- Bouton "Book now!" -->
+                <!-- "Borrow this tool NOW!" button -->
                 <div data-controller="tool-requests" class="mt-5">
                   <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
                   <div data-tool-requests-target="togglableElement" class="d-none">
@@ -41,17 +41,17 @@
     <!-- Column for owner details -->
     <div class="col-md-6">
       <% if @user %>
-        <div class="card big-card>
+        <div class="card big-card">
           <!-- Owner profile image -->
           <% if @user.photo.present? %>
             <%= cl_image_tag @user.photo.key, crop: :fill, class: "user-profile mx-auto p-4" %>
           <% else %>
-          <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto p-4" alt="">
+            <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto p-4" alt="">
           <% end %>
           <div class="card-body">
             <h2 class="card-title text-center"><strong><%= @user.username %></strong></h2>
-            <p class="mt-4"><strong>About me :</strong> <%= @user.about_me %></p>
-            <h2 class="mt-4"><strong>Where to find me ?</strong></h2>
+            <p class="mt-4"><strong>About me:</strong> <%= @user.about_me %></p>
+            <h2 class="mt-4"><strong>Where to find me?</strong></h2>
             <div id="map" class="" style="width: 100%; height: 300px;"
               data-controller="map"
               data-map-type-value="show"
@@ -63,13 +63,15 @@
             <div data-controller="overly" data-overly-tool-value="<%= @tool.id %>">
               <a data-action='click->overly#on'  class="btn btn-dark mt-4">Send message!</a>
               <%# data-action='click->overly#off' %>
-              <div id="overlay" >
+              <div id="overlay" data-action='click->overly#off'>
                 <div id="text">
-                  <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{@tool.id }" ,
+                  <%= form_with model: Message.new, url: "#{messages_sendMessage_path}?query=#{@tool.id}&type=tool",
                   :html => { :class => "messageform" },
                      data: {
-                              action: "submit->overly#off"
+                              action: "submit->overly#off",
+                              overly_target: "form"
                             } do |form| %>
+                    <%# <%= form.error_notification %>
                     <%# <%= form.text_field :content,
                      :class => 'messageinput' %>
                      <%= form.text_area(:content, cols: 60, rows: 10) %>
@@ -85,7 +87,6 @@
         <p>No user found for this tool!</p>
       <% end %>
        <!-- Mapbox map -->
-
     </div>
   </div>
 </div>
