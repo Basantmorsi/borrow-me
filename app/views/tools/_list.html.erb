@@ -7,7 +7,11 @@
             <h2 class="small_card-title"><%= tool.name %></h2>
             <p class="small_card-text"><%= tool.brand %></p>
             <p class="small_card-text"><%= tool.description %></p>
-            <p class="small_card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
+            <p class="small_card-text">
+              <%= check_box_tag "tool[availability]", 1, true, class: "form-check-input", id: "tool_availability_#{tool.id}" %>
+              <%= label_tag "tool_availability_#{tool.id}", "Available", class: "form-check-label" %>
+            </p>
+
             <p class="small_card-text">Owned by <%= tool.user.username %></p>
 
             <!-- "Modify" button inside the small_card-body div -->
