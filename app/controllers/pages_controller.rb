@@ -5,4 +5,8 @@ class PagesController < ApplicationController
     @tools = Tool.limit(6)
     @latest_requests = Request.all.last(5)
   end
+
+  def testnave
+
+  end
 end
