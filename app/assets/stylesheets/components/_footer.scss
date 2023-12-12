@@ -48,6 +48,11 @@ footer {
   color: #fff;
   text-decoration: none;
   font-size: 24px;
-  margin: 0 15px; /* Add padding to the icons */
+  margin: 10px 15px 0; /* Add margin-top to move the icons down */
+  padding: 5px; /* Add padding to the icons */
   transition: color 0.3s ease;
+}
+
+.footer-social{
+  padding-top: 15px;
 }
