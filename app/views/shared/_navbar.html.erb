@@ -34,11 +34,13 @@
   </div>
    <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
         <div class="searchbar rounded-pill">
-            <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100") do %>
+           <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
                 <div class="input-group w-100">
-                    <%= text_field_tag :search, params[:search], class: "form-control rounded-pill custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+                    <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
                     <div class="input-group-append">
-                        <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-pill" %>
+                        <%= button_tag "", class: "searchbar-btn btn-outline-success rounded-pill" do %>
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                      <% end %>
                     </div>
                 </div>
             <% end %>
