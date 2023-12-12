@@ -6,7 +6,7 @@ body {
 }
 
 .searchbar {
-  width: 100%;
+  width: 70%;
   margin: auto;
   margin-top: 20px;
   background-color: #f8f9fa;
@@ -23,14 +23,15 @@ body {
 }
 
 .searchbar-btn {
-  background-color: rgb(62, 61, 61);
+  background-color: #B5C99A;
   color: #fff;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 0 20px 20px 0; /* Rounded on the right */
   &:hover {
-    background-color: rgb(168, 165, 165); /* Hover background color */
+    background-color: #87986A; /* Hover background color */
+    border-color: #B5C99A;
   }
 }
 
