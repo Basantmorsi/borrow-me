@@ -1,16 +1,16 @@
 <div class="container mt-5 opaque-form">
   <div class="row justify-content-center">
-        <div class="col-md-6">
-          <%= simple_form_for [@tool, @tool_request] do |f| %>
-  <%= f.input :start_date,
-              as: :string,
-              input_html: { data: { controller: "datepicker" } } %>
-  <%= f.input :end_date,
-              as: :string,
-              input_html: { data: {controller: "datepicker"}} %>
+    <div class="col-md-6">
+      <%= simple_form_for [@tool, @tool_request] do |f| %>
+        <%= f.input :start_date,
+                    as: :string,
+                    input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date,
+                    as: :string,
+                    input_html: { data: {controller: "datepicker"}} %>
 
-  <%= f.submit "Submit !", class: "btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark" %>
-  <% end %>
-        </div>
+        <%= f.submit "Submit !", class: "btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark" %>
+      <% end %>
+    </div>
   </div>
 </div>
