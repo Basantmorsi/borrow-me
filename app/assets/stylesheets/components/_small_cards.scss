@@ -1,44 +1,62 @@
 /* Style for the card container */
-.container {
-  margin-top: 4rem;
+.small_card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Adjust the gap as needed */
 }
 
 /* Style for each card */
-.small-card {
-  border: 1px solid #ddd;
+.small_card {
+  width: 300px; /* Set a fixed width for each card */
+  padding: 20px;
+  border: 3px solid #ddd; /* Add a border for separation */
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  overflow: hidden;
-  transition: transform 0.2s ease-in-out;
-
-  &:hover {
-    transform: scale(1.05);
-  }
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
 }
 
 /* Add some styling for the card content */
-.card-body2 {
-  padding: 20px;
+.small_card h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
 
-  h2 {
-    font-size: 1.2em;
-    margin-bottom: 10px;
-  }
+.small_card p {
+  margin-bottom: 8px;
+}
 
-  p {
-    margin-bottom: 8px;
-  }
-
-  .availability {
-    font-weight: bold;
-  }
+.small_card .availability {
+  font-weight: bold;
 }
 
 /* Optionally, you can add more styling based on your design preferences */
 
+/* Container for small cards */
+.container-small_card {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Adjust small card styles to match your design */
+.small_card {
+  border-radius: 8px; /* Slightly rounded border */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add a slight box shadow */
+}
+
+.small_card-body {
+  padding: 20px;
+}
 
 /* Style for the images */
 .tool-image {
   width: 100%; /* Set a fixed width for the container */
-  height: 200px; /* Set a fixed height for the container */
+  height: 200px; /* Set a fixed height for the container */ /* Center the image horizontally with top and bottom margin */
+  border-radius: 10px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+.index-card {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #E9F5DB;
 }
