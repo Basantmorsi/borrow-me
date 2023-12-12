@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   end
 
   post "messages/sendMessage", to: "messages#sendMessage"
+  get "/testnave", to: "pages#testnave"
+
   # Defines the root path route ("/")
   # root "posts#index"
 end
