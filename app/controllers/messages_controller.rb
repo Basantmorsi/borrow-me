@@ -66,6 +66,7 @@ class MessagesController < ApplicationController
 
     else
       flash.now[:alert] = 'Failed to send the message'
+      head :bad_request
       # render :new
       # render "chatrooms/show", status: :unprocessable_entity
     end

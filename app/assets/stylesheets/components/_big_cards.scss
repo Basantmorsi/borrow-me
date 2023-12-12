@@ -1,24 +1,43 @@
-// Style for the tool & owner show page
-
+/* Style général pour les grandes cartes */
 .big-card {
   margin: 20px;
   border-radius: 15px;
-  border-width: 4px;
+  background-color: #E9F5DB;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 3px solid rgba(0, 0, 0, 0.5);
 }
 
-.tool-picture {
-  width: 400px;
-  height: 600px;
+/* Style spécifique pour les images des outils */
+.card-img-top {
+  max-height: 900px;
+  height: auto;
+  max-width: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-
+/* Style spécifique pour les photos de profil */
 .user-profile {
+  max-width: 100%;
+  height: auto;
   height: 200px;
   border-radius: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.product_card {
-    background-color: #E9F5DB;
-    padding: 15px; /* Add padding to the cards if desired */
-    border-radius: 8px; /* Add rounded corners to the cards if desired */
-  }
+/* Style général pour toutes les cartes */
+.card {
+  max-width: 100%;
+  height: auto;
+}
+
+#title-page {
+  font-size: 40px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.card-title {
+  font-size: 25px;
+}

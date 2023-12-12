@@ -1,11 +1,29 @@
-<div class="jumbotron banner text-white d-flex flex-column justify-content-center mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1497218770144-3fea6dbc33fe?q=80&w=2016&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-size: cover; height: 600px; padding: 20px; position: relative; margin-top: 20px;">
+<%# <div class="jumbotron banner text-white d-flex flex-column justify-content-center mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1497218770144-3fea6dbc33fe?q=80&w=2016&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-size: cover; height: 600px; padding: 20px; position: relative; margin-top: 20px;">
     <div class="container py-5 text-center">
         <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
         <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
     </div>
     <div class="container py-3 text-center" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 50%;">
         <div class="searchbar rounded-pill">
-            <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
+            <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100") do %>
+                <%# <div class="input-group w-100">
+                    <%= text_field_tag :search, params[:search], class: "form-control rounded-pill custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+                    <%# <div class="input-group-append"> %>
+                        <%# <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-pill" %>
+                    <%# </div>
+                </div> %>
+            <%# <% end %>
+        <%# </div>
+    </div>
+</div>  %>
+<section class="home">
+   <div class="bannerText">
+    <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
+    <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
+  </div>
+   <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
+        <div class="searchbar rounded-pill">
+           <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
                 <div class="input-group w-100">
                     <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
                     <div class="input-group-append">
@@ -17,8 +35,7 @@
             <% end %>
         </div>
     </div>
-</div>
-
+</section>
 <div class="text-center mt-2">
     <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn" %>
 </div>
@@ -92,15 +109,19 @@
                 <div id="text">
                   <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{ request.id }&type=request" ,
                   :html => { :class => "messageform" },
-                     data: {
-                              action: "submit->overly#off",
+                   data: {
+
+                              action: "submit->overly#off
+                                       keyup->overly#userwrite",
+
                               overly_target: "form"
                      } do |form| %>
                     <%# <%= form.error_notification %>
                     <%# <%= form.text_field :content,
                      :class => 'messageinput' %>
                      <%= form.text_area(:content, cols: 60, rows: 10) %>
-                    <%= form.submit %>
+
+                    <%= form.submit :disabled => true, 'data-overly-target': "submitButton"%>
                   <% end %>
                 </div>
             </div>

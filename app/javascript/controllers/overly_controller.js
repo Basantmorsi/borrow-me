@@ -5,7 +5,7 @@ export default class extends Controller {
   static values = {
     tool: String
   }
-  static targets = ["form"]
+  static targets = ["form", "submitButton"]
   connect() {
 
   }
@@ -22,6 +22,12 @@ export default class extends Controller {
       document.getElementById("overlay").style.display = "none";
       // document.getElementById("messageForm").reset()
     }
+
+  }
+  userwrite(event){
+   if(event.target.value.length > 3){
+      this.submitButtonTarget.disabled = false
+   }
 
   }
 
