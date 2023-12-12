@@ -1,26 +1,27 @@
 <div class="container">
-  <h1 class="mt-4">Tool & Owner Details</h1>
+  <h1 class="mt-4 text-center" id="title-page"><strong>Tool & Owner Details</strong></h1>
 
-  <div class="row">
+    <div class="row" style="display: flex">
     <!-- Column for tool details -->
-    <div class="col-md-6">
+
+    <div class="col-md-6" style="display: flex;">
       <% if @tool %>
-        <div class="card big-card">
+        <div class="card big-card" style="flex: 1;">
             <!-- Left column for tool image -->
             <div class="col">
               <% if @tool.photo.present? %>
-                <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid", crop: :fill %>
+                <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid mx-auto mt-4", crop: :fill %>
               <% else %>
-                <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="card-img-top img-fluid" alt="">
+                <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="card-img-top img-fluid mx-auto mt-4" alt="">
               <% end %>
             </div>
             <!-- Right column for tool details -->
             <div class="col">
               <div class="card-body">
-                <h2 class="card-title"><%= @tool.name %></h2>
-                <p class="card-text"><strong>Description:</strong> <%= @tool.description %></p>
-                <p class="card-text"><strong>Manual:</strong> <%= @tool.manual %></p>
-                <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
+                <h2 class="card-title text-center"><strong><%= @tool.name %></strong></h2>
+                <p class="card-text mb-2"><strong>Description:</strong> <%= @tool.description %></p>
+                <p class="card-text mb-2"><strong>Manual:</strong> <%= @tool.manual %></p>
+                <p class="card-text mb-2"><strong>Brand:</strong> <%= @tool.brand %></p>
                 <!-- "Borrow this tool NOW!" button -->
                 <div data-controller="tool-requests" class="mt-5">
                   <button data-action="click->tool-requests#fire" class="btn book-now">Borrow this tool NOW!</button>
@@ -37,14 +38,14 @@
     </div>
 
     <!-- Column for owner details -->
-    <div class="col-md-6">
+    <div class="col-md-6" style="display: flex;">
       <% if @user %>
-        <div class="card big-card">
+        <div class="card big-card" style="flex: 1;">
           <!-- Owner profile image -->
           <% if @user.photo.present? %>
-            <%= cl_image_tag @user.photo.key, crop: :fill, class: "user-profile mx-auto p-4" %>
+            <%= cl_image_tag @user.photo.key, crop: :fill, class: "user-profile mx-auto mt-4" %>
           <% else %>
-            <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto p-4" alt="">
+            <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto mt-4" alt="">
           <% end %>
           <div class="card-body">
             <h2 class="card-title text-center"><strong><%= @user.username %></strong></h2>
