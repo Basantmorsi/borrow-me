@@ -4,6 +4,7 @@
   margin: 20px;
   border-radius: 15px;
   border-width: 4px;
+  background-color: #E9F5DB;
 }
 
 .tool-picture {
@@ -18,7 +19,10 @@
 }
 
 .product_card {
-    background-color: #E9F5DB;
     padding: 15px; /* Add padding to the cards if desired */
     border-radius: 8px; /* Add rounded corners to the cards if desired */
+  }
+
+  .big_cards.btn {
+    background-color: #B5C99A;
   }

@@ -24,7 +24,8 @@
     </div>
 
     <!-- Column for map -->
-    <div class="col-md-6">
+    <% if @markers.present? %>
+          <div class="col-md-6">
       <div class="card">
         <div class="card-body">
           <h2>Location</h2>
@@ -36,6 +37,7 @@
           </div>
         </div>
       </div>
+    <% end %>
     </div>
   </div>
 </div>

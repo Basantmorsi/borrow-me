@@ -1,5 +1,5 @@
 <div class="container">
-  <h1 class="mt-4"><strong>Tool & Owner Details</strong></h1>
+  <h1 class="mt-4">Tool & Owner Details</h1>
 
   <div class="row">
     <!-- Column for tool details -->
@@ -23,7 +23,7 @@
                 <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
                 <!-- "Borrow this tool NOW!" button -->
                 <div data-controller="tool-requests" class="mt-5">
-                  <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
+                  <button data-action="click->tool-requests#fire" class="btn book-now">Borrow this tool NOW!</button>
                   <div data-tool-requests-target="togglableElement" class="d-none">
                     <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
                   </div>
@@ -65,11 +65,12 @@
                   <%= form_with model: Message.new, url: "#{messages_sendMessage_path}?query=#{@tool.id}&type=tool",
                   :html => { :class => "messageform" },
                      data: {
-                              action: "submit->overly#off",
+                              action: "submit->overly#off
+                                        keyup->overly#userwrite",
                               overly_target: "form"
                             } do |form| %>
                     <%= form.text_area(:content, cols: 60, rows: 10) %>
-                    <%= form.submit %>
+                    <%= form.submit :disabled => true , 'data-overly-target': "submitButton" %>
                   <% end %>
                 </div>
               </div>
@@ -80,5 +81,15 @@
         <p>No user found for this tool!</p>
       <% end %>
     </div>
+  </div>
+
+  <!-- Mapbox map -->
+  <h2>Location</h2>
+  <div id="map" style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-type-value="show"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+    data-map-type="index">
   </div>
 </div>
