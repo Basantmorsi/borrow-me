@@ -1,6 +1,8 @@
 <nav class="navbar">
   <div class="navbar-left">
-    <a href="/" class="btn">Home</a>
+    <%= link_to root_path do %>
+      <%= image_tag("logo.png", alt: "Home", class: "logo-btn", style: "width: auto; height: 60px;") %>
+    <% end %>
   </div>
 
   <div class="navbar-center">
