@@ -3,33 +3,25 @@
 
   <div class="row">
     <!-- Column for tools -->
-<div class="col-md-6">
-  <div class="row">
-    <% @tools.each do |tool| %>
-      <div class="col-md-6 mb-4">
-        <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-          <div class="card">
-            <div class="card-body2">
-              <div class="col"> <!-- Add this div for the tool image -->
-                <% if tool.photo.present? %>
-                  <%= cl_image_tag tool.photo.key, height: 300, width: 400, crop: :fill %>
-                <% else %>
-                  <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-picture2 mx-auto p-4" alt="">
-                <% end %>
+    <div class="col-md-6">
+      <div class="row">
+        <% @tools.each do |tool| %>
+          <div class="col-md-6 mb-4">
+            <a href="<%= tool_path(tool) %>" class="text-decoration-none">
+              <div class="card">
+                <div class="card-body">
+                  <h2 class="card-title"><%= tool.name %></h2>
+                  <p class="card-text"><%= tool.brand %></p>
+                  <p class="card-text"><%= tool.description %></p>
+                  <p class="card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
+                  <p class="card-text">Owned by <%= tool.user.username %></p>
+                </div>
               </div>
-              <h2 class="card-title"><%= tool.name %></h2>
-              <p class="card-text"><%= tool.brand %></p>
-              <p class="card-text"><%= tool.description %></p>
-              <p class="card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
-              <p class="card-text">Owned by <%= tool.user.username %></p>
-            </div>
+            </a>
           </div>
-        </a>
+        <% end %>
       </div>
-    <% end %>
-  </div>
-</div>
-
+    </div>
 
     <!-- Column for map -->
     <div class="col-md-6">
