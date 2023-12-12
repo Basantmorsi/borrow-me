@@ -6,15 +6,17 @@ class ToolsController < ApplicationController
     @tools = Tool.all
     @tools = @tools.search_by_name(params[:search]) if params[:search].present?
 
-    @available_tools = @tools.where(availability: true).limit(9)
-    @markers = @available_tools.map do |tool|
-      {
-        lng: tool.user.longitude,
-        lat: tool.user.latitude
-        # info_window_html: render_to_string(partial: "info_window", locals: { user: @user })
+    if params[:search].present?
+      @available_tools = @tools.where(availability: true).limit(9)
+      @user = current_user
+      @markers = @available_tools.map do |tool|
+        {
+          lng: tool.user.longitude,
+          lat: tool.user.latitude,
+          info_window_html: render_to_string(partial: "info_window", locals: { user: @user })
         }
+      end
     end
-
     respond_to do |format|
       format.html
       format.text { render partial: "tools/list", locals: { tools: @tools }, formats: [:html] }
@@ -88,7 +90,6 @@ class ToolsController < ApplicationController
     @tool = Tool.find(params[:id])
     @tool.destroy
     redirect_to tools_path, status: :see_other
-
   end
 
   private
@@ -96,5 +97,4 @@ class ToolsController < ApplicationController
   def tool_params
     params.require(:tool).permit(:name, :description, :availability, :manual, :photo, :brand)
   end
-
 end
