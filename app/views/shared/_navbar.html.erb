@@ -10,7 +10,7 @@
                 <ul class="navlinks">
                   <li>
                   <% if user_signed_in? %>
-                   <%= link_to "Welcome back, #{ current_user.username}" , dashboard_index_path %>
+                   <%= link_to "My Account" , dashboard_index_path %>
                   <% end %>
                   </li>
                     <li>
