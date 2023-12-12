@@ -1,6 +1,4 @@
-<div class="container">
-  <h1>Tools</h1>
-
+<div class="container mt-4">
   <% if @markers.present? %>
     <!-- If markers are present, use a two-column layout -->
     <div class="row">
@@ -50,8 +48,8 @@
       <% @tools.each do |tool| %>
         <div class="col-md-3 mb-4">
           <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-            <div class="card">
-              <div class="card-body2">
+            <div class="card small-card">
+              <div class="card">
                 <div class="col">
                   <% if tool.photo.present? %>
                     <%= cl_image_tag tool.photo.key, class: "tool-image" %>
