@@ -45,3 +45,9 @@
 .small_card-body {
   padding: 20px;
 }
+
+/* Style for the images */
+.tool-image {
+  width: 100%; /* Set a fixed width for the container */
+  height: 200px; /* Set a fixed height for the container */ /* Maintain aspect ratio and cover the entire container */
+}
