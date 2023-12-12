@@ -1,43 +1,78 @@
-<div class="container">
-  <h1>Tools</h1>
-
-  <div class="row">
-    <!-- Column for tools -->
-    <div class="col-md-6">
-      <div class="row">
-        <% @tools.each do |tool| %>
-          <div class="col-md-6 mb-4">
-            <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title"><%= tool.name %></h2>
-                  <p class="card-text"><%= tool.brand %></p>
-                  <p class="card-text"><%= tool.description %></p>
-                  <p class="card-text"><span class="availability"><%= tool.availability ? 'Available' : 'Unavailable at the moment' %></span></p>
-                  <p class="card-text">Owned by <%= tool.user.username %></p>
+<div class="container mt-4">
+  <% if @markers.present? %>
+    <!-- If markers are present, use a two-column layout -->
+    <div class="row">
+      <!-- Column for tools -->
+      <div class="col-md-6">
+        <div class="row">
+          <% @tools.each do |tool| %>
+            <div class="col-md-6 mb-4">
+              <a href="<%= tool_path(tool) %>" class="text-decoration-none">
+                <div class="card">
+                  <div class="card card-body2">
+                    <div class="col text-center">
+                      <% if tool.photo.present? %>
+                        <%= cl_image_tag tool.photo.key, class: "tool-image" %>
+                      <% else %>
+                        <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                      <% end %>
+                    </div>
+                    <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
+                    <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                    <div class="availability text-center" style="padding: 8px;">
+                      <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
+                        <%= tool.availability ? 'Available' : 'Unavailable' %>
+                      </span>
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </a>
-          </div>
-        <% end %>
+              </a>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
 
-    <!-- Column for map -->
-    <% if @markers.present? %>
-          <div class="col-md-6">
-      <div class="card">
-        <div class="card-body">
-          <h2>Location</h2>
-          <div id="map" style="height: 600px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
+      <!-- Column for map -->
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h2>Location</h2>
+            <div id="map" style="height: 600px;"
+                 data-controller="map"
+                 data-map-markers-value="<%= @markers.to_json %>"
+                 data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
           </div>
         </div>
       </div>
-    <% end %>
     </div>
-  </div>
+  <% else %>
+    <!-- If no markers, use a full-page horizontal layout -->
+    <div class="row">
+      <% @tools.each do |tool| %>
+        <div class="col-md-3 mb-4">
+          <a href="<%= tool_path(tool) %>" class="text-decoration-none">
+            <div class="card index-card">
+              <div class="card-body2">
+                <div class="col text-center">
+                  <% if tool.photo.present? %>
+                    <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                  <% else %>
+                    <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                  <% end %>
+                </div>
+                <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
+                <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                <div class="availability text-center" style="padding: 8px;">
+                  <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
+                    <%= tool.availability ? 'Available' : 'Unavailable' %>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
