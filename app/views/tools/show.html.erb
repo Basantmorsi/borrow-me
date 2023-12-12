@@ -23,7 +23,7 @@
                 <p class="card-text"><strong>Brand:</strong> <%= @tool.brand %></p>
                 <!-- "Borrow this tool NOW!" button -->
                 <div data-controller="tool-requests" class="mt-5">
-                  <button data-action="click->tool-requests#fire" class="btn btn-dark btn-lg rounded-pill border border-light text-white btn-light:hover text-dark">Borrow this tool NOW!</button>
+                  <button data-action="click->tool-requests#fire" class="btn book-now">Borrow this tool NOW!</button>
                   <div data-tool-requests-target="togglableElement" class="d-none">
                     <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
                   </div>
