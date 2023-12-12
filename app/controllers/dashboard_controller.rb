@@ -33,6 +33,7 @@ class DashboardController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+
   # def update
   #   @user = User.find(current_user.id)
   #   @user.update(tool_params)

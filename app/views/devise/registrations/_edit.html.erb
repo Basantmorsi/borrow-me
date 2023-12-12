@@ -1,0 +1,39 @@
+<h2>Edit <%= :user.to_s.humanize %></h2>
+
+<%= simple_form_for(current_user, as: :user, url: registration_path(:user), html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+     <%= f.input :username,
+                required: true,
+                input_html: { autocomplete: "username" } %>
+
+    <%= f.input :photo, as: :file %>
+
+    <%= f.input :current_password,
+                hint: "we need your current password to confirm your changes",
+                required: true,
+                input_html: { autocomplete: "current-password" } %>
+
+    <%= f.input :password,
+                hint: "leave it blank if you don't want to change it",
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+
+    <%= f.input :password_confirmation,
+                required: false,
+                input_html: { autocomplete: "new-password" } %>
+
+    <%= f.input :address,
+    input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+    wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_API_KEY"]}}%>
+
+    <%= f.input :about_me,
+                required: false,
+                input_html: { autocomplete: "about-me" } %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "Update" %>
+  </div>
+<% end %>
