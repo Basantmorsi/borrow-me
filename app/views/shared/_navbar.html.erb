@@ -9,7 +9,9 @@
             <div id="mainListDiv" class="main_list">
                 <ul class="navlinks">
                   <li>
+                  <% if user_signed_in? %>
                    <%= link_to "Welcome back, #{ current_user.username}" , dashboard_index_path %>
+                  <% end %>
                   </li>
                     <li>
                       <% if user_signed_in? %>
