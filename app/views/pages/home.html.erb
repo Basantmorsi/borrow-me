@@ -59,9 +59,9 @@
               <p class="product_card-text"><%= tool.description %></p>
               <p class="product_card-text">
                 <span class="availability rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black"
-      style="font-size: 12px; padding: 8px;">
-  <%= tool.availability ? 'Available' : 'Unavailable at the moment' %>
-</span>
+                  style="font-size: 12px; padding: 8px;">
+                  <%= tool.availability ? 'Available' : 'Unavailable at the moment' %>
+                </span>
               </p>
             </div>
           </div>
@@ -82,7 +82,7 @@
             <%= f.text_area :message, class: 'form-control', rows: 4, required: true %>
           </div>
           <div class="form-group">
-            <%= f.submit 'Submit Request', class: 'submit-btn' %>
+            <%= f.submit 'Send message', class: 'submit-btn' %>
           </div>
         <% end %>
       </div>
@@ -103,7 +103,7 @@
             <!-- Add more details as needed -->
             <!-- "Send message!" button -->
             <div data-controller="overly">
-              <a data-action='click->overly#on'  class="btn btn-dark">Send message!</a>
+              <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>
               <%# data-action='click->overly#off' %>
               <div id="overlay"  data-action='click->overly#off' >
                 <div id="text">
@@ -125,7 +125,6 @@
                   <% end %>
                 </div>
             </div>
-            <%= link_to "Delete",request_path(request.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"delete-button"%>
           </div>
         <% end %>
       </div>

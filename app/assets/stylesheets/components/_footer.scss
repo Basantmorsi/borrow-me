@@ -1,6 +1,6 @@
 footer {
   background-color: #718355;
-  color: #fff;
+  color: black;
   padding: 40px;
   text-align: center;
   width: 100%;
@@ -20,7 +20,7 @@ footer {
 }
 
 .footer-column h4 {
-  color: #fff;
+  color: black;
   margin-bottom: 15px;
 }
 
@@ -35,19 +35,24 @@ footer {
 }
 
 .footer-column a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-column a:hover {
-  color: #007bff;
+  color: white;
 }
 
 .footer-social a {
-  color: #fff;
+  color: black;
   text-decoration: none;
   font-size: 24px;
-  margin: 0 15px; /* Add padding to the icons */
+  margin: 10px 15px 0; /* Add margin-top to move the icons down */
+  padding: 5px; /* Add padding to the icons */
   transition: color 0.3s ease;
+}
+
+.footer-social{
+  padding-top: 15px;
 }

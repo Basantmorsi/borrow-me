@@ -1,0 +1,24 @@
+.submit-btn {
+  background-color: #2e8b57; /* Darker green */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Remove border */
+  border-radius: 50px !important; /* Add rounded corners */
+  cursor: pointer; /* Add pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth transition effect */
+  border-color: #3eb37e !important;
+}
+
+.submit-btn:hover {
+  background-color: #3eb37e; /* or any light gray color */
+  border-color: #2e8b57 !important;
+}
+
+.btn-dark {
+  background-color: #2e8b57 !important;
+  border-color: #3eb37e !important;
+}
+
+.btn-dark:hover {
+  background-color: #3eb37e !important; /* or any light gray color */
+  border-color: #2e8b57 !important;
+}

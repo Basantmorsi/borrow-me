@@ -47,6 +47,7 @@
       min-height: 100vh;
       justify-content: space-between;
     }
+
   </style>
 </head>
 
@@ -71,7 +72,6 @@
       <div class="footer-content">
         <!-- Navigation Section -->
         <div class="footer-column">
-          <h4>Navigation</h4>
           <ul>
             <li><a href="#home">Home</a></li>
             <li><a href="#services">FAQ</a></li>
@@ -80,10 +80,14 @@
             <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
+        <div class="footer-column">
+          <div class="footer-logo">
+            <%= image_tag("logo.png", alt: "Home", class: "logo", style: "width: auto; height: 150px;") %>
+          </div>
+        </div>
 
         <!-- Products Section -->
         <div class="footer-column">
-          <h4>Products</h4>
           <ul>
             <li><a href="#product1">Product Categories</a></li>
             <li><a href="#product2">Featured Products</a></li>
