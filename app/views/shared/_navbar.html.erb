@@ -1,19 +1,75 @@
-<nav class="navbar">
-  <div class="navbar-left">
-    <%= link_to root_path do %>
-      <%= image_tag("logo.png", alt: "Home", class: "logo-btn", style: "width: auto; height: 60px;") %>
-    <% end %>
-  </div>
 
-  <div class="navbar-center">
-    <%= link_to "Dashboard", dashboard_index_path, class: 'btn' %>
-  </div>
-
-  <div class="navbar-right">
-    <% if user_signed_in? %>
-      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: 'btn' %>
-    <% else %>
-      <%= link_to "Login", new_user_session_path, class: "btn" %>
-    <% end %>
-  </div>
+<nav class="nav">
+        <div class="container">
+            <div class="logo">
+                <%= link_to root_path do %>
+                    <%= image_tag("logo.png", alt: "Home", class: "logo-btn", style: "width: auto; height: 60px;") %>
+                <% end %>
+            </div>
+            <div id="mainListDiv" class="main_list">
+                <ul class="navlinks">
+                  <li>
+                   <%= link_to "Welcome back, #{ current_user.username}" , dashboard_index_path %>
+                  </li>
+                    <li>
+                      <% if user_signed_in? %>
+                          <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete} %>
+                      <% else %>
+                          <%= link_to "Login", new_user_session_path%>
+                      <% end %>
+                    </li>
+                </ul>
+            </div>
+            <span class="navTrigger">
+                <i></i>
+                <i></i>
+                <i></i>
+            </span>
+        </div>
 </nav>
+<section class="home">
+   <div class="bannerText">
+    <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
+    <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
+  </div>
+   <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
+        <div class="searchbar rounded-pill">
+            <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100") do %>
+                <div class="input-group w-100">
+                    <%= text_field_tag :search, params[:search], class: "form-control rounded-pill custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+                    <div class="input-group-append">
+                        <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-pill" %>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
+   <script>
+        $(window).scroll(function() {
+            if ($(document).scrollTop() > 50) {
+                $('.nav').addClass('affix');
+            } else {
+                $('.nav').removeClass('affix');
+            }
+        });
+    </script>
+<%# <nav class="navbar">
+  <div class="navbar-left"> %>
+    <%# <%= link_to root_path do %>
+      <%# <%= image_tag("logo.png", alt: "Home", class: "logo-btn", style: "width: auto; height: 60px;") %>
+    <%# <% end %>
+  <%# </div>
+
+  <div class="navbar-center"> %>
+    <%# <%= link_to "Dashboard", dashboard_index_path, class: 'btn' %>
+  <%# </div>
+
+  <div class="navbar-right"> %>
+    <%# <% if user_signed_in? %>
+      <%# <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: 'btn' %>
+    <%# <% else %>
+      <%#<%= link_to "Login", new_user_session_path, class: "btn" %>
+   <%# <% end %>
+  <%# </div>
+</nav> %>
