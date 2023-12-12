@@ -65,11 +65,12 @@
                   <%= form_with model: Message.new, url: "#{messages_sendMessage_path}?query=#{@tool.id}&type=tool",
                   :html => { :class => "messageform" },
                      data: {
-                              action: "submit->overly#off",
+                              action: "submit->overly#off
+                                        keyup->overly#userwrite",
                               overly_target: "form"
                             } do |form| %>
                     <%= form.text_area(:content, cols: 60, rows: 10) %>
-                    <%= form.submit %>
+                    <%= form.submit :disabled => true , 'data-overly-target': "submitButton" %>
                   <% end %>
                 </div>
               </div>
