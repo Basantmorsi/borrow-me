@@ -263,7 +263,8 @@
 }
 
 .chat-wrapper {
-  overflow: auto;
+  // overflow: auto;
+  position: relative;
 }
 
 .chat-input {
@@ -290,6 +291,9 @@
     border-radius: 6px;
     padding: 12px;
     background-color: var(--chat-input);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
   }
 }
 
