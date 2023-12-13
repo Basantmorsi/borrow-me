@@ -1,3 +1,31 @@
+<section class="home">
+  <div class="bannerText">
+    <div id="banner-title">
+          <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
+    <h3 class="display-6 lead mb-4 pb-3" id="h2-banner">Sharing is caring, find the tool you need and borrow it!</h3>
+  </div>
+  <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
+    <div class="searchbar rounded-pill">
+      <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
+        <div class="input-group w-100">
+          <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+          <div class="input-group-append">
+            <%= button_tag "", class: "searchbar-btn btn-outline-success rounded-pill" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+</section>
+<div class="text-center mt-2">
+  <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn", style: "font-size: 14px;" %>
+</div>
+
+
+
 <div class="container-fluid mt-4">
   <div class="row">
     <!-- Left side with cards taking up 6 columns -->
