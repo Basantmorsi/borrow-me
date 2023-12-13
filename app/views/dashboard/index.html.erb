@@ -30,7 +30,7 @@
         </div>
 
 
-  <div class="chat-list-wrapper activetab">
+  <div class="chat-list-wrapper activetab" data-action="click->toggle#activeTab">
 
           <div class="chat-list-header">
               <%= image_tag "mytool.png",  :style => "width:40px; height:40px; margin-left:5px; margin-right:5px" %>
@@ -42,12 +42,12 @@
                             } %>
 
           </div>
-        </div>
+  </div>
 
 
 
 
-        <div class="chat-list-wrapper">
+  <div class="chat-list-wrapper" data-action="click->toggle#activeTab">
           <div class="chat-list-header">
               <%= image_tag "managerequest.png",  :style => "width:40px; height:40px; margin-left:5px; margin-right:5px" %>
               <%= link_to "Manage Requests", dashboard_index_path, data: {
@@ -57,73 +57,69 @@
                             } %>
 
           </div>
-        </div>
+  </div>
 
 
 
 
 
+    <div class="chat-list-wrapper" data-action="click->toggle#activeTab">
+
+      <div class="chat-list-header">
+          <%= image_tag "add.png",  :style => "width:30px; height:30px; margin-left:5px; margin-right:5px" %>
+
+          <%= link_to "New Tool", new_tool_path , data: {
+                          action: "click->toggle#toggle",
+                          toggle_target: "profileLink",
+                          toggle_url: new_tool_path
+                        } %>
+
+      </div>
+    </div>
 
 
 
 
-        <div class="chat-list-wrapper">
+    <div class="chat-list-wrapper" >
 
-          <div class="chat-list-header">
-             <%= image_tag "add.png",  :style => "width:30px; height:30px; margin-left:5px; margin-right:5px" %>
-
-              <%= link_to "New Tool", new_tool_path , data: {
-                              action: "click->toggle#toggle",
-                              toggle_target: "profileLink",
-                              toggle_url: new_tool_path
-                            } %>
-
-          </div>
-        </div>
-
-
-
-
-        <div class="chat-list-wrapper">
-
-          <div class="chat-list-header">
-            <div class="app-logo">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                  <defs/>
-                  <path class="path-1" fill="#3eb798" d="M448 193.108h-32v80c0 44.176-35.824 80-80 80H192v32c0 35.344 28.656 64 64 64h96l69.76 58.08c6.784 5.648 16.88 4.736 22.528-2.048A16.035 16.035 0 00448 494.868v-45.76c35.344 0 64-28.656 64-64v-128c0-35.344-28.656-64-64-64z" opacity=".4"/>
-                  <path class="path-2" fill="#3eb798" d="M320 1.108H64c-35.344 0-64 28.656-64 64v192c0 35.344 28.656 64 64 64v61.28c0 8.832 7.168 16 16 16a16 16 0 0010.4-3.84l85.6-73.44h144c35.344 0 64-28.656 64-64v-192c0-35.344-28.656-64-64-64zm-201.44 182.56a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56zm96 0a31.935 31.935 0 01-22.56 9.44c-2.08.24-4.16.24-6.24 0a42.555 42.555 0 01-6.08-1.76 35.515 35.515 0 01-5.44-3.04 29.053 29.053 0 01-4.96-4 32.006 32.006 0 01-9.28-23.2 27.13 27.13 0 010-6.24 42.555 42.555 0 011.76-6.08c.8-1.936 1.808-3.76 3.04-5.44a37.305 37.305 0 013.84-4.96 37.305 37.305 0 014.96-3.84 25.881 25.881 0 015.44-3.04 42.017 42.017 0 016.72-2.4c17.328-3.456 34.176 7.808 37.632 25.136.448 2.256.656 4.56.608 6.864 0 8.448-3.328 16.56-9.28 22.56h-.16zm96 0a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56z"/>
-                </svg>
-          </div>
-            Active Conversations
-            <svg class="list-header-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="feather feather-chevron-up" viewBox="0 0 24 24">
+      <div class="chat-list-header">
+        <div class="app-logo">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
               <defs/>
-              <path d="M18 15l-6-6-6 6"/>
+              <path class="path-1" fill="#3eb798" d="M448 193.108h-32v80c0 44.176-35.824 80-80 80H192v32c0 35.344 28.656 64 64 64h96l69.76 58.08c6.784 5.648 16.88 4.736 22.528-2.048A16.035 16.035 0 00448 494.868v-45.76c35.344 0 64-28.656 64-64v-128c0-35.344-28.656-64-64-64z" opacity=".4"/>
+              <path class="path-2" fill="#3eb798" d="M320 1.108H64c-35.344 0-64 28.656-64 64v192c0 35.344 28.656 64 64 64v61.28c0 8.832 7.168 16 16 16a16 16 0 0010.4-3.84l85.6-73.44h144c35.344 0 64-28.656 64-64v-192c0-35.344-28.656-64-64-64zm-201.44 182.56a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56zm96 0a31.935 31.935 0 01-22.56 9.44c-2.08.24-4.16.24-6.24 0a42.555 42.555 0 01-6.08-1.76 35.515 35.515 0 01-5.44-3.04 29.053 29.053 0 01-4.96-4 32.006 32.006 0 01-9.28-23.2 27.13 27.13 0 010-6.24 42.555 42.555 0 011.76-6.08c.8-1.936 1.808-3.76 3.04-5.44a37.305 37.305 0 013.84-4.96 37.305 37.305 0 014.96-3.84 25.881 25.881 0 015.44-3.04 42.017 42.017 0 016.72-2.4c17.328-3.456 34.176 7.808 37.632 25.136.448 2.256.656 4.56.608 6.864 0 8.448-3.328 16.56-9.28 22.56h-.16zm96 0a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56z"/>
             </svg>
-          </div>
-          <ul class="chat-list">
-              <% @chatrooms.each do |chatroom| %>
-                    <li  data-action="click->toggle#activeChat">
-                      <div class="chat-list-item ">
-                      <%# <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat"> %>
-                      <span class="chat-list-name">
-                          <%= link_to  chatroom.name , chatroom_path(chatroom),
-                                                data: {
-                                                        action: "click->toggle#toggle",
-                                                        toggle_url: chatroom_path(chatroom)
-                                                      } %>
+      </div>
+        Active Conversations
+        <svg class="list-header-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="feather feather-chevron-up" viewBox="0 0 24 24">
+          <defs/>
+          <path d="M18 15l-6-6-6 6"/>
+        </svg>
+      </div>
+      <ul class="chat-list">
+          <% @chatrooms.each do |chatroom| %>
+                <li  data-action="click->toggle#activeChat">
+                  <div class="chat-list-item ">
+                  <%# <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat"> %>
+                  <span class="chat-list-name">
+                      <%= link_to  chatroom.name , chatroom_path(chatroom),
+                                            data: {
+                                                    action: "click->toggle#toggle",
+                                                    toggle_url: chatroom_path(chatroom)
+                                                  } %>
 
-                      </span>
-                      </div>
-                    </li>
+                  </span>
+                  </div>
+                </li>
 
-              <% end %>
-          </ul>
-
-
+          <% end %>
+      </ul>
 
 
 
-        </div>
+
+
+    </div>
 
 
 
