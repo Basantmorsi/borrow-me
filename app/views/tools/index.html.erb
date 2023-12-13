@@ -15,7 +15,7 @@
                         <% if tool.photo.present? %>
                           <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
                         <% else %>
-                          <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                          <%= image_tag "nopicture.png", class: "tool-image mx-auto", alt: "" %>
                         <% end %>
                       </div>
                     </div>
@@ -63,7 +63,7 @@
                     <% if tool.photo.present? %>
                       <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
                     <% else %>
-                      <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                      <%= image_tag "nopicture.png", class: "tool-image mx-auto", alt: "" %>
                     <% end %>
                   </div>
                 </div>
