@@ -1,26 +1,8 @@
-<%# <div class="jumbotron banner text-white d-flex flex-column justify-content-center mb-4 mx-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1497218770144-3fea6dbc33fe?q=80&w=2016&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D); background-size: cover; height: 600px; padding: 20px; position: relative; margin-top: 20px;">
-    <div class="container py-5 text-center">
-        <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
-        <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
-    </div>
-    <div class="container py-3 text-center" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); width: 50%;">
-        <div class="searchbar rounded-pill">
-            <%= form_tag(tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100") do %>
-                <%# <div class="input-group w-100">
-                    <%= text_field_tag :search, params[:search], class: "form-control rounded-pill custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
-                    <%# <div class="input-group-append"> %>
-                        <%# <%= submit_tag "Search", class: "searchbar-btn btn-outline-success rounded-pill" %>
-                    <%# </div>
-                </div> %>
-            <%# <% end %>
-        <%# </div>
-    </div>
-</div>  %>
 <section class="home">
   <div class="bannerText">
     <div id="banner-title">
           <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
-    <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
+    <h3 class="display-6 lead mb-4 pb-3" id="h2-banner">Sharing is caring, find the tool you need and borrow it!</h3>
   </div>
   <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
     <div class="searchbar rounded-pill">
@@ -39,99 +21,105 @@
 </div>
 </section>
 <div class="text-center mt-2">
-    <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn" %>
+  <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn" %>
 </div>
 
-<div class="container mt-4">
-  <h1 class="text-center font-weight-bold">Recently added</h1>
-</div>
-
-<div class="container mt-4">
+<div class="container-fluid mt-4">
   <div class="row">
-    <% @tools.each do |tool| %>
-      <div class="col-md-3 mb-4">
-        <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-          <div class="card index-card">
-            <div class="card-body2">
-              <div class="col text-center">
-                <% if tool.photo.present? %>
-                  <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
-                <% else %>
-                  <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
-                <% end %>
-              </div>
-              <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
-              <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
-              <div class="availability text-center" style="padding: 8px;">
-                <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
-                  <%= tool.availability ? 'Available' : 'Unavailable' %>
-                </span>
-              </div>
-            </div>
-          </div>
-        </a>
+    <!-- Left side with cards taking up 6 columns -->
+    <div class="col-md-6">
+      <div class="container mt-4">
+        <h1 class="text-center font-weight-bold">Recently added</h1>
       </div>
-    <% end %>
-  </div>
-</div>
-
-
-<div class="container mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="request-box" style="background-color: #CFE1B9;">
-        <h1>Didn't find what you were looking for?</h1>
-        <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
-          <div class="form-group">
-            <%= f.label :message %>
-            <%= f.text_area :message, class: 'form-control', rows: 4, required: true %>
-          </div>
-          <div class="form-group">
-            <%= f.submit 'Send message', class: 'submit-btn' %>
-          </div>
-        <% end %>
+      <div class="container mt-4 cards-margin">
+        <div class="row">
+          <% @tools.each do |tool| %>
+            <div class="col-md-4 mb-4">
+              <a href="<%= tool_path(tool) %>" class="text-decoration-none">
+                <div class="card index-card">
+                  <div class="card-body2">
+                    <div class="col text-center">
+                      <% if tool.photo.present? %>
+                        <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                      <% else %>
+                        <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                      <% end %>
+                    </div>
+                    <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
+                    <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                    <div class="availability text-center" style="padding: 8px;">
+                      <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
+                        <%= tool.availability ? 'Available' : 'Unavailable' %>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<!-- Add this section to display the latest requests on the home page -->
 
-<div class="container2 mt-4">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="latest-requests-box" data-controller="overly">
-        <h2 style="color: black;">Latest Requests</h2>
-        <% @latest_requests.each do |request| %>
-          <div class="request-item">
-            <p><strong>User:</strong> <%= request.user.username %></p>
-            <p><strong>Request:</strong> <%= request.message %></p>
-            <!-- Add more details as needed -->
-            <!-- "Send message!" button -->
-
-            <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>
-            <%# data-action='click->overly#off' %>
-            <div id="overlay"  data-action='click->overly#off' >
-              <div id="text">
-                <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{ request.id }&type=request" ,
-                :html => { :class => "messageform" },
-                  data: {
-
-                            action: "submit->overly#off
-                                      keyup->overly#userwrite",
-
-                            overly_target: "form"
-                    } do |form| %>
-                  <%# <%= form.error_notification %>
-                  <%# <%= form.text_field :content,
-                    :class => 'messageinput' %>
-                    <%= form.text_area(:content, cols: 60, rows: 10) %>
-
-                  <%= form.submit :disabled => true, 'data-overly-target': "submitButton"%>
+    <!-- Right side with sticky request box -->
+    <div class="col-md-6">
+      <div class="sticky-right">
+        <div class="container mt-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="request-box" style="background-color: #CFE1B9;">
+                <h1>Didn't find what you were looking for?</h1>
+                <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
+                  <div class="form-group">
+                    <%= f.label :message %>
+                    <%= f.text_area :message, class: 'form-control', rows: 4, required: true %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.submit 'Send message', class: 'submit-btn' %>
+                  </div>
                 <% end %>
               </div>
             </div>
           </div>
-        <% end %>
+        </div>
+
+        <!-- Latest requests below the request box -->
+        <div class="container2 mt-4">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="latest-requests-box" data-controller="overly">
+                <h2 style="color: black;">Latest Requests</h2>
+                <% @latest_requests.each do |request| %>
+                  <div class="request-item">
+                    <p><strong>User:</strong> <%= request.user.username %></p>
+                    <p><strong>Request:</strong> <%= request.message %></p>
+                    <!-- Add more details as needed -->
+                    <!-- "Send message!" button -->
+                    <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>
+                    <%# data-action='click->overly#off' %>
+                    <div id="overlay"  data-action='click->overly#off' >
+                      <div id="text">
+                        <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{ request.id }&type=request" ,
+                          :html => { :class => "messageform" },
+                          data: {
+                            action: "submit->overly#off
+                                    keyup->overly#userwrite",
+                            overly_target: "form"
+                          } do |form| %>
+                          <%# <%= form.error_notification %>
+                          <%# <%= form.text_field :content,
+                            :class => 'messageinput' %>
+                            <%= form.text_area(:content, cols: 60, rows: 10) %>
+                          <%= form.submit :disabled => true, 'data-overly-target': "submitButton"%>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

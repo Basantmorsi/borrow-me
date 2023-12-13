@@ -12,7 +12,7 @@ body {
   border-radius: 10px;
   width: 300px;
   text-align: center;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 .request-form {
@@ -58,4 +58,18 @@ body {
 
 .form-control {
   background-color: #E9F5DB;
+}
+  /* Sticky right column */
+.sticky-right {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Adjust the height as needed */
+  overflow-y: auto; /* Enable scrolling within the sticky column */
+}
+
+/* Adjust spacing and padding as needed */
+.container-fluid {
+  padding-left: 15px;
+  padding-right: 15px;
 }
