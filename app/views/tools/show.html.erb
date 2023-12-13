@@ -23,11 +23,13 @@
                 <p class="card-text mb-2"><strong>Manual:</strong> <%= @tool.manual %></p>
                 <p class="card-text mb-2"><strong>Brand:</strong> <%= @tool.brand %></p>
                 <!-- "Borrow this tool NOW!" button -->
-                <div data-controller="tool-requests" class="mt-5">
-                  <button data-action="click->tool-requests#fire" class="btn book-now">Borrow this tool NOW!</button>
+                <div class="text-center">
+                  <div data-controller="tool-requests" class="mt-5">
+                  <button data-action="click->tool-requests#fire" class="btn btn-dark book-now ">Borrow NOW!</button>
                   <div data-tool-requests-target="togglableElement" class="d-none">
                     <%= render "tool_requests/form", tool: @tool, tool_request: @tool_request %>
                   </div>
+                </div>
                 </div>
               </div>
             </div>
@@ -59,7 +61,8 @@
               data-map-type="index">
             </div>
             <!-- "Send message!" button -->
-            <div data-controller="overly" data-overly-tool-value="<%= @tool.id %>">
+            <div class="text-center">
+              <div data-controller="overly" data-overly-tool-value="<%= @tool.id %>">
               <a data-action='click->overly#on'  class="btn btn-dark mt-4">Send message!</a>
               <div id="overlay" data-action='click->overly#off'>
                 <div id="text">
@@ -75,6 +78,7 @@
                   <% end %>
                 </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
