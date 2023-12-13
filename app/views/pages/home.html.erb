@@ -45,7 +45,7 @@
                         <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
                       <% end %>
                     </div>
-                    <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
+                    <h2 class="card-title"><%= truncate(tool.name, length: 18, omission: '...') %></h2>
                     <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
                     <div class="availability text-center" style="padding: 8px;">
                       <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">

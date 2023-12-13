@@ -8,17 +8,21 @@
           <% @tools.each do |tool| %>
             <div class="col-md-6 mb-4">
               <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-                <div class="card">
-                  <div class="card card-body2">
+                <div class="index-card">
+                  <div class="card-body2">
                     <div class="col text-center">
-                      <% if tool.photo.present? %>
-                        <%= cl_image_tag tool.photo.key, class: "tool-image" %>
-                      <% else %>
-                        <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
-                      <% end %>
+                      <div class="image-container">
+                        <% if tool.photo.present? %>
+                          <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                        <% else %>
+                          <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                        <% end %>
+                      </div>
                     </div>
-                    <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
-                    <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                    <h2 class="card-title mb-3"><%= truncate(tool.name, length: 18, omission: '...') %></h2>
+                    <p class="card-text mb-3"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                    <p class="card-text mb-3"><%= truncate(tool.description, length: 25, omission: '...') %></p>
+                    <!-- Tool availability checkbox -->
                     <div class="availability text-center" style="padding: 8px;">
                       <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
                         <%= tool.availability ? 'Available' : 'Unavailable' %>
@@ -52,17 +56,20 @@
       <% @tools.each do |tool| %>
         <div class="col-md-3 mb-4">
           <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-            <div class="card index-card">
+            <div class="index-card">
               <div class="card-body2">
                 <div class="col text-center">
-                  <% if tool.photo.present? %>
-                    <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
-                  <% else %>
-                    <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
-                  <% end %>
+                  <div class="image-container">
+                    <% if tool.photo.present? %>
+                      <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                    <% else %>
+                      <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                    <% end %>
+                  </div>
                 </div>
-                <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
-                <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                <h2 class="card-title mb-3"><%= truncate(tool.name, length: 18, omission: '...') %></h2>
+                <p class="card-text mb-3"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                <p class="card-text mb-3"><%= truncate(tool.description, length: 25, omission: '...') %></p>
                 <div class="availability text-center" style="padding: 8px;">
                   <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
                     <%= tool.availability ? 'Available' : 'Unavailable' %>
