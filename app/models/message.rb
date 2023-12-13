@@ -7,6 +7,10 @@ class Message < ApplicationRecord
   validates :content, presence: true, length: {minimum: 2, maximum: 1000}
 
   def topic
-    tool_id.nil? ? request.message : tool.name
+    if(tool_id.nil? && !request_id.nil?)
+      request.message
+    elsif (request_id.nil? && !tool_id.nil?)
+      tool.name
+    end
   end
 end

@@ -1,10 +1,22 @@
+    <% if message.user.id === current_user.id %>
+        <div class="message-wrapper reverse">
+    <% else %>
+        <div class="message-wrapper">
+    <% end %>
 
-   <div id="message-<%= message.id %>">
-        <small>
-           <%= gravatar_for message.user %>
-          <strong><%= message.user.username %></strong>
-        <%=message.topic   %>
-          <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
-        </small>
-        <p style="padding-left:7%"><%= message.content %></p>
+
+
+           <% if message.user.photo.present? %>
+              <%= cl_image_tag message.user.photo.key, :class=>"message-pp" %>
+            <% else %>
+              <img class="message-pp"  src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png"  alt="profile picture">
+            <% end %>
+
+            <div class="message-box-wrapper">
+                <div class="message-box">
+                    <%= message.content %>
+                </div>
+                <span>about:<%=message.topic %>, <%= message.created_at.strftime("%a %b %e at %l:%M %p") %></span>
+            </div>
+
   </div>
