@@ -15,15 +15,15 @@ class MessagesController < ApplicationController
     end
   end
 
-  def  sendMessage
+  def sendMessage
     @tool_id = nil
     @request = nil
     @request_id = nil
     if params[:type] === "tool"
      # find the tool, we send message about
-     @tool = Tool.find(params[:query])
+      @tool = Tool.find(params[:query])
     elsif params[:type] === "request"
-    @request = Request.find(params[:query])
+      @request = Request.find(params[:query])
     end
 
     # find the user id, who sends the message

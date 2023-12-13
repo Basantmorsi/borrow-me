@@ -17,52 +17,54 @@
     </div>
 </div>  %>
 <section class="home">
-   <div class="bannerText">
+  <div class="bannerText">
     <h1 class="display-1 mb-3 pb-2">Don't buy what you can borrow!</h1>
     <h3 class="display-6 lead mb-4 pb-3">Sharing is caring, find the tool you need and borrow it!</h3>
   </div>
-   <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
-        <div class="searchbar rounded-pill">
-           <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
-                <div class="input-group w-100">
-                    <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
-                    <div class="input-group-append">
-                        <%= button_tag "", class: "searchbar-btn btn-outline-success rounded-pill" do %>
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                      <% end %>
-                    </div>
-                </div>
+  <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
+    <div class="searchbar rounded-pill">
+      <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
+        <div class="input-group w-100">
+          <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+          <div class="input-group-append">
+            <%= button_tag "", class: "searchbar-btn btn-outline-success rounded-pill" do %>
+              <i class="fa-solid fa-magnifying-glass"></i>
             <% end %>
+          </div>
         </div>
+      <% end %>
     </div>
+  </div>
 </section>
 <div class="text-center mt-2">
     <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn" %>
 </div>
+
 <div class="container mt-4">
-    <h1 class="text-center font-weight-bold">Recently added</h1>
+  <h1 class="text-center font-weight-bold">Recently added</h1>
 </div>
-<div class="container-product_card">
+
+<div class="container mt-4">
   <div class="row">
     <% @tools.each do |tool| %>
-      <div class="col-md-4">
+      <div class="col-md-3 mb-4">
         <a href="<%= tool_path(tool) %>" class="text-decoration-none">
-          <div class="product_card mb-4">
-            <% if tool.photo.key.present? %>
-              <%= cl_image_tag tool.photo.key, crop: :fill %>
-            <% else %>
-              <img src="<%= 'https://i.ebayimg.com/images/g/sDMAAOSwFLVkgGBh/s-l1600.jpg' %>" alt="<%= tool.name %>" class="product_card-img">
-            <% end %>
-            <div class="product_card-body">
-              <h2 class="product_card-title"><%= tool.name %></h2>
-              <p class="product_card-text"><%= tool.brand %></p>
-              <p class="product_card-text"><%= tool.description %></p>
-              <p class="product_card-text">
-                <span class="availability rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black"
-                  style="font-size: 12px; padding: 8px;">
-                  <%= tool.availability ? 'Available' : 'Unavailable at the moment' %>
+          <div class="card index-card">
+            <div class="card-body2">
+              <div class="col text-center">
+                <% if tool.photo.present? %>
+                  <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                <% else %>
+                  <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
+                <% end %>
+              </div>
+              <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
+              <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+              <div class="availability text-center" style="padding: 8px;">
+                <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
+                  <%= tool.availability ? 'Available' : 'Unavailable' %>
                 </span>
-              </p>
+              </div>
             </div>
           </div>
         </a>
@@ -70,6 +72,7 @@
     <% end %>
   </div>
 </div>
+
 
 <div class="container mt-4">
   <div class="row">
@@ -94,7 +97,7 @@
 <div class="container2 mt-4">
   <div class="row">
     <div class="col-md-12">
-      <div class="latest-requests-box">
+      <div class="latest-requests-box" data-controller="overly">
         <h2 style="color: black;">Latest Requests</h2>
         <% @latest_requests.each do |request| %>
           <div class="request-item">
@@ -102,28 +105,28 @@
             <p><strong>Request:</strong> <%= request.message %></p>
             <!-- Add more details as needed -->
             <!-- "Send message!" button -->
-            <div data-controller="overly">
-              <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>
-              <%# data-action='click->overly#off' %>
-              <div id="overlay"  data-action='click->overly#off' >
-                <div id="text">
-                  <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{ request.id }&type=request" ,
-                  :html => { :class => "messageform" },
-                   data: {
 
-                              action: "submit->overly#off
-                                       keyup->overly#userwrite",
+            <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>
+            <%# data-action='click->overly#off' %>
+            <div id="overlay"  data-action='click->overly#off' >
+              <div id="text">
+                <%= form_with model: Message.new , url: "#{messages_sendMessage_path}?query=#{ request.id }&type=request" ,
+                :html => { :class => "messageform" },
+                  data: {
 
-                              overly_target: "form"
-                     } do |form| %>
-                    <%# <%= form.error_notification %>
-                    <%# <%= form.text_field :content,
-                     :class => 'messageinput' %>
-                     <%= form.text_area(:content, cols: 60, rows: 10) %>
+                            action: "submit->overly#off
+                                      keyup->overly#userwrite",
 
-                    <%= form.submit :disabled => true, 'data-overly-target': "submitButton"%>
-                  <% end %>
-                </div>
+                            overly_target: "form"
+                    } do |form| %>
+                  <%# <%= form.error_notification %>
+                  <%# <%= form.text_field :content,
+                    :class => 'messageinput' %>
+                    <%= form.text_area(:content, cols: 60, rows: 10) %>
+
+                  <%= form.submit :disabled => true, 'data-overly-target': "submitButton"%>
+                <% end %>
+              </div>
             </div>
           </div>
         <% end %>
