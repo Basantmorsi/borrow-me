@@ -144,7 +144,13 @@
   color: var(--text-dark);
   margin-left: 4px;
 }
-
+.activetab{
+  display: block;
+  height: auto;
+  max-height: auto;
+  opacity: 1;
+  background-color: var(--box-color)
+}
 .chat-list {
   padding: 0;
   list-style: none;
@@ -153,6 +159,7 @@
   transition: .4s ease-in;
   display: none;
   opacity: 0;
+
 
   &.active {
     display: block;
