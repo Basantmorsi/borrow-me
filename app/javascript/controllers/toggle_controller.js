@@ -40,14 +40,13 @@ export default class extends Controller {
 
   toggle(event) {
     event.preventDefault()
-    const selected = document.querySelector('.selected');
-    if (selected !== null) {
-      selected.classList.toggle('selected');
-    }
-    event.target.classList.toggle('selected');
+    // const selected = document.querySelector('.selected');
+    // if (selected !== null) {
+    //   selected.classList.toggle('selected');
+    // }
+    // event.target.classList.toggle('selected');
 
     const url = new Request(event.target.dataset.toggleUrl);
-    console.log(url)
 
     fetch(url, { headers: { "Accept": "text/plain" } })
       .then(response => response.text())
@@ -56,6 +55,19 @@ export default class extends Controller {
         //this.toggleVisibility(); // Toggle visibility after updating content
       })
   }
+
+    activeChat(event){
+
+     const chatlistitem = document.querySelectorAll(".chat-list-item");
+     for(let i = 0; i < chatlistitem.length; i++){
+       chatlistitem[i].className = "chat-list-item"
+      //  chatlistitem[i].classList.remove('active')
+     }
+     event.target.className = "chat-list-item active";
+
+    }
+
+
 
   fetchContent(request) {
     fetch(request)
