@@ -273,9 +273,10 @@
   height: 32px;
   flex: 1;
   margin-right: 4px;
-  background-color: var(--chat-input);
+  background-color: whitesmoke !important;
   color: var(--text-dark);
   margin-bottom: 0px !important;
+  width: 45rem;
 
   &:placeholder {
     color: var(--text-light);
@@ -290,12 +291,13 @@
     margin-top: auto;
     border-radius: 6px;
     padding: 12px;
-    background-color: var(--chat-input);
+    background-color: whitesmoke !important;
+    width: 100%;
   }
 }
 
 .input-wrapper {
-  border: 1px solid var(--border-light);
+  // border: 1px solid var(--border-light);
   border-radius: 4px;
   font-size: 12px;
   display: flex;

@@ -22,11 +22,7 @@
             <% end %>
           <div class="app-profile-box-name">
             <%= current_user.username %>
-            <%= link_to    edit_user_path, data: {
-                              action: "click->toggle#profile",
-                              toggle_target: "profileLink",
-                               toggle_url: edit_user_path
-                            } do %>
+            <%= link_to    edit_user_registration_path do %>
                   <%= image_tag "settings.png",  :style => "width:20px; height:20px; margin-left:5px" %>
             <% end %>
           </div>

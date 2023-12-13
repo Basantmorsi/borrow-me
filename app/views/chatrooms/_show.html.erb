@@ -18,7 +18,7 @@
                   <%= f.input :content, class: "chat-input",
                               label: false,
                               placeholder: "Enter your message here",
-                              wrapper_html: {class: "chat-input"} %>
+                              :input_html => {class: "chat-input"}%>
                   <%= f.submit "Send", class: "chat-send-btn" %>
             <% end %>
 </div>
