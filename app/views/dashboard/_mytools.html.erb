@@ -1,11 +1,11 @@
 <div class="row cards" data-controller="checkbox">
   <% @user_tools.each do |tool| %>
-    <div class="col-md-4"> <!-- Change col-md-3 to col-md-4 to display 3 cards in a row -->
+    <div class="col-md-4">
       <div class="mb-4">
         <div class="index-card">
           <div class="card-body2">
             <div class="col text-center">
-              <div class="image-container"> <!-- Add the image container -->
+              <div class="image-container">
                 <% if tool.photo.present? %>
                   <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
                 <% else %>
@@ -13,9 +13,9 @@
                 <% end %>
               </div>
             </div>
-            <h2 class="card-title mb-3"><%= truncate(tool.name, length: 18, omission: '...') %></h2>
-            <p class="card-text mb-3"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
-            <p class="card-text mb-3"><%= truncate(tool.description, length: 25, omission: '...') %></p>
+            <h2 class="card-title mb-3"><%= tool.name.present? ? truncate(tool.name, length: 18, omission: '...') : '-' %></h2>
+            <p class="card-text mb-3"><%= tool.brand.present? ? truncate(tool.brand, length: 20, omission: '...') : '-' %></p>
+            <p class="card-text mb-3"><%= tool.description.present? ? truncate(tool.description, length: 25, omission: '...') : '-' %></p>
           </div>
           <div class="card-body">
             <!-- Tool availability checkbox -->
@@ -30,10 +30,11 @@
           </div>
           <div data-toggle-target="editCard"></div>
           <div class="d-none" id="tool-<%=tool.id%>">
-            <%= render "tools/form", tool: tool%>
+            <%= render "tools/form", tool: tool %>
           </div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
+
