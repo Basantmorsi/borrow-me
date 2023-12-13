@@ -34,10 +34,10 @@
   --info-icon-bg-2: #c6f0ea;
   --info-icon-bg-3: #d9d3ff;
   --info-icon-bg-4: #ffe1d4;
-  --app-bg: #fff;
-  --box-color: #f5f8fc;
+  --app-bg: #E9F5DB ;
+  --box-color: #dcebca;
   --box-border:  #e7edf5;
-  --button-bg: #477eff;
+  --button-bg: #2e8b57;
   --text-dark: #1a2f45;
   --text-light: #e5e6eb;
   --info-box-1: rgba(160, 186, 242, 0.5);
@@ -46,7 +46,7 @@
   --info-box-4: rgba(240, 185, 168, 0.34);
   --toggle-bg: #004dfc;
   --toggle-bg-off: #6895A3;
-  --message-box-2: #1a233b;
+  --message-box-2: #616f49;
   --message-box-1: #fff;
   --logo-path-1: #A0C9E1;
   --logo-path-2: #18689C;
@@ -144,7 +144,13 @@
   color: var(--text-dark);
   margin-left: 4px;
 }
-
+.activetab{
+  display: block;
+  height: auto;
+  max-height: auto;
+  opacity: 1;
+  background-color: var(--box-color)
+}
 .chat-list {
   padding: 0;
   list-style: none;
@@ -154,12 +160,12 @@
   display: none;
   opacity: 0;
 
+
   &.active {
     display: block;
     height: auto;
     max-height: auto;
     opacity: 1;
-    background-color: var(--box-color)
   }
 
   &-item {
@@ -376,12 +382,12 @@
   padding: 10px;
   font-size: 12px;
   line-height: 16px;
-  width: auto;
-  max-width: 80%;
+  width: 100%;
   color: var(--text-dark);
 
   &-wrapper {
     margin: 0 12px;
+
 
     span {
       font-size: 10px;
