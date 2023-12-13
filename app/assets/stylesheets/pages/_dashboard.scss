@@ -250,7 +250,7 @@
   border-radius: 10px;
   padding: 16px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   transition: .2s;
   overflow-y:auto;
 
@@ -263,8 +263,8 @@
 }
 
 .chat-wrapper {
-  // overflow: auto;
-  position: relative;
+  overflow: auto;
+
 }
 
 .chat-input {
@@ -291,9 +291,6 @@
     border-radius: 6px;
     padding: 12px;
     background-color: var(--chat-input);
-    position: absolute;
-    bottom: 0;
-    width: 100%;
   }
 }
 
