@@ -41,3 +41,10 @@
 .request-item strong {
   color: #212529; /* Dark color for strong text */
 }
+.form-control{
+  border: none !important;
+}
+.form-control:focus {
+ border: none !important;
+ box-shadow:none;
+}
