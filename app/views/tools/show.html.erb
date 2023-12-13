@@ -12,7 +12,7 @@
               <% if @tool.photo.present? %>
                 <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid mx-auto mt-4", crop: :fill %>
               <% else %>
-                <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="card-img-top img-fluid mx-auto mt-4" alt="">
+                <%= image_tag "nopicture.png", class: "card-img-top img-fluid mx-auto mt-4", alt: "" %>
               <% end %>
             </div>
             <!-- Right column for tool details -->

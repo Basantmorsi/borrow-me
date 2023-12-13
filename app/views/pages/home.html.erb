@@ -38,14 +38,16 @@
                 <div class="card index-card">
                   <div class="card-body2">
                     <div class="col text-center">
-                      <% if tool.photo.present? %>
-                        <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
-                      <% else %>
-                        <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
-                      <% end %>
+                      <div class="image-container">
+                        <% if tool.photo.present? %>
+                          <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                        <% else %>
+                          <%= image_tag "nopicture.png", class: "tool-image mx-auto", alt: "" %>
+                        <% end %>
+                      </div>
                     </div>
-                    <h2 class="card-title"><%= truncate(tool.name, length: 18, omission: '...') %></h2>
-                    <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                    <h2 class="card-title mb-3"><%= tool.name.present? ? truncate(tool.name, length: 18, omission: '...') : '-' %></h2>
+                    <p class="card-text mb-3"><%= tool.brand.present? ? truncate(tool.brand, length: 20, omission: '...') : '-' %></p>
                     <div class="availability text-center" style="padding: 8px;">
                       <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
                         <%= tool.availability ? 'Available' : 'Unavailable' %>
@@ -89,8 +91,8 @@
                 <h2 style="color: black;">Latest Requests</h2>
                 <% @latest_requests.each do |request| %>
                   <div class="request-item">
-                    <p> <%= request.user.username %></p>
-                    <p> <%= request.message %></p>
+                    <p><%= request.user.username.present? ? request.user.username : '-' %></p>
+                    <p><%= request.message.present? ? request.message : '-' %></p>
                     <!-- Add more details as needed -->
                     <!-- "Send message!" button -->
                     <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>
