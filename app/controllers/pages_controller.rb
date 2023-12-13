@@ -9,4 +9,11 @@ class PagesController < ApplicationController
   def testnave
 
   end
+
+  def Edit
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "devise/registrations/edit", formats: [:html] }
+    end
+  end
 end
