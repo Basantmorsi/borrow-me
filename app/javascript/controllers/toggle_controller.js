@@ -3,7 +3,31 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["tab", "cards", "edit", "editCard", "profileLink"]
 
-  connect() {}
+  connect() {
+
+    let chatListHeader = document.querySelectorAll(".chat-list-header");
+    let totalHeight = 0;
+
+    for(let i = 0; i < chatListHeader.length; i++){
+      let totalHeight = 0;
+      chatListHeader[i].addEventListener("click", function(){
+        let result = this.nextElementSibling;
+        let activeSibling = this.nextElementSibling.classList.contains('active');
+        this.classList.toggle('active');
+        result.classList.toggle("active");
+        if(!activeSibling) {
+          for( i= 0; i < result.children.length; i++) {
+            totalHeight = totalHeight +  result.children[i].scrollHeight + 40;
+          }
+        } else {
+          totalHeight = 0;
+        }
+        result.style.maxHeight =  totalHeight + "px";
+      });
+
+      }
+
+  }
 
   toggleEdit(event) {
     const url = new Request(event.target.dataset.toggleUrl);
