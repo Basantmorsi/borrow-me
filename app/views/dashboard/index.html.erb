@@ -44,7 +44,6 @@
 
 
 
-
         <div class="chat-list-wrapper">
 
           <div class="chat-list-header">
@@ -67,6 +66,21 @@
                               action: "click->toggle#toggle",
                               toggle_target: "profileLink",
                               toggle_url: mytools_path
+                            } %>
+
+          </div>
+        </div>
+
+
+
+
+        <div class="chat-list-wrapper">
+
+          <div class="chat-list-header">
+              <%= link_to "New Tool", new_tool_path , data: {
+                              action: "click->toggle#toggle",
+                              toggle_target: "profileLink",
+                              toggle_url: new_tool_path
                             } %>
 
           </div>

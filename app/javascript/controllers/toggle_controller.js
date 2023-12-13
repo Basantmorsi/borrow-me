@@ -39,6 +39,7 @@ export default class extends Controller {
   }
 
   toggle(event) {
+    event.preventDefault()
     const selected = document.querySelector('.selected');
     if (selected !== null) {
       selected.classList.toggle('selected');
@@ -46,12 +47,13 @@ export default class extends Controller {
     event.target.classList.toggle('selected');
 
     const url = new Request(event.target.dataset.toggleUrl);
+    console.log(url)
 
     fetch(url, { headers: { "Accept": "text/plain" } })
       .then(response => response.text())
       .then((data) => {
         this.cardsTarget.innerHTML = data;
-        this.toggleVisibility(); // Toggle visibility after updating content
+        //this.toggleVisibility(); // Toggle visibility after updating content
       })
   }
 

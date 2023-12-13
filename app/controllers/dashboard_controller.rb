@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+
   def index
     @user = User.find(current_user.id)
     @user_tools = current_user.tools
@@ -20,6 +21,15 @@ class DashboardController < ApplicationController
     end
   end
 
+  def mytools
+    @user = current_user
+    @user_tools = current_user.tools
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      format.text { render partial: "dashboard/mytools", locals: {user: @user}, formats: [:html] }
+    end
+  end
+
   def show
     @user = current_user
     @user_tools = current_user.tools
@@ -28,6 +38,7 @@ class DashboardController < ApplicationController
       format.text { render partial: "dashboard/mytools", locals: {user: @user}, formats: [:html] }
     end
   end
+
 
   def edit
     @user = User.find(current_user.id)
