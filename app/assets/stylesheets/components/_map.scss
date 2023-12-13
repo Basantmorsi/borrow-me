@@ -10,3 +10,13 @@
 .hide {
   display: none;
 }
+
+/* Exemple de style pour les marqueurs personnalisés */
+.custom-marker {
+  width: 30px;
+  height: 30px;
+  background-color: #ff0000;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+}
