@@ -12,7 +12,7 @@
               <% if @tool.photo.present? %>
                 <%= cl_image_tag @tool.photo.key, class: "card-img-top img-fluid mx-auto mt-4", crop: :fill %>
               <% else %>
-                <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="card-img-top img-fluid mx-auto mt-4" alt="">
+                <%= image_tag "nopicture.png", class: "card-img-top img-fluid mx-auto mt-4", alt: "" %>
               <% end %>
             </div>
             <!-- Right column for tool details -->
@@ -50,7 +50,7 @@
           <% if @user.photo.present? %>
             <%= cl_image_tag @user.photo.key, crop: :fill, class: "user-profile mx-auto mt-4" %>
           <% else %>
-            <img src="https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png" class="user-profile mx-auto mt-4" alt="">
+            <%= image_tag "https://cdn.pixabay.com/photo/2012/04/26/19/43/profile-42914_960_720.png", class: "user-profile mx-auto mt-4", alt: "" %>
           <% end %>
           <div class="card-body">
             <h2 class="card-title text-center"><strong><%= @user.username %></strong></h2>

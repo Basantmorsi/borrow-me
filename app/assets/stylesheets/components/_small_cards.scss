@@ -47,18 +47,30 @@
 }
 
 /* Style for the images */
+.image-container {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;/* Ensure that the image stays within the container */
+}
+
 .tool-image {
   width: 100%; /* Set a fixed width for the container */
-  height: 200px; /* Set a fixed height for the container */ /* Center the image horizontally with top and bottom margin */
+  height: 200px; /* Set a fixed height for the container */
   border-radius: 10px;
   object-fit: contain;
-  margin-bottom: 10px;
 }
 
 .index-card {
   padding: 20px;
   border-radius: 10px;
-  background-color: whitesmoke
+  background-color: whitesmoke;
+  min-height: 400px;
 }
 
 .cards-margin {
@@ -71,3 +83,11 @@
     border-radius: 8px; /* Adjust the border radius as needed */
     margin: auto;
   }
+
+.btn-green {
+  background-color: #2e8b57 !important;
+}
+
+.form-check-input:checked {
+  background-color: #2e8b57 !important;
+}

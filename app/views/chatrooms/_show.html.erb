@@ -4,7 +4,7 @@
         data-chatroom-subscription-chatroom-id-value="<%= chatroom.id %>">
 
 
-          <div data-chatroom-subscription-target="messages">
+          <div data-chatroom-subscription-target="messages" style="margin-bottom:3rem">
               <% chatroom.messages.each do |message| %>
                 <%= render "messages/message", message: message %>
               <% end %>
@@ -21,3 +21,4 @@
                               wrapper_html: {class: "chat-input"} %>
                   <%= f.submit "Send", class: "chat-send-btn" %>
             <% end %>
+</div>

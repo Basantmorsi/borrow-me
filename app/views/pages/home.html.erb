@@ -21,17 +21,23 @@
 </div>
 </section>
 <div class="text-center mt-2">
-  <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn" %>
+  <%= link_to "Browse Tools", tools_path, class: "btn btn-primary rounded-pill", id: "browse-tools-btn", style: "font-size: 14px;" %>
 </div>
+
+
 
 <div class="container-fluid mt-4">
   <div class="row">
     <!-- Left side with cards taking up 6 columns -->
     <div class="col-md-6">
+<<<<<<< HEAD
       <div class="container mt-4">
         <h3 class="text-center font-weight-bold">Recently added</h3>
       </div>
       <div class="container mt-4 cards-margin">
+=======
+      <div class="container mt-2 cards-margin">
+>>>>>>> d979f596601a2fabf16aed51864e014353733499
         <div class="row">
           <% @tools.each do |tool| %>
             <div class="col-md-4 mb-4">
@@ -39,14 +45,16 @@
                 <div class="card index-card">
                   <div class="card-body2">
                     <div class="col text-center">
-                      <% if tool.photo.present? %>
-                        <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
-                      <% else %>
-                        <img src="https://www.shutterstock.com/image-vector/no-tools-required-screwdriver-icon-260nw-1541897120.jpg" class="tool-image mx-auto" alt="">
-                      <% end %>
+                      <div class="image-container">
+                        <% if tool.photo.present? %>
+                          <%= cl_image_tag tool.photo.key, class: "tool-image img-fluid" %>
+                        <% else %>
+                          <%= image_tag "nopicture.png", class: "tool-image mx-auto", alt: "" %>
+                        <% end %>
+                      </div>
                     </div>
-                    <h2 class="card-title"><%= truncate(tool.name, length: 20, omission: '...') %></h2>
-                    <p class="card-text"><%= truncate(tool.brand, length: 20, omission: '...') %></p>
+                    <h2 class="card-title mb-3"><%= tool.name.present? ? truncate(tool.name, length: 18, omission: '...') : '-' %></h2>
+                    <p class="card-text mb-3"><%= tool.brand.present? ? truncate(tool.brand, length: 20, omission: '...') : '-' %></p>
                     <div class="availability text-center" style="padding: 8px;">
                       <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
                         <%= tool.availability ? 'Available' : 'Unavailable' %>
@@ -68,14 +76,13 @@
           <div class="row">
             <div class="col-md-12">
               <div class="request-box" style="background-color: #CFE1B9;">
-                <h3>Didn't find what you were looking for?</h3>
+                <h3 class="request-box-h3">Didn't find what you were looking for?</h3>
                 <%= form_for Request.new, url: post_request_path, class: "request-form" do |f| %>
                   <div class="form-group">
-                    <%= f.label :message %>
                     <%= f.text_area :message, class: 'form-control', rows: 4, required: true %>
                   </div>
                   <div class="form-group">
-                    <%= f.submit 'Send message', class: 'submit-btn' %>
+                    <%= f.submit 'Ask the community', class: 'submit-btn' %>
                   </div>
                 <% end %>
               </div>
@@ -91,8 +98,8 @@
                 <h2 style="color: black;">Latest Requests</h2>
                 <% @latest_requests.each do |request| %>
                   <div class="request-item">
-                    <p><strong>User:</strong> <%= request.user.username %></p>
-                    <p><strong>Request:</strong> <%= request.message %></p>
+                    <p><%= request.user.username.present? ? request.user.username : '-' %></p>
+                    <p><%= request.message.present? ? request.message : '-' %></p>
                     <!-- Add more details as needed -->
                     <!-- "Send message!" button -->
                     <a data-action='click->overly#on'  class="btn btn-dark">Start chat!</a>

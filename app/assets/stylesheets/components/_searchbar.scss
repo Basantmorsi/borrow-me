@@ -12,6 +12,9 @@ body {
   border-radius: 20px;
   overflow: hidden;
   display: flex;
+  input {
+    background-color: white;
+  }
 }
 
 .searchbar-input {
