@@ -19,9 +19,12 @@
             <div class="col">
               <div class="card-body">
                 <h2 class="card-title text-center"><strong><%= @tool.name %></strong></h2>
-                <p class="card-text mb-2"><strong>Description:</strong> <%= @tool.description %></p>
-                <p class="card-text mb-2"><strong>Manual:</strong> <%= @tool.manual %></p>
-                <p class="card-text mb-2"><strong>Brand:</strong> <%= @tool.brand %></p>
+                <h3 class="mt-4 mb-2"><strong>Description: </strong></h3>
+                <p class="card-text mb-2"><%= @tool.description %></p>
+                <h3 class="mt-4 mb-2"><strong>Manual: </strong></h3>
+                <p class="card-text mb-2"><%= @tool.manual %></p>
+                <h3 class="mt-4 mb-2"><strong>Brand: </strong></h3>
+                <p class="card-text mb-2"><%= @tool.brand %></p>
                 <!-- "Borrow this tool NOW!" button -->
                 <div class="text-center">
                   <div data-controller="tool-requests" class="mt-5">
@@ -51,8 +54,9 @@
           <% end %>
           <div class="card-body">
             <h2 class="card-title text-center"><strong><%= @user.username %></strong></h2>
-            <p class="mt-4"><strong>About me:</strong> <%= @user.about_me %></p>
-            <h2 class="mt-4"><strong>Where to find me?</strong></h2>
+            <h3 class="mt-4 mb-2"><strong>About me: </strong></h3>
+            <p><%= @user.about_me %></p>
+            <h2 class="mt-4 mb-2"><strong>Where to find me?</strong></h2>
             <div id="map" style="width: 100%; height: 300px;"
               data-controller="map"
               data-map-type-value="show"
