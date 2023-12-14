@@ -68,7 +68,7 @@ class ToolRequestsController < ApplicationController
       @tool_id = @tool.id
     end
     # find if chatroom between sender and recipient already exits
-       @chatroom = Chatroom.where(sender_id: @sender.id , recipient_id: @recipient.id).and(Chatroom.where(recipient_id: @sender.id, sender_id: @recipient.id)).first
+       @chatroom = Chatroom.where(sender_id: @sender.id , recipient_id: @recipient.id).or(Chatroom.where(recipient_id: @sender.id, sender_id: @recipient.id)).first
 
     if !@chatroom.present?
       @chatroom = Chatroom.new
@@ -84,6 +84,15 @@ class ToolRequestsController < ApplicationController
     @message.user = current_user
     @message.tool_id = @tool_id
     @message.save
+    # if @message.save
+    #   flash.now[:notice]  ='Message sent!'
+
+    #     head :ok
+
+    #   else
+    #     flash.now[:alert] = 'Failed to send the message'
+    #     head :bad_request
+    # end
     # if
     #   flash.now[:notice]  ='Message sent!'
     #   # ChatroomChannel.broadcast_to(

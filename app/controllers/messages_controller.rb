@@ -38,7 +38,7 @@ class MessagesController < ApplicationController
       @request_id = @request.id
     end
     # find if chatroom between sender and recipient already exits
-    @chatroom = Chatroom.where(sender_id: @sender.id , recipient_id: @recipient.id).and(Chatroom.where(recipient_id: @sender.id, sender_id: @recipient.id)).first
+    @chatroom = Chatroom.where(sender_id: @sender.id , recipient_id: @recipient.id).or(Chatroom.where(recipient_id: @sender.id, sender_id: @recipient.id)).first
 
 
     # @chatroom = Chatroom.where(sender_id: [@sender.id , @recipient.id], recipient_id: [@sender.id , @recipient.id]).first
