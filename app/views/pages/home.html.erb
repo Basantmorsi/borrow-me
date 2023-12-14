@@ -6,9 +6,9 @@
   </div>
   <div class="text-center" style="position: absolute; left: 50%; transform: translateX(-50%); width: 50%;">
     <div class="searchbar rounded-pill">
-      <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100" do %>
+      <%= form_with url:tools_path, method: :get, class: "form-inline my-2 my-lg-0 w-100", autocomplete: "off" do %>
         <div class="input-group w-100">
-          <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" } %>
+          <%= text_field_tag :search, params[:search], class: "form-control custom-input", placeholder: "Search tools", aria: { label: "Search tools" }, autocomplete: "off" %>
           <div class="input-group-append">
             <%= button_tag "", class: "searchbar-btn btn-outline-success rounded-pill" do %>
               <i class="fa-solid fa-magnifying-glass"></i>
@@ -88,7 +88,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="latest-requests-box" data-controller="overly">
-                <h2 style="color: black;">Latest Requests</h2>
+                <h2 style="color: black;">What's on your community's mind</h2>
                 <% @latest_requests.each do |request| %>
                   <div class="request-item">
                     <p><%= request.user.username.present? ? request.user.username : '-' %></p>

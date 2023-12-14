@@ -1,5 +1,5 @@
 <!-- app/views/tool_requests/_list.html.erb -->
-<div class="row cards">
+<div class="row cards clearfix">
   <% @tool_requests.each do |tool_request| %>
     <div class="col-md-4 mb-3">
       <!-- Apply the small_card class for consistent styling -->
@@ -10,7 +10,7 @@
           <p><strong>Start Date:</strong> <%= tool_request.start_date %></p>
           <p><strong>End Date:</strong> <%= tool_request.end_date %></p>
           <button
-            class="btn btn-primary approve-button"
+            class="btn btn-primary approve-button btn-green"
             data-controller="tool-requests"
             data-action="click->tool-requests#approve"
             data-tool-request-id="<%= tool_request.id %>"
