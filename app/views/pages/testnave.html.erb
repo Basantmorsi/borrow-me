@@ -1,228 +1,315 @@
+<style>
+$url: "https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/";
 
-<div class="dashboard-container">
-    <div class="app-container">
-      <div class="app-left">
-        <div class="app-left-header">
-          <div class="app-logo">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-              <defs/>
-              <path class="path-1" fill="#3eb798" d="M448 193.108h-32v80c0 44.176-35.824 80-80 80H192v32c0 35.344 28.656 64 64 64h96l69.76 58.08c6.784 5.648 16.88 4.736 22.528-2.048A16.035 16.035 0 00448 494.868v-45.76c35.344 0 64-28.656 64-64v-128c0-35.344-28.656-64-64-64z" opacity=".4"/>
-              <path class="path-2" fill="#3eb798" d="M320 1.108H64c-35.344 0-64 28.656-64 64v192c0 35.344 28.656 64 64 64v61.28c0 8.832 7.168 16 16 16a16 16 0 0010.4-3.84l85.6-73.44h144c35.344 0 64-28.656 64-64v-192c0-35.344-28.656-64-64-64zm-201.44 182.56a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56zm96 0a31.935 31.935 0 01-22.56 9.44c-2.08.24-4.16.24-6.24 0a42.555 42.555 0 01-6.08-1.76 35.515 35.515 0 01-5.44-3.04 29.053 29.053 0 01-4.96-4 32.006 32.006 0 01-9.28-23.2 27.13 27.13 0 010-6.24 42.555 42.555 0 011.76-6.08c.8-1.936 1.808-3.76 3.04-5.44a37.305 37.305 0 013.84-4.96 37.305 37.305 0 014.96-3.84 25.881 25.881 0 015.44-3.04 42.017 42.017 0 016.72-2.4c17.328-3.456 34.176 7.808 37.632 25.136.448 2.256.656 4.56.608 6.864 0 8.448-3.328 16.56-9.28 22.56h-.16zm96 0a22.555 22.555 0 01-4.8 4 35.515 35.515 0 01-5.44 3.04 42.555 42.555 0 01-6.08 1.76 28.204 28.204 0 01-6.24.64c-17.68 0-32-14.32-32-32-.336-17.664 13.712-32.272 31.376-32.608 2.304-.048 4.608.16 6.864.608a42.555 42.555 0 016.08 1.76c1.936.8 3.76 1.808 5.44 3.04a27.78 27.78 0 014.8 3.84 32.028 32.028 0 019.44 23.36 31.935 31.935 0 01-9.44 22.56z"/>
-            </svg>
-          </div>
-          <h1>QuickChat</h1>
-        </div>
-        <div class="app-profile-box">
-          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80" alt="profile">
-          <div class="app-profile-box-name">
-            Pam Beesly Halpert
-            <button class="app-setting">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-settings" viewBox="0 0 24 24">
-                <defs/>
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z"/>
-              </svg>
-            </button>
-          </div>
-          <p class="app-profile-box-title">UI Designer</p>
-          <div class="switch-status">
-            <input type="checkbox" name="switchStatus" id="switchStatus" checked>
-            <label class="label-toggle" for="switchStatus"></label>
-            <span class="toggle-text toggle-online">Online</span>
-            <span class="toggle-text toggle-offline">Offline</span>
-          </div>
-        </div>
-        <div class="chat-list-wrapper">
-          <div class="chat-list-header">Active Conversations <span class="c-number">4</span>
-            <svg class="list-header-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="feather feather-chevron-up" viewBox="0 0 24 24">
-              <defs/>
-              <path d="M18 15l-6-6-6 6"/>
-            </svg>
-          </div>
-          <ul class="chat-list active">
-            <li class="chat-list-item active">
-              <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-              <span class="chat-list-name">Dwight Schrute</span>
-            </li>
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1566465559199-50c6d9c81631?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=934&q=80" alt="chat">
-              <span class="chat-list-name">Andy Bernard</span>
-            </li>
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1562788869-4ed32648eb72?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2552&q=80" alt="chat">
-              <span class="chat-list-name">Michael Scott</span>
-            </li>
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1604004555489-723a93d6ce74?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=934&q=80" alt="chat">
-              <span class="chat-list-name">Holy Flax</span>
-            </li>
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1583864697784-a0efc8379f70?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE1fHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60" alt="chat">
-              <span class="chat-list-name">Jim Halpert</span>
-            </li>
-          </ul>
-        </div>
-        <div class="chat-list-wrapper">
-          <div class="chat-list-header active">Achived Conversations <span class="c-number">3</span>
-            <svg class="list-header-arrow" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" class="feather feather-chevron-up" viewBox="0 0 24 24">
-              <defs/>
-              <path d="M18 15l-6-6-6 6"/>
-            </svg>
-          </div>
-          <ul class="chat-list">
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1542042457485-a4c7afd74cd5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1270&q=80" alt="chat">
-              <span class="chat-list-name">Toby Flenderson</span>
-            </li>
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MjV8fHdvbWFufGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60" alt="chat">
-              <span class="chat-list-name">Kelly Kapoor</span>
-            </li>
-            <li class="chat-list-item">
-              <img src="https://images.unsplash.com/photo-1528763380143-65b3ac89a3ff?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDExfHx8ZW58MHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60" alt="chat">
-              <span class="chat-list-name">Roy Andersson</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="app-main">
-        <div class="chat-wrapper">
-          <div class="message-wrapper reverse">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper reverse">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper reverse">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Lorem ipsum dolor sit amet
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper reverse">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Lorem ipsum dolor
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-          <div class="message-wrapper">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=934&amp;q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Lorem ipsum dolor sit amet
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-        <div class="message-wrapper reverse">
-            <img class="message-pp" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80" alt="profile-pic">
-            <div class="message-box-wrapper">
-              <div class="message-box">
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </div>
-              <span>9h ago</span>
-            </div>
-          </div>
-        </div>
-        <div class="chat-input-wrapper">
-          <button class="chat-attachment-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-paperclip" viewBox="0 0 24 24">
-              <defs/>
-              <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48"/>
-            </svg>
-          </button>
-          <div class="input-wrapper">
-            <input type="text" class="chat-input" placeholder="Enter your message here">
-            <button class="emoji-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-smile" viewBox="0 0 24 24">
-              <defs/>
-              <circle cx="12" cy="12" r="10"/>
-              <path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/>
-            </svg>
-          </button>
-          </div>
-          <button class="chat-send-btn">Send</button>
-        </div>
-      </div>
+body {
+	overflow: hidden;
+	width: 100vw;
+	height: 100vh;
+	margin: 0;
+}
 
+main {
+	width: 100vw;
+	height: 100vh;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	box-sizing: content-box;
 
-    </div>
+	scroll-behavior: smooth;
+	section {
+		position: relative;
+		width: 100vw;
+		height: 100vh;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		background-size: cover;
+		background-position: center center;
+
+		&:nth-child(1) {
+			background-image: url("#{$url}wildtextures-dark-wood-board.jpg");
+
+			.nav-anchor {
+				animation: 1000ms ease 0ms forwards infinite notice-me;
+			}
+		}
+		&:nth-child(2) {
+			background-image: url("#{$url}DSC04170.jpg");
+
+			.main-title {
+				color: rgba(255, 255, 255, .85);
+			}
+		}
+		&:nth-child(3) {
+			background-image: url("#{$url}wildtextures-scrap-wooden-table-top.jpg");
+		}
+		&:nth-child(4) {
+			background-image: url("#{$url}Wood-Texture-6.jpg");
+			.main-title {
+				color: rgba(255, 255, 255, .85);
+			}
+		}
+
+	}
+}
+
+.main-title {
+	font-size: 3vw;
+	font-family: "Alfa Slab One";
+	color: rgba(26, 26, 26, .85);
+	text-align: center;
+}
+
+h1 small {
+	font-size: 22px;
+}
+
+.nav-anchor {
+	position: absolute;
+	color: #fff;
+	font-size: 50px;
+
+	&.top {
+		top: 10px;
+	}
+
+	&.bottom {
+		bottom: 10px;
+	}
+}
+
+#progress {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	width: 50px;
+	height: 100%;
+}
+
+#tape-body {
+	background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/tape2.png");
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50px;
+	height: 76px;
+	background-size: cover;
+	z-index: 10;
+	cursor: grab;
+}
+
+#tape-measure {
+	position: absolute;
+	right: 12px;
+	top: 0;
+	height: 0;
+	width: 24px;
+	background-color: #fada34;
+	z-index: 9;
+	background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/86186/tape2.jpg");
+	background-size: 100% auto;
+}
+
+@keyframes notice-me {
+	0%, 100% {
+		transform: translate3d(0,-5px,0);
+	}
+	50% {
+		transform: translate3d(0,5px,0);
+	}
+}
+</style>
+
+<main>
+	<section id="section-1">
+		<div class="main-title">
+			<h1>Scroll the page...</h1>
+		</div>
+		<a class="nav-anchor bottom" href="#section-2"><span class="mdi mdi-chevron-down"></span></a>
+	</section>
+	<section id="section-2">
+		<a class="nav-anchor top" href="#section-1"><span class="mdi mdi-chevron-up"></span></a>
+		<div class="main-title">
+			<h1>...or drag the tape measure!</h1>
+		</div>
+		<a class="nav-anchor bottom" href="#section-3"><span class="mdi mdi-chevron-down"></span></a>
+	</section>
+	<section id="section-3">
+		<a class="nav-anchor top" href="#section-2"><span class="mdi mdi-chevron-up"></span></a>
+		<div class="main-title">
+			<h1>It's responsive...</h1>
+			<small>(Resize the page)</small>
+		</div>
+		<a class="nav-anchor bottom" href="#section-4"><span class="mdi mdi-chevron-down"></span></a>
+	</section>
+	<section id="section-4">
+		<a class="nav-anchor top" href="#section-3"><span class="mdi mdi-chevron-up"></span></a>
+		<div class="main-title">
+			<h1>...and mobile-friendly<small>(ish)</small></h1>
+		</div>
+	</section>
+</main>
+
+<div id="progress">
+	<div id="tape-body"></div>
+	<div id="tape-measure"></div>
 </div>
 
 <script>
-let title = document.querySelectorAll(".chat-list-header");
-let totalHeight = 0;
+const tapeBody = document.getElementById("tape-body");
+const tapeMeasure = document.getElementById("tape-measure");
+const main = document.getElementsByTagName('main')[0];
+const touch = "ontouchstart" in window ||
+(window.DocumentTouch && document instanceof DocumentTouch);
+let offsetY = 0;
 
-for(let i = 0; i < title.length; i++){
-  let totalHeight = 0;
-  title[i].addEventListener("click", function(){
-    let result = this.nextElementSibling;
-    let activeSibling = this.nextElementSibling.classList.contains('active');
-    this.classList.toggle('active');
-    result.classList.toggle("active");
-    if(!activeSibling) {
-      for( i= 0; i < result.children.length; i++) {
-        totalHeight = totalHeight +  result.children[i].scrollHeight + 40;
-      }
-    } else {
-      totalHeight = 0;
-    }
-    result.style.maxHeight =  totalHeight + "px";
-  });
+const cache = {
+	viewport: {},
+	rects: [],
+	node: {}
+};
+
+// init
+window.addEventListener("load", init);
+
+function init() {
+	// update the cache and check scroll position
+	recache();
+
+	// hide the scrollbar
+	const barWidth = getScrollBarWidth();
+	main.style.paddingRight = `${barWidth}px`;
+
+	// allow dragging
+	tapeBody.addEventListener(touch ? "touchstart" : "mousedown", down);
+
+	// throttle the scroll callback for performance
+	main.addEventListener("scroll", touch ? scrollCheck : throttle(scrollCheck, 10));
+
+	// debounce the resize callback for performance
+	window.addEventListener("resize", debounce(recache, 50));
+};
+
+const move = (e) => {
+	const x = (touch ? e.touches[0].pageY : e.pageY) - offsetY;
+	const offset = getScrollOffset();
+	const height = cache.document.height - cache.viewport.height;
+	const width = cache.viewport.height - cache.node.height;
+	const progress = (x / width) * height;
+
+	main.scrollTop = progress;
 }
 
+const up = (e) => {
+	main.style.scrollBehavior = "";
+	if (touch) {
+		document.removeEventListener("touchmove", move);
+		document.removeEventListener("touchend", up);
+		document.removeEventListener("touchcancel", up);
+	} else {
+		document.removeEventListener("mousemove", move);
+		document.removeEventListener("mouseup", up);
+	}
+}
+
+const down = (e) => {
+	recache();
+
+	offsetY = (touch ? e.touches[0].pageY : e.pageY) - cache.node.top;
+
+	// setting scrollTop/Left with "scroll-behavior: smooth" causes monster jank
+	main.style.scrollBehavior = "auto";
+
+	if (touch) {
+		document.addEventListener("touchmove", move);
+		document.addEventListener("touchend", up);
+		document.addEventListener("touchcancel", up);
+	} else {
+		document.addEventListener("mousemove", move);
+		document.addEventListener("mouseup", up);
+	}
+
+	e.preventDefault();
+}
+
+// update the cache and check scroll position
+function recache() {
+	// cache the viewport dimensions
+	cache.viewport = {
+			width: window.innerWidth,
+			height: window.innerHeight
+	};
+
+	cache.document = {
+		height: main.scrollHeight,
+		width: main.scrollWidth,
+	};
+
+	cache.node = tapeBody.getBoundingClientRect();
+
+	scrollCheck();
+}
+
+// check whether a node is at or above the horizontal halfway mark
+function scrollCheck() {
+	const offset = getScrollOffset();
+	const height = cache.document.height - cache.viewport.height;
+	const width = cache.viewport.height - cache.node.height;
+	const progress = (offset.y / height) * width;
+
+	tapeBody.style.transform = `translate3d(0, ${progress}px,0)`;
+	tapeMeasure.style.height = `${progress}px`;
+};
+
+// get the scroll offsets
+function getScrollOffset() {
+	return {
+		x: main.scrollLeft,
+		y: main.scrollTop
+	};
+};
+
+// throttler
+function throttle(fn, limit, context) {
+	let wait;
+	return function() {
+		context = context || this;
+		if (!wait) {
+			fn.apply(context, arguments);
+			wait = true;
+			return setTimeout(function() {
+				wait = false;
+			}, limit);
+		}
+	};
+};
+
+// debouncer
+function debounce(fn, limit, u) {
+	let e;
+	return function() {
+		const i = this;
+		const o = arguments;
+		const a = u && !e;
+		clearTimeout(e),
+			(e = setTimeout(function() {
+			(e = null), u || fn.apply(i, o);
+		}, limit)),
+			a && fn.apply(i, o);
+	};
+}
+
+
+/**
+ * Get native scrollbar width
+ * @return {Number} Scrollbar width
+ */
+function getScrollBarWidth() {
+	const db = document.body;
+	const div = document.createElement("div");
+	let t = 0;
+	return div.style.cssText = "width: 100; height: 100; overflow: scroll; position: absolute; top: -9999;", document.body.appendChild(div), t = div.offsetWidth - div.clientWidth, document.body.removeChild(div), t
+};
 </script>
