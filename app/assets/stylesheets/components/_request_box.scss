@@ -10,14 +10,14 @@ body {
   box-shadow: 0 4px 6px rgba(32, 33, 36, 0.1);
   padding: 20px;
   border-radius: 10px;
-  width: 300px;
+  width: 800px;
   text-align: center;
   margin: 10px auto;
 }
 
-.request-form {
+/* .request-form {
   margin-top: 20px;
-}
+} */
 
 .form-group {
   margin-top: 10px;
@@ -33,7 +33,7 @@ body {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  padding: 8px;
+  padding: 20px;
   box-sizing: border-box;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -43,8 +43,10 @@ body {
   background-color: #4285f4;
   color: #ffffff;
   border: none;
-  padding: 10px 15px;
+  padding: 10px 15px !important;
+  margin-top: 15px;
   border-radius: 5px;
+  width: 30% !important;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }

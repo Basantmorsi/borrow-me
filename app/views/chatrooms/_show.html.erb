@@ -13,14 +13,15 @@
 
 
 
-            <%= simple_form_for [chatroom, @message],
-                                html: {data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
-                                class: "chat-input-wrapper"} do |f|%>
-                  <%= f.input :content, class: "chat-input",
-                              label: false,
-                              placeholder: "Enter your message here",
-                              :input_html => {class: "chat-input"}%>
-                  <%= f.submit "Send", class: "chat-send-btn" %>
-            <% end %>
+         <%= simple_form_for [chatroom, @message],
+                   html: { data: { action: "turbo:submit-end->chatroom-subscription#resetForm" },
+                           class: "chat-input-wrapper" } do |f| %>
+  <%= f.input :content, class: "chat-input",
+               label: false,
+               placeholder: "Enter your message here",
+               input_html: { class: "chat-input", autocomplete: "off" } %>
+  <%= f.submit "Send", class: "chat-send-btn" %>
+<% end %>
+
   </div>
 </div>
