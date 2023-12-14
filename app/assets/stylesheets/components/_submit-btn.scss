@@ -9,7 +9,7 @@
 }
 
 .submit-btn:hover {
-  background-color: #3eb37e; /* or any light gray color */
+  background-color: #3eb37e;
   border-color: #2e8b57 !important;
 }
 
@@ -19,11 +19,38 @@
 }
 
 .btn-dark:hover {
-  background-color: #3eb37e !important; /* or any light gray color */
+  background-color: #3eb37e !important;
   border-color: #2e8b57 !important;
 }
 
 .submit-btn,
 .btn-dark {
   font-family: 'Graduate', sans-serif;
+}
+
+.create_button {
+  border-radius: 50px !important;
+  padding: 5px 10px;
+  width: 50% !important;
+  border: solid 1px !important;
+  background-color: #2e8b57 !important;
+  border-color: #3eb37e !important;
+}
+
+.create_button:hover {
+  background-color: #3eb37e !important;
+  border-color: #2e8b57 !important;
+}
+
+.chat-send-btn {
+  border-radius: 50px !important;
+  padding: 5px 10px;
+  border: solid 1px !important;
+  background-color: #2e8b57 !important;
+  border-color: #3eb37e !important;
+}
+
+.chat-send-btn:hover {
+  background-color: #3eb37e !important;
+  border-color: #2e8b57 !important;
 }
