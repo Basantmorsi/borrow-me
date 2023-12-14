@@ -49,7 +49,7 @@
                     <h2 class="card-title mb-3"><%= tool.name.present? ? truncate(tool.name, length: 18, omission: '...') : '-' %></h2>
                     <p class="card-text mb-3"><%= tool.brand.present? ? truncate(tool.brand, length: 20, omission: '...') : '-' %></p>
                     <div class="availability text-center" style="padding: 8px;">
-                      <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px;">
+                      <span class="rounded-pill <%= tool.availability ? 'bg-success' : 'bg-warning' %> text-black" style="font-size: 12px; font-family: 'Graduate', sans-serif;">
                         <%= tool.availability ? 'Available' : 'Unavailable' %>
                       </span>
                     </div>
