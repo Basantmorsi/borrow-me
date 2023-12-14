@@ -5,7 +5,7 @@ export default class extends Controller {
 
   connect() {
 
-    let chatListHeader = document.querySelectorAll(".chat-list-header");
+    let chatListHeader = document.querySelectorAll("#chatConversations");
     let totalHeight = 0;
 
     for(let i = 0; i < chatListHeader.length; i++){
