@@ -250,6 +250,27 @@
   border-radius: 10px;
   padding: 16px;
   display: flex;
+  flex-direction: column;
+  transition: .2s;
+  overflow-y:auto;
+
+  &-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--box-color);
+    border: 1px solid var(--box-border);
+  }
+}
+
+
+
+.app-main-chat {
+  flex: 3;
+  height: 100%;
+  background-color: var(--box-color);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
   flex-direction: column-reverse;
   transition: .2s;
   overflow-y:auto;
@@ -262,9 +283,10 @@
   }
 }
 
+
+
 .chat-wrapper {
   overflow: auto;
-
 }
 
 .chat-input {
