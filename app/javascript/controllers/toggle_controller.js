@@ -95,7 +95,6 @@ export default class extends Controller {
     }
     event.target.className = "chat-list-item active";
      //event.parentNode.classList.add("active")
-     // = "chat-list-item active";
 
     }
 
