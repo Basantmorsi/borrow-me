@@ -79,7 +79,7 @@ class ToolRequestsController < ApplicationController
     end
 
     @message = Message.new()
-    @message.content ="Hallo #{@recipient.username}, happy to help you! The #{@tool.name} is avaliable to you pick."
+    @message.content ="Hallo #{@recipient.username}, happy to help you! The #{@tool.name} is avaliable for you pick."
     @message.chatroom = @chatroom
     @message.user = current_user
     @message.tool_id = @tool_id

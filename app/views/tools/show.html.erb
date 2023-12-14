@@ -78,7 +78,7 @@
                               overly_target: "form"
                             } do |form| %>
                     <%= form.text_area(:content, cols: 60, rows: 10) %>
-                    <%= form.submit :disabled => true , 'data-overly-target': "submitButton" %>
+                    <%= form.submit "Send!", :disabled => true , 'data-overly-target': "submitButton" %>
                   <% end %>
                 </div>
               </div>
