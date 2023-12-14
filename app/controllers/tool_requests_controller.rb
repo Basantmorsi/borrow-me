@@ -54,36 +54,36 @@ class ToolRequestsController < ApplicationController
 
 
     #send chat message after request approve
-    # @tool_id = nil
+    @tool_id = nil
 
-    # @tool =Tool.find(@tool_request.tool_id)
+    @tool =Tool.find(@tool_request.tool_id)
 
 
-    # # find the user id, who sends the message
-    # @sender = current_user
+    # find the user id, who sends the message
+    @sender = current_user
 
-    # # find the recipient id, who owns the tool
-    # if @tool.present?
-    #   @recipient = User.find(@tool_request.user_id)
-    #   @tool_id = @tool.id
-    # end
-    # # find if chatroom between sender and recipient already exits
-    #    @chatroom = Chatroom.where(sender_id: @sender.id , recipient_id: @recipient.id).and(Chatroom.where(recipient_id: @sender.id, sender_id: @recipient.id)).first
+    # find the recipient id, who owns the tool
+    if @tool.present?
+      @recipient = User.find(@tool_request.user_id)
+      @tool_id = @tool.id
+    end
+    # find if chatroom between sender and recipient already exits
+       @chatroom = Chatroom.where(sender_id: @sender.id , recipient_id: @recipient.id).and(Chatroom.where(recipient_id: @sender.id, sender_id: @recipient.id)).first
 
-    # if !@chatroom.present?
-    #   @chatroom = Chatroom.new
-    #   @chatroom.name = "Private Chat between #{@sender.username} and #{@recipient.username}"
-    #   @chatroom.sender = @sender
-    #   @chatroom.recipient = @recipient
-    #   @chatroom.save
-    # end
+    if !@chatroom.present?
+      @chatroom = Chatroom.new
+      @chatroom.name = "Private Chat between #{@sender.username} and #{@recipient.username}"
+      @chatroom.sender = @sender
+      @chatroom.recipient = @recipient
+      @chatroom.save
+    end
 
-    # @message = Message.new()
-    # @message.content ="Hallo #{@recipient.username}, happy to help you! The #{@tool.name} is avaliable for you pick."
-    # @message.chatroom = @chatroom
-    # @message.user = current_user
-    # @message.tool_id = @tool_id
-    # @message.save
+    @message = Message.new()
+    @message.content ="Hallo #{@recipient.username}, happy to help you! The #{@tool.name} is avaliable for you pick."
+    @message.chatroom = @chatroom
+    @message.user = current_user
+    @message.tool_id = @tool_id
+    @message.save
     # if
     #   flash.now[:notice]  ='Message sent!'
     #   # ChatroomChannel.broadcast_to(
