@@ -64,6 +64,8 @@
   height: 200px; /* Set a fixed height for the container */
   border-radius: 10px;
   object-fit: contain;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 .index-card {
@@ -71,6 +73,8 @@
   border-radius: 10px;
   background-color: #CFE1B9;
   min-height: 400px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 .cards-margin {
@@ -90,4 +94,14 @@
 
 .form-check-input:checked {
   background-color: #2e8b57 !important;
+}
+
+// #small-card-styling {
+//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+//   border: 3px solid rgba(0, 0, 0, 0.5);
+// }
+
+.request-box, .latest-requests-box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(0, 0, 0, 0.5);
 }
