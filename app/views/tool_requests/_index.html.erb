@@ -3,10 +3,10 @@
   <% @tool_requests.each do |tool_request| %>
     <div class="col-md-4 mb-3">
       <!-- Apply the small_card class for consistent styling -->
-      <div class="small_card">
+      <div class="small_card" style="background-color: whitesmoke;">
         <div class="small_card-body">
           <h2><%= tool_request.tool.name %></h2>
-          <p><strong>User:</strong> <%= tool_request.user.username %></p>
+          <p><strong>From</strong> <%= tool_request.user.username %></p>
           <p><strong>Start Date:</strong> <%= tool_request.start_date %></p>
           <p><strong>End Date:</strong> <%= tool_request.end_date %></p>
           <button
