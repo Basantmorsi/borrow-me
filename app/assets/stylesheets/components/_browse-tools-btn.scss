@@ -12,3 +12,18 @@
   background-color: #B5C99A !important; /* Change this color to your preferred hover color */
   border-color: #718355 !important; /* Change this color to your preferred hover color */
 }
+
+.btn-primary {
+  background-color: #2e8b57;
+  border-color: #3eb37e;
+  padding: 15px 40px;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Graduate', sans-serif;
+  margin-top: 20px;
+}
+
+.btn-primary:hover {
+  background-color: #3eb37e !important; /* Change this color to your preferred hover color */
+  border-color: #2e8b57 !important; /* Change this color to your preferred hover color */
+}
