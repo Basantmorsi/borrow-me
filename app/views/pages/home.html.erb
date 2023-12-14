@@ -88,7 +88,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="latest-requests-box" data-controller="overly">
-                <h2 style="color: black;">Your community says</h2>
+                <h2 style="color: black;">What's on your community's mind</h2>
                 <% @latest_requests.each do |request| %>
                   <div class="request-item">
                     <p><%= request.user.username.present? ? request.user.username : '-' %></p>
