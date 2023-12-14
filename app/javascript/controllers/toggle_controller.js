@@ -89,9 +89,9 @@ export default class extends Controller {
      }
     //  if (!$(event.target).is('img')){
     // }
-    const tabItem = document.querySelectorAll(".chat-list-wrapper");
+    const tabItem = document.querySelectorAll(".chat-list-header");
     for(let i = 0; i < tabItem.length; i++){
-      tabItem[i].className = "chat-list-wrapper"
+      tabItem[i].className = "chat-list-header"
     }
     event.target.className = "chat-list-item active";
      //event.parentNode.classList.add("active")
@@ -99,9 +99,9 @@ export default class extends Controller {
     }
 
     activeTab(event){
-      const tabItem = document.querySelectorAll(".chat-list-wrapper");
+      const tabItem = document.querySelectorAll(".chat-list-header");
       for(let i = 0; i < tabItem.length; i++){
-        tabItem[i].className = "chat-list-wrapper"
+        tabItem[i].className = "chat-list-header"
       }
       // if (!$(event.target).is('img')){
       // }
@@ -110,16 +110,16 @@ export default class extends Controller {
        chatlistitem[i].className = "chat-list-item"
       //  chatlistitem[i].classList.remove('active')
      }
-      event.target.className = "chat-list-wrapper activetab";
+      event.target.className = "chat-list-header activetab";
       //event.parentNode.classList.add("activetab")
-      // event.parentNode.className = "chat-list-wrapper activetab";
+      // event.parentNode.className = "chat-list-header activetab";
 
     }
 
     deactivateChat(event){
-      const tabItem = document.querySelectorAll(".chat-list-wrapper");
+      const tabItem = document.querySelectorAll(".chat-list-header");
       for(let i = 0; i < tabItem.length; i++){
-        tabItem[i].className = "chat-list-wrapper"
+        tabItem[i].className = "chat-list-header"
       }
     }
 
