@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
-    @tools = Tool.limit(6)
+    @tools = Tool.all.last(6)
     @latest_requests = Request.all.last(3)
   end
 
