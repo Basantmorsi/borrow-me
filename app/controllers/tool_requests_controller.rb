@@ -48,10 +48,56 @@ class ToolRequestsController < ApplicationController
   end
 
   def approve
-    puts "arrived here"
+
     @tool_request = ToolRequest.find(params[:id])
     @tool_request.update(approved: true)
-    # You may want to handle the response based on your needs
+
+
+    #send chat message after request approve
+    @tool_id = nil
+
+    @tool =Tool.find(@tool_request.tool_id)
+
+
+    # find the user id, who sends the message
+    @sender = current_user
+
+    # find the recipient id, who owns the tool
+    if @tool.present?
+      @recipient = User.find(@tool_request.user_id)
+      @tool_id = @tool.id
+    end
+    # find if chatroom between sender and recipient already exits
+    @chatroom = Chatroom.where(sender_id: [@sender.id , @recipient.id]).and(Chatroom.where(recipient_id: [@sender.id , @recipient.id])).first
+
+    if !@chatroom.present?
+      @chatroom = Chatroom.new
+      @chatroom.name = "Private Chat between #{@sender.username} and #{@recipient.username}"
+      @chatroom.sender = @sender
+      @chatroom.recipient = @recipient
+      @chatroom.save
+    end
+
+    @message = Message.new()
+    @message.content ="Hallo #{@recipient.username}, happy to help you! The #{@tool.name} is avaliable to you pick."
+    @message.chatroom = @chatroom
+    @message.user = current_user
+    @message.tool_id = @tool_id
+    @message.save
+    # if
+    #   flash.now[:notice]  ='Message sent!'
+    #   # ChatroomChannel.broadcast_to(
+    #   #   @chatroom,
+    #   #   render_to_string(partial: "messages/message",formats: [:html, :js, :json, :url_encoded_form],
+    #   #   locale: [:en],
+    #   #   handlers: [:erb, :builder, :raw, :ruby, :coffee, :jbuilder], locals: {message: @message})
+    #   # )
+    #   head :ok
+
+    # else
+    #   flash.now[:alert] = 'Failed to send the message'
+    #   head :bad_request
+    # end
     respond_to do |format|
       format.json { render json: { message: 'Request approved successfully' } }
     end

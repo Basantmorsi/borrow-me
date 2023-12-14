@@ -63,7 +63,13 @@ export default class extends Controller {
   }
 
   toggle(event) {
+
+
     event.preventDefault()
+
+
+
+
     // const selected = document.querySelector('.selected');
     // if (selected !== null) {
     //   selected.classList.toggle('selected');
