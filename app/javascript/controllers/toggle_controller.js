@@ -87,11 +87,41 @@ export default class extends Controller {
        chatlistitem[i].className = "chat-list-item"
       //  chatlistitem[i].classList.remove('active')
      }
-     event.target.className = "chat-list-item active";
+    //  if (!$(event.target).is('img')){
+    // }
+    const tabItem = document.querySelectorAll(".chat-list-wrapper");
+    for(let i = 0; i < tabItem.length; i++){
+      tabItem[i].className = "chat-list-wrapper"
+    }
+    event.target.className = "chat-list-item active";
+     //event.parentNode.classList.add("active")
 
     }
 
+    activeTab(event){
+      const tabItem = document.querySelectorAll(".chat-list-wrapper");
+      for(let i = 0; i < tabItem.length; i++){
+        tabItem[i].className = "chat-list-wrapper"
+      }
+      // if (!$(event.target).is('img')){
+      // }
+      const chatlistitem = document.querySelectorAll(".chat-list-item");
+     for(let i = 0; i < chatlistitem.length; i++){
+       chatlistitem[i].className = "chat-list-item"
+      //  chatlistitem[i].classList.remove('active')
+     }
+      event.target.className = "chat-list-wrapper activetab";
+      //event.parentNode.classList.add("activetab")
+      // event.parentNode.className = "chat-list-wrapper activetab";
 
+    }
+
+    deactivateChat(event){
+      const tabItem = document.querySelectorAll(".chat-list-wrapper");
+      for(let i = 0; i < tabItem.length; i++){
+        tabItem[i].className = "chat-list-wrapper"
+      }
+    }
 
   fetchContent(request) {
     fetch(request)
